@@ -1,28 +1,48 @@
-/* Main App Component - Handles routing (using react-router-dom), query client and other providers - use this file to add all routes */
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import Index from './pages/Index'
-import NotFound from './pages/NotFound'
-import Layout from './components/Layout'
+import { AuthProvider } from '@/hooks/use-auth'
 
-// ONLY IMPORT AND RENDER WORKING PAGES, NEVER ADD PLACEHOLDER COMPONENTS OR PAGES IN THIS FILE
-// AVOID REMOVING ANY CONTEXT PROVIDERS FROM THIS FILE (e.g. TooltipProvider, Toaster, Sonner)
+import RootLayout from './components/RootLayout'
+import AdminLayout from './components/AdminLayout'
+
+import Index from './pages/Index'
+import QuizPage from './pages/QuizPage'
+import ROIPage from './pages/ROIPage'
+import FAQPage from './pages/FAQPage'
+import ContactPage from './pages/ContactPage'
+import LoginPage from './pages/LoginPage'
+import NotFound from './pages/NotFound'
+
+import LeadsDashboard from './pages/admin/LeadsDashboard'
+import ConfigDashboard from './pages/admin/ConfigDashboard'
 
 const App = () => (
   <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES MUST BE ADDED HERE */}
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <Routes>
+          <Route element={<RootLayout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/quiz" element={<QuizPage />} />
+            <Route path="/roi" element={<ROIPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/contato" element={<ContactPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
+
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<LeadsDashboard />} />
+            <Route path="config" element={<ConfigDashboard />} />
+          </Route>
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </TooltipProvider>
+    </AuthProvider>
   </BrowserRouter>
 )
 
