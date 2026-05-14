@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import { useContactModal } from '@/contexts/ContactModalContext'
 
@@ -34,17 +34,17 @@ const solucoes = [
     desc: 'Avalie a maturidade digital do seu negócio',
   },
   {
-    title: 'Agente de IA',
-    href: '/solucoes/agente-de-ia',
+    title: 'Agentes de IA',
+    href: '/solucoes/agentes-de-ia',
     desc: 'Atendimento inteligente operando 24/7',
   },
   {
     title: 'Automação de Processos',
-    href: '/solucoes/automacao-de-processos',
+    href: '/solucoes/automacoes-de-processos',
     desc: 'Elimine gargalos operacionais e erros',
   },
   {
-    title: 'CRM e Organização',
+    title: 'CRM e Organização Comercial',
     href: '/solucoes/crm-e-organizacao-comercial',
     desc: 'Centralize vendas e indicadores',
   },
@@ -56,11 +56,24 @@ const solucoes = [
 ]
 
 const negocios = [
-  { title: 'Serviços B2B', href: '#', desc: 'Eficiência para empresas' },
-  { title: 'Indústrias', href: '#', desc: 'Automação na linha de produção' },
-  { title: 'Academias', href: '#', desc: 'Engajamento e retenção de alunos com IA' },
-  { title: 'Clínicas', href: '#', desc: 'Agendamentos automáticos e lembretes' },
-  { title: 'E-commerce WhatsApp', href: '#', desc: 'Venda direto pelo aplicativo' },
+  {
+    title: 'Serviços B2B',
+    href: '/para-seu-negocio/servicos-b2b',
+    desc: 'Eficiência para empresas',
+  },
+  {
+    title: 'Indústrias',
+    href: '/para-seu-negocio/industrias',
+    desc: 'Automação na linha de produção',
+  },
+  {
+    title: 'Contabilidades',
+    href: '/para-seu-negocio/contabilidades',
+    desc: 'Otimização e agilidade',
+  },
+  { title: 'Advogados', href: '/para-seu-negocio/advogados', desc: 'Organização de processos' },
+  { title: 'Agências', href: '/para-seu-negocio/agencias', desc: 'Mais escala e resultados' },
+  { title: 'Logística', href: '/para-seu-negocio/logistica', desc: 'Controle de ponta a ponta' },
 ]
 
 const conteudos = [
@@ -79,20 +92,31 @@ const ListItem = React.forwardRef<
   React.ElementRef<typeof Link>,
   React.ComponentPropsWithoutRef<typeof Link> & { disabled?: boolean }
 >(({ className, title, children, disabled, to, ...props }, ref) => {
+  const location = useLocation()
+  const isActive = to && location.pathname === to
+
   return (
     <li>
-      <NavigationMenuLink asChild>
+      <NavigationMenuLink asChild active={isActive}>
         <Link
-          to={to}
+          to={to ?? '#'}
           ref={ref}
           className={cn(
             'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
             disabled && 'pointer-events-none opacity-50',
+            isActive && 'bg-accent/50 text-accent-foreground font-medium',
             className,
           )}
           {...props}
         >
-          <div className="text-sm font-heading font-semibold leading-none">{title}</div>
+          <div
+            className={cn(
+              'text-sm font-heading font-semibold leading-none',
+              isActive && 'text-primary',
+            )}
+          >
+            {title}
+          </div>
           {children && (
             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">
               {children}
@@ -106,8 +130,12 @@ const ListItem = React.forwardRef<
 ListItem.displayName = 'ListItem'
 
 export function Header() {
-  const navigate = useNavigate()
   const { openModal } = useContactModal()
+  const location = useLocation()
+
+  const isSolucoesActive = solucoes.some((s) => s.href === location.pathname)
+  const isNegociosActive = negocios.some((n) => n.href === location.pathname)
+  const isConteudosActive = conteudos.some((c) => c.href === location.pathname)
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/90 border-b border-border transition-all duration-300">
@@ -133,7 +161,12 @@ export function Header() {
           <NavigationMenu delayDuration={300}>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="font-heading font-semibold text-sm">
+                <NavigationMenuTrigger
+                  className={cn(
+                    'font-heading font-semibold text-sm',
+                    isSolucoesActive && 'text-primary',
+                  )}
+                >
                   Soluções
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -148,7 +181,12 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="font-heading font-semibold text-sm">
+                <NavigationMenuTrigger
+                  className={cn(
+                    'font-heading font-semibold text-sm',
+                    isNegociosActive && 'text-primary',
+                  )}
+                >
                   Para seu Negócio
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -163,7 +201,12 @@ export function Header() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="font-heading font-semibold text-sm">
+                <NavigationMenuTrigger
+                  className={cn(
+                    'font-heading font-semibold text-sm',
+                    isConteudosActive && 'text-primary',
+                  )}
+                >
                   Conteúdos
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -217,61 +260,117 @@ export function Header() {
               </div>
 
               <div className="flex-1 overflow-y-auto">
-                <Accordion type="single" collapsible className="w-full">
+                <Accordion
+                  type="single"
+                  collapsible
+                  className="w-full"
+                  defaultValue={
+                    isSolucoesActive
+                      ? 'solucoes'
+                      : isNegociosActive
+                        ? 'negocios'
+                        : isConteudosActive
+                          ? 'conteudos'
+                          : undefined
+                  }
+                >
                   <AccordionItem value="solucoes">
-                    <AccordionTrigger className="font-heading font-semibold">
+                    <AccordionTrigger
+                      className={cn(
+                        'font-heading font-semibold',
+                        isSolucoesActive && 'text-primary',
+                      )}
+                    >
                       Soluções
                     </AccordionTrigger>
                     <AccordionContent className="flex flex-col gap-2">
-                      {solucoes.map((item) => (
-                        <Link
-                          key={item.title}
-                          to={item.href}
-                          className="p-3 text-sm hover:bg-muted rounded-md transition-colors"
-                        >
-                          <span className="block font-medium mb-1">{item.title}</span>
-                          <span className="block text-xs text-muted-foreground">{item.desc}</span>
-                        </Link>
-                      ))}
+                      {solucoes.map((item) => {
+                        const isActive = location.pathname === item.href
+                        return (
+                          <Link
+                            key={item.title}
+                            to={item.href}
+                            className={cn(
+                              'p-3 text-sm hover:bg-muted rounded-md transition-colors',
+                              isActive && 'bg-muted',
+                            )}
+                          >
+                            <span
+                              className={cn('block font-medium mb-1', isActive && 'text-primary')}
+                            >
+                              {item.title}
+                            </span>
+                            <span className="block text-xs text-muted-foreground">{item.desc}</span>
+                          </Link>
+                        )
+                      })}
                     </AccordionContent>
                   </AccordionItem>
 
                   <AccordionItem value="negocios">
-                    <AccordionTrigger className="font-heading font-semibold">
+                    <AccordionTrigger
+                      className={cn(
+                        'font-heading font-semibold',
+                        isNegociosActive && 'text-primary',
+                      )}
+                    >
                       Para seu Negócio
                     </AccordionTrigger>
                     <AccordionContent className="flex flex-col gap-2">
-                      {negocios.map((item) => (
-                        <Link
-                          key={item.title}
-                          to={item.href}
-                          className="p-3 text-sm hover:bg-muted rounded-md transition-colors"
-                        >
-                          <span className="block font-medium mb-1">{item.title}</span>
-                          <span className="block text-xs text-muted-foreground">{item.desc}</span>
-                        </Link>
-                      ))}
+                      {negocios.map((item) => {
+                        const isActive = location.pathname === item.href
+                        return (
+                          <Link
+                            key={item.title}
+                            to={item.href}
+                            className={cn(
+                              'p-3 text-sm hover:bg-muted rounded-md transition-colors',
+                              isActive && 'bg-muted',
+                            )}
+                          >
+                            <span
+                              className={cn('block font-medium mb-1', isActive && 'text-primary')}
+                            >
+                              {item.title}
+                            </span>
+                            <span className="block text-xs text-muted-foreground">{item.desc}</span>
+                          </Link>
+                        )
+                      })}
                     </AccordionContent>
                   </AccordionItem>
 
                   <AccordionItem value="conteudos">
-                    <AccordionTrigger className="font-heading font-semibold">
+                    <AccordionTrigger
+                      className={cn(
+                        'font-heading font-semibold',
+                        isConteudosActive && 'text-primary',
+                      )}
+                    >
                       Conteúdos
                     </AccordionTrigger>
                     <AccordionContent className="flex flex-col gap-2">
-                      {conteudos.map((item) => (
-                        <Link
-                          key={item.title}
-                          to={item.href}
-                          className={cn(
-                            'p-3 text-sm rounded-md transition-colors',
-                            item.disabled ? 'opacity-50 pointer-events-none' : 'hover:bg-muted',
-                          )}
-                        >
-                          <span className="block font-medium mb-1">{item.title}</span>
-                          <span className="block text-xs text-muted-foreground">{item.desc}</span>
-                        </Link>
-                      ))}
+                      {conteudos.map((item) => {
+                        const isActive = location.pathname === item.href
+                        return (
+                          <Link
+                            key={item.title}
+                            to={item.href}
+                            className={cn(
+                              'p-3 text-sm rounded-md transition-colors',
+                              item.disabled ? 'opacity-50 pointer-events-none' : 'hover:bg-muted',
+                              isActive && 'bg-muted',
+                            )}
+                          >
+                            <span
+                              className={cn('block font-medium mb-1', isActive && 'text-primary')}
+                            >
+                              {item.title}
+                            </span>
+                            <span className="block text-xs text-muted-foreground">{item.desc}</span>
+                          </Link>
+                        )
+                      })}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>

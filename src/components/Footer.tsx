@@ -1,7 +1,36 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Instagram, Linkedin } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export function Footer() {
+  const location = useLocation()
+
+  const solucoesLinks = [
+    { title: 'Diagnóstico de Eficiência', href: '/solucoes/diagnostico-de-eficiencia' },
+    { title: 'Agentes de IA', href: '/solucoes/agentes-de-ia' },
+    { title: 'Automação de Processos', href: '/solucoes/automacoes-de-processos' },
+    { title: 'CRM e Organização Comercial', href: '/solucoes/crm-e-organizacao-comercial' },
+    { title: 'Sistemas Sob Medida', href: '/solucoes/sistemas-sob-medida' },
+  ]
+
+  const negociosLinks = [
+    { title: 'Serviços B2B', href: '/para-seu-negocio/servicos-b2b' },
+    { title: 'Indústrias', href: '/para-seu-negocio/industrias' },
+    { title: 'Contabilidades', href: '/para-seu-negocio/contabilidades' },
+    { title: 'Advogados', href: '/para-seu-negocio/advogados' },
+    { title: 'Agências', href: '/para-seu-negocio/agencias' },
+    { title: 'Logística', href: '/para-seu-negocio/logistica' },
+  ]
+
+  const recursosLinks = [
+    { title: 'Como Funciona', href: '/como-funciona' },
+    { title: 'Sobre', href: '/sobre' },
+    { title: 'FAQ', href: '/faq' },
+    { title: 'Contato', href: '/contato' },
+    { title: 'Política de Privacidade', href: '/politica-de-privacidade' },
+    { title: 'Termos de Uso', href: '/termos-de-uso' },
+  ]
+
   return (
     <footer className="bg-[#1C1C28] text-white/90 pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -44,46 +73,19 @@ export function Footer() {
           <div>
             <h4 className="font-heading font-semibold text-lg mb-6 text-white">Soluções</h4>
             <ul className="space-y-4 text-sm text-white/70">
-              <li>
-                <Link
-                  to="/solucoes/diagnostico-de-eficiencia"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Diagnóstico de Eficiência
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/solucoes/agente-de-ia"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Agente de IA
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/solucoes/automacao-de-processos"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Automação de Processos
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/solucoes/crm-e-organizacao-comercial"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  CRM e Organização Comercial
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/solucoes/sistemas-sob-medida"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Sistemas Sob Medida
-                </Link>
-              </li>
+              {solucoesLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      'hover:text-white hover:underline transition-colors duration-300',
+                      location.pathname === link.href && 'text-white underline font-medium',
+                    )}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -91,46 +93,19 @@ export function Footer() {
           <div>
             <h4 className="font-heading font-semibold text-lg mb-6 text-white">Para seu Negócio</h4>
             <ul className="space-y-4 text-sm text-white/70">
-              <li>
-                <Link
-                  to="#"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Serviços B2B
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Indústrias
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Academias
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Clínicas
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  E-commerce WhatsApp
-                </Link>
-              </li>
+              {negociosLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      'hover:text-white hover:underline transition-colors duration-300',
+                      location.pathname === link.href && 'text-white underline font-medium',
+                    )}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -138,54 +113,19 @@ export function Footer() {
           <div>
             <h4 className="font-heading font-semibold text-lg mb-6 text-white">Recursos</h4>
             <ul className="space-y-4 text-sm text-white/70">
-              <li>
-                <Link
-                  to="/como-funciona"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Como Funciona
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/sobre"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Sobre
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/faq"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contato"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Contato
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/politica-de-privacidade"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Política de Privacidade
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/termos-de-uso"
-                  className="hover:text-white hover:underline transition-colors duration-300"
-                >
-                  Termos de Uso
-                </Link>
-              </li>
+              {recursosLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      'hover:text-white hover:underline transition-colors duration-300',
+                      location.pathname === link.href && 'text-white underline font-medium',
+                    )}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
