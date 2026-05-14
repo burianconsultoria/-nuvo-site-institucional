@@ -9,8 +9,9 @@ import AdminLayout from './components/AdminLayout'
 
 import Index from './pages/Index'
 import QuizPage from './pages/QuizPage'
-import ROIPage from './pages/ROIPage'
 import FAQPage from './pages/FAQPage'
+import RoiCalculatorPage from './pages/RoiCalculatorPage'
+import RoiResultPage from './pages/RoiResultPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './pages/NotFound'
@@ -49,7 +50,9 @@ const App = () => (
             <Route path="/diagnostico/:id" element={<DiagnosisResult />} />
 
             <Route path="/quiz" element={<QuizPage />} />
-            <Route path="/roi" element={<ROIPage />} />
+            <Route path="/roi" element={<RoiCalculatorPage />} />
+            <Route path="/calculadora-roi" element={<RoiCalculatorPage />} />
+            <Route path="/calculadora-roi/:id" element={<RoiResultPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/contato" element={<ContactPage />} />
             <Route path="/login" element={<LoginPage />} />
