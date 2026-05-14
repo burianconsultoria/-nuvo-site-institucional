@@ -6,6 +6,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { Printer, ArrowLeft, RefreshCcw } from 'lucide-react'
 import pb from '@/lib/pocketbase/client'
 import RoiDashboard from '@/components/RoiDashboard'
+import { useToast } from '@/hooks/use-toast'
 
 export default function RoiResultPage() {
   useSEO({
@@ -35,8 +36,13 @@ export default function RoiResultPage() {
     if (id) fetchResult()
   }, [id])
 
+  const { toast } = useToast()
+
   const handlePrint = () => {
-    window.print()
+    toast({ title: 'Exportando PDF', description: 'O documento está sendo gerado.' })
+    setTimeout(() => {
+      window.print()
+    }, 500)
   }
 
   if (loading) {
@@ -81,12 +87,19 @@ export default function RoiResultPage() {
           <h1 className="text-3xl font-bold text-slate-900">Seu Relatório de ROI</h1>
           <p className="text-slate-500 mt-1">Link salvo permanentemente.</p>
         </div>
-        <div className="flex items-center gap-3">
-          <Button variant="outline" onClick={() => navigate('/calculadora-roi')}>
+        <div className="flex flex-wrap items-center gap-3">
+          <Button
+            variant="outline"
+            onClick={() => navigate('/calculadora-roi')}
+            className="w-full sm:w-auto"
+          >
             Novo Cálculo
           </Button>
-          <Button onClick={handlePrint} className="bg-slate-900 hover:bg-slate-800 text-white">
-            <Printer className="w-4 h-4 mr-2" /> Baixar relatório de ROI completo
+          <Button
+            onClick={handlePrint}
+            className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white"
+          >
+            <Printer className="w-4 h-4 mr-2" /> Exportar Relatório (PDF)
           </Button>
         </div>
       </div>

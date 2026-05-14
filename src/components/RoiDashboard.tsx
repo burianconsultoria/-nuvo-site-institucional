@@ -1,7 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell } from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart'
-import { TrendingUp, Clock, DollarSign, Target } from 'lucide-react'
+import { TrendingUp, Clock, DollarSign, Target, Building2 } from 'lucide-react'
 
 export default function RoiDashboard({ calculations, formData }: any) {
   const {
@@ -26,16 +26,33 @@ export default function RoiDashboard({ calculations, formData }: any) {
     new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val)
 
   return (
-    <div className="space-y-6 print:space-y-4 print:text-black">
-      <div className="hidden print:block mb-8 text-center">
-        <h1 className="text-3xl font-bold">Seu Relatório de ROI Completo - Nuvo Company</h1>
-        <p className="text-slate-600 mt-2">
-          Segmento: {formData.segment} | Funcionários: {formData.employees} | Horas manuais:{' '}
-          {formData.manualHours}h/semana
-        </p>
+    <div className="space-y-6 print:space-y-6 print:text-black">
+      {/* Print Header */}
+      <div className="hidden print:flex flex-col items-center justify-center mb-10 pb-6 border-b border-slate-200">
+        <div className="flex items-center gap-3 mb-4">
+          <Building2 className="w-10 h-10 text-indigo-600" />
+          <h1 className="text-4xl font-black tracking-tight text-slate-900">Nuvo Company</h1>
+        </div>
+        <h2 className="text-2xl font-bold text-slate-800">
+          Relatório de Retorno sobre Investimento (ROI)
+        </h2>
+        <div className="mt-4 flex gap-6 text-sm text-slate-600 bg-slate-50 py-3 px-6 rounded-lg">
+          <span>
+            <strong>Segmento:</strong> {formData.segment}
+          </span>
+          <span>
+            <strong>Funcionários:</strong> {formData.employees}
+          </span>
+          <span>
+            <strong>Horas Manuais:</strong> {formData.manualHours}h/semana
+          </span>
+          <span>
+            <strong>Custo/Hora:</strong> {formatCurrency(formData.hourlyCost)}
+          </span>
+        </div>
       </div>
 
-      <Card className="bg-indigo-600 text-white border-none shadow-xl print:bg-slate-100 print:text-slate-900 print:shadow-none">
+      <Card className="bg-indigo-600 text-white border-none shadow-xl print:bg-slate-100 print:text-slate-900 print:shadow-none print:border print:border-slate-200">
         <CardContent className="p-8 flex flex-col items-center text-center">
           <TrendingUp className="w-12 h-12 mb-4 text-indigo-200 print:text-indigo-600" />
           <h2 className="text-lg font-medium text-indigo-100 print:text-slate-600 mb-2">
@@ -45,7 +62,7 @@ export default function RoiDashboard({ calculations, formData }: any) {
             {formatCurrency(annualSavings)}
           </div>
           <p className="mt-4 text-indigo-200 print:text-slate-500 font-medium">
-            ROI de {roi.toFixed(0)}% sobre o investimento
+            ROI de {roi.toFixed(0)}% sobre o investimento estimado
           </p>
         </CardContent>
       </Card>
@@ -78,7 +95,7 @@ export default function RoiDashboard({ calculations, formData }: any) {
         </Card>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6 print:grid-cols-2 print:gap-4">
         <Card className="shadow-sm print:shadow-none print:border-slate-300">
           <CardHeader>
             <CardTitle className="text-lg">Comparativo de Custos</CardTitle>
@@ -112,23 +129,23 @@ export default function RoiDashboard({ calculations, formData }: any) {
 
         <Card className="shadow-sm print:shadow-none print:border-slate-300">
           <CardHeader>
-            <CardTitle className="text-lg">Detalhamento</CardTitle>
+            <CardTitle className="text-lg">Detalhamento Financeiro</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="flex justify-between items-center pb-3 border-b border-slate-100">
+              <div className="flex justify-between items-center pb-3 border-b border-slate-100 print:border-slate-200">
                 <span className="text-slate-500">Custo Manual Atual (Mês)</span>
                 <span className="font-semibold text-slate-900">
                   {formatCurrency(currentMonthlyCost)}
                 </span>
               </div>
-              <div className="flex justify-between items-center pb-3 border-b border-slate-100">
+              <div className="flex justify-between items-center pb-3 border-b border-slate-100 print:border-slate-200">
                 <span className="text-slate-500">Custo Estimado c/ IA (Mês)</span>
                 <span className="font-semibold text-slate-900">
                   {formatCurrency(projectedMonthlyCost)}
                 </span>
               </div>
-              <div className="flex justify-between items-center pb-3 border-b border-slate-100">
+              <div className="flex justify-between items-center pb-3 border-b border-slate-100 print:border-slate-200">
                 <span className="text-slate-500">Investimento Único Estimado</span>
                 <span className="font-semibold text-slate-900">
                   {formatCurrency(calculations.investment)}
@@ -145,14 +162,15 @@ export default function RoiDashboard({ calculations, formData }: any) {
         </Card>
       </div>
 
-      <div className="hidden print:block mt-12 p-6 bg-slate-50 rounded-lg border border-slate-200">
-        <h3 className="text-xl font-bold mb-3">Recomendação Nuvo Company</h3>
-        <p className="text-slate-700">
+      <div className="hidden print:block mt-8 p-6 bg-slate-50 rounded-lg border border-slate-200">
+        <h3 className="text-xl font-bold mb-3">Recomendação Estratégica - Nuvo Company</h3>
+        <p className="text-slate-700 leading-relaxed">
           Para empresas do segmento de <strong>{formData.segment}</strong>, a automação com agentes
           de IA e integrações sistêmicas proporciona não apenas a redução de{' '}
-          {formatCurrency(annualSavings)} em custos anuais, mas também aumenta a previsibilidade,
-          reduz erros operacionais e permite que seus {formData.employees} colaboradores foquem em
-          tarefas estratégicas de alto valor agregado.
+          <strong>{formatCurrency(annualSavings)}</strong> em custos anuais, mas também aumenta a
+          previsibilidade, reduz significativamente erros operacionais e permite que seus{' '}
+          <strong>{formData.employees}</strong> colaboradores foquem em tarefas estratégicas de alto
+          valor agregado, escalando os resultados do negócio.
         </p>
       </div>
     </div>
