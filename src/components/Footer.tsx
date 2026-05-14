@@ -9,7 +9,7 @@ export function Footer() {
           {/* Column 1: Marca */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#4A3EFF] rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-heading font-bold text-lg">N</span>
               </div>
               <span className="font-heading font-bold text-xl tracking-tight text-white">Nuvo</span>

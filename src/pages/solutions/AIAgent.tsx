@@ -21,13 +21,13 @@ export default function AIAgent() {
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-white min-h-screen">
         {/* Hero */}
-        <div className="bg-slate-900 text-white py-24 px-4 text-center relative border-b-4 border-[#D946EF]">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#D946EF]/10 to-transparent pointer-events-none" />
+        <div className="bg-[#1C1C28] text-white py-24 px-4 text-center relative border-b-4 border-product-ai">
+          <div className="absolute inset-0 bg-gradient-to-b from-product-ai/10 to-transparent pointer-events-none" />
           <div className="container mx-auto max-w-4xl relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D946EF]/20 text-[#D946EF] text-sm font-medium mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-product-ai/20 text-product-ai text-sm font-medium mb-8">
               <MessageSquare className="w-4 h-4" /> Inteligência Artificial
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+            <h1 className="text-[32px] md:text-[48px] font-heading font-extrabold tracking-tight mb-6">
               Automatize seu WhatsApp e nunca mais perca um lead.
             </h1>
             <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -37,7 +37,7 @@ export default function AIAgent() {
             </p>
             <Button
               size="lg"
-              className="bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 h-11 rounded-lg px-8 text-lg"
+              className="bg-primary hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg"
               onClick={() => navigate('/diagnostico-rapido')}
             >
               Testar agente
@@ -95,19 +95,19 @@ export default function AIAgent() {
             </div>
 
             {/* Depois */}
-            <div className="bg-[#D946EF]/5 p-8 rounded-3xl border border-[#D946EF]/20 relative overflow-hidden">
+            <div className="bg-product-ai-light p-8 rounded-3xl border border-product-ai/20 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Zap className="w-32 h-32 text-[#D946EF]" />
+                <Zap className="w-32 h-32 text-product-ai" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3 relative z-10">
-                <span className="w-8 h-8 rounded-full bg-[#D946EF]/20 flex items-center justify-center text-sm text-[#D946EF]">
+              <h3 className="text-[24px] font-heading font-bold text-foreground mb-6 flex items-center gap-3 relative z-10">
+                <span className="w-8 h-8 rounded-full bg-product-ai/20 flex items-center justify-center text-sm text-product-ai">
                   ✓
                 </span>
                 Com o Agente IA
               </h3>
               <ul className="space-y-6 relative z-10">
                 <li className="flex gap-4">
-                  <Clock className="w-6 h-6 text-[#D946EF] shrink-0" />
+                  <Clock className="w-6 h-6 text-product-ai shrink-0" />
                   <div>
                     <strong className="block text-slate-900">Resposta em segundos 24/7</strong>
                     <span className="text-slate-600 text-sm">
@@ -116,7 +116,7 @@ export default function AIAgent() {
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <Users className="w-6 h-6 text-[#D946EF] shrink-0" />
+                  <Users className="w-6 h-6 text-product-ai shrink-0" />
                   <div>
                     <strong className="block text-slate-900">Qualificação automática</strong>
                     <span className="text-slate-600 text-sm">
@@ -125,7 +125,7 @@ export default function AIAgent() {
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <MessageSquare className="w-6 h-6 text-[#D946EF] shrink-0" />
+                  <MessageSquare className="w-6 h-6 text-product-ai shrink-0" />
                   <div>
                     <strong className="block text-slate-900">Integração direta com CRM</strong>
                     <span className="text-slate-600 text-sm">

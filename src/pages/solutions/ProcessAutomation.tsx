@@ -43,11 +43,11 @@ export default function ProcessAutomation() {
       <div className="bg-slate-50 min-h-screen">
         <div className="container mx-auto px-4 py-20 max-w-6xl flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 space-y-8 relative">
-            <div className="absolute -left-20 -top-20 w-64 h-64 bg-[#F59E0B]/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div className="inline-flex items-center justify-center p-3 bg-[#F59E0B]/10 border border-[#F59E0B]/20 rounded-xl text-[#F59E0B] mb-2 relative z-10">
+            <div className="absolute -left-20 -top-20 w-64 h-64 bg-product-auto-light rounded-full blur-3xl pointer-events-none"></div>
+            <div className="inline-flex items-center justify-center p-3 bg-product-auto-light border border-product-auto/20 rounded-xl text-product-auto mb-2 relative z-10">
               <Settings className="w-6 h-6" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 relative z-10">
+            <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight text-foreground relative z-10">
               Elimine tarefas manuais e ganhe tempo.
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed relative z-10">
@@ -57,7 +57,7 @@ export default function ProcessAutomation() {
             </p>
             <Button
               size="lg"
-              className="bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 h-11 rounded-lg px-8 text-lg w-full md:w-auto relative z-10"
+              className="bg-primary hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg w-full md:w-auto relative z-10"
               onClick={() => navigate('/diagnostico-rapido')}
             >
               Quero automatizar
@@ -72,9 +72,9 @@ export default function ProcessAutomation() {
                 return (
                   <div
                     key={i}
-                    className="flex gap-6 bg-white p-6 rounded-2xl shadow-sm border border-[#F59E0B]/10 hover:border-[#F59E0B]/30 transition-colors"
+                    className="flex gap-6 bg-white p-6 rounded-2xl shadow-sm border border-product-auto/10 hover:border-product-auto/30 transition-colors"
                   >
-                    <div className="shrink-0 w-12 h-12 rounded-full bg-[#F59E0B]/10 flex items-center justify-center text-[#F59E0B]">
+                    <div className="shrink-0 w-12 h-12 rounded-full bg-product-auto-light flex items-center justify-center text-product-auto">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>

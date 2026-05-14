@@ -16,7 +16,10 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
+      padding: {
+        DEFAULT: '1rem',
+        md: '2rem',
+      },
       screens: {
         sm: '640px',
         md: '768px',
@@ -84,6 +87,33 @@ export default {
           3: 'hsl(var(--chart-3))',
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))',
+        },
+        product: {
+          diag: {
+            DEFAULT: 'hsl(var(--prod-diag))',
+            hover: 'hsl(var(--prod-diag-hover))',
+            light: 'hsl(var(--prod-diag-light))',
+          },
+          ai: {
+            DEFAULT: 'hsl(var(--prod-ai))',
+            hover: 'hsl(var(--prod-ai-hover))',
+            light: 'hsl(var(--prod-ai-light))',
+          },
+          auto: {
+            DEFAULT: 'hsl(var(--prod-auto))',
+            hover: 'hsl(var(--prod-auto-hover))',
+            light: 'hsl(var(--prod-auto-light))',
+          },
+          crm: {
+            DEFAULT: 'hsl(var(--prod-crm))',
+            hover: 'hsl(var(--prod-crm-hover))',
+            light: 'hsl(var(--prod-crm-light))',
+          },
+          sys: {
+            DEFAULT: 'hsl(var(--prod-sys))',
+            hover: 'hsl(var(--prod-sys-hover))',
+            light: 'hsl(var(--prod-sys-light))',
+          },
         },
       },
       borderRadius: {

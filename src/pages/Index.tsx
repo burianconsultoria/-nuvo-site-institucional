@@ -71,6 +71,9 @@ const Index = () => {
         'Centralize e automatize o atendimento da sua equipe no WhatsApp com Inteligência Artificial.',
       icon: MessageSquare,
       link: '/solucoes/agente-de-ia',
+      borderClass: 'border-l-product-ai hover:shadow-product-ai/20',
+      iconClass: 'bg-product-ai-light text-product-ai group-hover:bg-product-ai',
+      textClass: 'text-product-ai',
     },
     {
       title: 'Tarefa manual demais?',
@@ -78,6 +81,9 @@ const Index = () => {
         'Integre sistemas e automatize tarefas repetitivas para que sua equipe foque no que importa.',
       icon: Settings,
       link: '/solucoes/automacao-de-processos',
+      borderClass: 'border-l-product-auto hover:shadow-product-auto/20',
+      iconClass: 'bg-product-auto-light text-product-auto group-hover:bg-product-auto',
+      textClass: 'text-product-auto',
     },
     {
       title: 'Dependem de você para tudo?',
@@ -85,6 +91,9 @@ const Index = () => {
         'Mapeie e otimize seus processos para criar uma operação independente e escalável.',
       icon: Activity,
       link: '/solucoes/diagnostico-de-eficiencia',
+      borderClass: 'border-l-product-diag hover:shadow-product-diag/20',
+      iconClass: 'bg-product-diag-light text-product-diag group-hover:bg-product-diag',
+      textClass: 'text-product-diag',
     },
     {
       title: 'Cliente some sem follow-up?',
@@ -92,6 +101,9 @@ const Index = () => {
         'Estruture seu CRM e organize seu processo comercial para não perder mais vendas.',
       icon: Users,
       link: '/solucoes/crm-e-organizacao-comercial',
+      borderClass: 'border-l-product-crm hover:shadow-product-crm/20',
+      iconClass: 'bg-product-crm-light text-product-crm group-hover:bg-product-crm',
+      textClass: 'text-product-crm',
     },
     {
       title: 'Nada pronto resolve?',
@@ -99,6 +111,9 @@ const Index = () => {
         'Desenvolvimento de sistemas exclusivos e sob medida para o seu modelo de negócio.',
       icon: Code,
       link: '/solucoes/sistemas-sob-medida',
+      borderClass: 'border-l-product-sys hover:shadow-product-sys/20',
+      iconClass: 'bg-product-sys-light text-product-sys group-hover:bg-product-sys',
+      textClass: 'text-product-sys',
     },
   ]
 
@@ -109,7 +124,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 -z-10" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
-            <h1 className="text-[48px] font-heading font-bold text-foreground tracking-tight leading-tight">
+            <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight leading-tight hero-gradient text-transparent bg-clip-text pb-2">
               Sua empresa cresce mais rápido do que consegue se organizar?
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -121,7 +136,7 @@ const Index = () => {
               <Button
                 asChild
                 size="lg"
-                className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce"
+                className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-6 py-3 rounded-lg"
                 aria-label="Fazer diagnóstico gratuito"
               >
                 <Link to="/diagnostico-rapido">
@@ -133,7 +148,7 @@ const Index = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="text-lg w-full sm:w-auto bg-background"
+                className="text-lg w-full sm:w-auto bg-background min-h-[44px] px-6 py-3 rounded-lg"
                 aria-label="Entender como funciona"
               >
                 <Link to="/como-funciona">Como funciona</Link>
@@ -147,7 +162,7 @@ const Index = () => {
       <section className="py-24 bg-card/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-[36px] font-heading font-semibold text-foreground mb-4">
+            <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
               Reconhece algum destes problemas?
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -163,18 +178,22 @@ const Index = () => {
                 style={{ animationDelay: `${idx * 100}ms` }}
                 aria-label={`Ver solução para ${point.title}`}
               >
-                <Card className="w-full transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:border-primary/30">
+                <Card className={`product-card w-full border-l-4 ${point.borderClass}`}>
                   <CardHeader>
-                    <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <div
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:text-white transition-all duration-300 ${point.iconClass}`}
+                    >
                       <point.icon className="w-6 h-6" aria-hidden="true" />
                     </div>
-                    <CardTitle className="text-[24px] font-heading font-semibold text-foreground">
+                    <CardTitle className="text-[18px] md:text-[24px] font-heading font-semibold text-foreground">
                       {point.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-base text-muted-foreground mb-4">{point.description}</p>
-                    <span className="text-primary font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300">
+                    <span
+                      className={`font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300 ${point.textClass}`}
+                    >
                       Ver solução <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                     </span>
                   </CardContent>
@@ -189,7 +208,7 @@ const Index = () => {
       <section className="py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto space-y-8 animate-fade-in">
-            <h2 className="text-[48px] md:text-6xl font-heading font-bold tracking-tighter leading-tight">
+            <h2 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tighter leading-tight">
               Mais de 12.450
               <br />
               horas economizadas
@@ -208,7 +227,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12 animate-fade-in-up">
-              <h2 className="text-[36px] font-heading font-semibold text-foreground mb-4">
+              <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
                 Perguntas Frequentes
               </h2>
               <p className="text-base md:text-lg text-muted-foreground">

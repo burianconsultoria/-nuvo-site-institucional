@@ -187,7 +187,7 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-4">
           <Button
             asChild
-            className="h-11 rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 text-white font-medium shadow-sm transition-all duration-300 hover:shadow-md"
+            className="h-[44px] rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm transition-all duration-300 hover:shadow-md px-6"
           >
             <Link to="/diagnostico-rapido">Quero um diagnóstico gratuito</Link>
           </Button>
@@ -278,7 +278,7 @@ export function Header() {
               <div className="mt-8 flex flex-col gap-3 pt-6 border-t border-border">
                 <Button
                   asChild
-                  className="w-full h-11 rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 text-white font-medium shadow-sm"
+                  className="w-full h-[44px] rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm px-6"
                 >
                   <Link to="/diagnostico-rapido">Quero um diagnóstico gratuito</Link>
                 </Button>
