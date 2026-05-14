@@ -15,6 +15,8 @@ import RoiResultPage from './pages/RoiResultPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './pages/NotFound'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsOfUsePage from './pages/TermsOfUsePage'
 
 import ComoFuncionaPage from './pages/ComoFuncionaPage'
 import SobrePage from './pages/SobrePage'
@@ -61,6 +63,8 @@ const App = () => (
             <Route path="/como-funciona" element={<ComoFuncionaPage />} />
             <Route path="/sobre" element={<SobrePage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
+            <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
           </Route>
 
           <Route path="/admin" element={<AdminLayout />}>
