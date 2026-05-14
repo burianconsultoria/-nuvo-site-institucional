@@ -1,94 +1,113 @@
-import { ArrowRight, Settings, Workflow, Layers, CheckCircle } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { ArrowRight, Settings } from 'lucide-react'
 import { useSEO } from '@/hooks/use-seo'
 import { PageState } from '@/components/ui/page-state'
 import { useSimulatedFetch } from '@/hooks/use-simulated-fetch'
 import { Button } from '@/components/ui/button'
 import { useContactModal } from '@/contexts/ContactModalContext'
+import { SpinSellingSection } from '@/components/SpinSellingSection'
+import { PageFaqSection } from '@/components/PageFaqSection'
 
 const MOCK_DATA = { loaded: true }
+const THEME_COLOR = '#20D4D9'
 
 export default function ProcessAutomation() {
   useSEO({
-    title: 'Automação de Processos | Nuvo Soluções',
+    title: 'Automação de Processos para PMEs | Nuvo Company',
     description:
-      'Elimine tarefas repetitivas, conecte seus sistemas e dê à sua equipe o tempo necessário para focar na estratégia.',
+      'Elimine tarefas manuais, conecte seus sistemas e dê à sua equipe o tempo necessário para focar na estratégia.',
   })
 
   const { loading, error, empty, retry } = useSimulatedFetch(MOCK_DATA)
-  const navigate = useNavigate()
   const { openModal } = useContactModal()
 
-  const benefits = [
+  const faqs = [
     {
-      title: 'Redução de Erros Humanos',
-      description:
-        'Sistemas integrados que transferem dados sem falhas ou retrabalho. Esqueça o "copiar e colar" infinito entre planilhas.',
-      icon: CheckCircle,
+      question: 'Quais sistemas vocês conseguem integrar?',
+      answer:
+        'Qualquer sistema que possua uma API (Pipedrive, RD Station, Conta Azul, Asana, etc.).',
     },
     {
-      title: 'Foco no Estratégico',
-      description:
-        'Libere sua equipe de tarefas repetitivas e administrativas para que possam focar no relacionamento e no fechamento de vendas.',
-      icon: Workflow,
+      question: 'O que é possível automatizar?',
+      answer:
+        'Emissão de contratos, envio de notas fiscais, alertas no WhatsApp, cadastro de clientes, entre outros.',
     },
     {
-      title: 'Escalabilidade Operacional',
-      description:
-        'Cresça sua base de clientes sem precisar dobrar o tamanho da equipe administrativa. A automação trabalha por você.',
-      icon: Layers,
+      question: 'É seguro?',
+      answer:
+        'Sim, utilizamos plataformas robustas e seguras como Make e n8n, garantindo a integridade dos dados.',
+    },
+    {
+      question: 'Preciso trocar os sistemas que já uso?',
+      answer: 'Não. Nossa automação faz os seus sistemas atuais conversarem entre si.',
+    },
+    {
+      question: 'Qual o impacto no meu time?',
+      answer:
+        'A equipe se livra de tarefas de copiar e colar e foca em atividades que geram receita.',
+    },
+    {
+      question: 'Como saber se a automação está funcionando?',
+      answer: 'Você terá um painel de monitoramento e alertas em caso de falhas.',
+    },
+    {
+      question: 'Quanto tempo leva para implementar?',
+      answer: 'Projetos de automação simples podem ser entregues em poucos dias.',
+    },
+    {
+      question: 'Vocês oferecem suporte pós-implementação?',
+      answer:
+        'Sim. Mantemos os fluxos rodando perfeitamente mediante um plano de suporte contínuo.',
     },
   ]
 
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-slate-50 min-h-screen">
-        <div className="container mx-auto px-4 py-20 max-w-6xl flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 space-y-8 relative">
-            <div className="absolute -left-20 -top-20 w-64 h-64 bg-product-auto-light rounded-full blur-3xl pointer-events-none"></div>
-            <div className="inline-flex items-center justify-center p-3 bg-product-auto-light border border-product-auto/20 rounded-xl text-product-auto mb-2 relative z-10">
-              <Settings className="w-6 h-6" />
-            </div>
-            <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight text-foreground relative z-10">
-              Elimine tarefas manuais e ganhe tempo.
-            </h1>
-            <p className="text-xl text-slate-600 leading-relaxed relative z-10">
-              Conectamos seus aplicativos, CRMs, ERPs e ferramentas de comunicação para que eles
-              conversem entre si. O resultado? Um fluxo de trabalho contínuo onde a tecnologia faz o
-              trabalho pesado e sua equipe brilha onde importa.
-            </p>
+        <div className="container mx-auto px-4 py-20 max-w-4xl text-center">
+          <div
+            className="inline-flex items-center justify-center p-3 rounded-xl mb-6"
+            style={{ backgroundColor: `${THEME_COLOR}20`, color: THEME_COLOR }}
+          >
+            <Settings className="w-8 h-8" />
+          </div>
+          <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight text-foreground mb-6">
+            Automação de Processos Operacionais — Elimine o Trabalho Manual Repetitivo
+          </h1>
+          <p className="text-xl text-slate-600 leading-relaxed mb-10">
+            Conectamos seus aplicativos, CRMs, ERPs e ferramentas de comunicação para que eles
+            conversem entre si. O resultado? Um fluxo de trabalho contínuo onde a tecnologia faz o
+            trabalho pesado.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg w-full md:w-auto relative z-10 cursor-pointer"
+              style={{ backgroundColor: THEME_COLOR, color: '#000' }}
+              className="h-[44px] rounded-lg px-8 text-lg font-bold hover:opacity-90"
               onClick={openModal}
             >
-              Quero automatizar
+              Quero automatizar meus processos
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-          </div>
-
-          <div className="flex-1 w-full">
-            <div className="space-y-6">
-              {benefits.map((benefit, i) => {
-                const Icon = benefit.icon
-                return (
-                  <div
-                    key={i}
-                    className="flex gap-6 bg-white p-6 rounded-2xl shadow-sm border border-product-auto/10 hover:border-product-auto/30 transition-colors"
-                  >
-                    <div className="shrink-0 w-12 h-12 rounded-full bg-product-auto-light flex items-center justify-center text-product-auto">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-2">{benefit.title}</h3>
-                      <p className="text-slate-600 leading-relaxed">{benefit.description}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-[44px] rounded-lg px-8 text-lg"
+              onClick={openModal}
+            >
+              Calcular ROI da automação
+            </Button>
           </div>
         </div>
+
+        <SpinSellingSection
+          color={THEME_COLOR}
+          situation="Seus colaboradores gastam horas copiando informações de um e-mail para um Excel, depois para um CRM e, por fim, para um sistema financeiro."
+          problem="O trabalho manual causa erros de digitação, esquecimentos e informações inconsistentes, exigindo microgerenciamento constante."
+          implication="Seu negócio não escala. Se as vendas dobrarem amanhã, o time administrativo entrará em colapso sem contratar mais pessoas."
+          needPayoff="Sistemas integrados funcionam sozinhos no background. Você ganha previsibilidade, segurança nos dados e a empresa pode crescer sem inchar a folha de pagamento."
+        />
+
+        <PageFaqSection color={THEME_COLOR} faqs={faqs} />
       </div>
     </PageState>
   )

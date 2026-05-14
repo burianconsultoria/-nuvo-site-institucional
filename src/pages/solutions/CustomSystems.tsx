@@ -1,86 +1,111 @@
-import { ArrowRight, Code2, Rocket, Puzzle, Layers } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { ArrowRight, Code2 } from 'lucide-react'
 import { useSEO } from '@/hooks/use-seo'
 import { PageState } from '@/components/ui/page-state'
 import { useSimulatedFetch } from '@/hooks/use-simulated-fetch'
 import { Button } from '@/components/ui/button'
 import { useContactModal } from '@/contexts/ContactModalContext'
+import { SpinSellingSection } from '@/components/SpinSellingSection'
+import { PageFaqSection } from '@/components/PageFaqSection'
 
 const MOCK_DATA = { loaded: true }
+const THEME_COLOR = '#4FD487'
 
 export default function CustomSystems() {
   useSEO({
-    title: 'Sistemas Sob Medida | Nuvo Soluções',
+    title: 'Desenvolvimento de Sistemas Customizados | Nuvo Company',
     description:
       'Desenvolvimento de software exclusivo para regras de negócio complexas onde ferramentas de prateleira não funcionam.',
   })
 
   const { loading, error, empty, retry } = useSimulatedFetch(MOCK_DATA)
-  const navigate = useNavigate()
   const { openModal } = useContactModal()
+
+  const faqs = [
+    {
+      question: 'A propriedade intelectual (código fonte) é minha?',
+      answer:
+        'Sim. Após a conclusão e pagamento do projeto, todo o código fonte e direitos pertencem exclusivamente à sua empresa.',
+    },
+    {
+      question: 'Vocês fazem a manutenção após a entrega?',
+      answer:
+        'Sim. Oferecemos contratos de SLA para manutenção preventiva, corretiva e evolutiva do sistema.',
+    },
+    {
+      question: 'Quais tecnologias vocês utilizam?',
+      answer:
+        'Trabalhamos com stacks modernas: React, TypeScript, Node.js e bancos de dados em nuvem garantindo alta performance.',
+    },
+    {
+      question: 'Como sei que o sistema não ficará obsoleto?',
+      answer:
+        'Utilizamos arquiteturas escaláveis e padrões de mercado que facilitam a atualização constante.',
+    },
+    {
+      question: 'Pode ser integrado ao meu sistema ERP?',
+      answer:
+        'Sim. Se o seu ERP possuir uma API aberta, podemos criar integrações nativas bidirecionais.',
+    },
+    {
+      question: 'Qual o tempo médio de desenvolvimento?',
+      answer:
+        'Varia entre 2 a 6 meses dependendo do tamanho do escopo definido na fase de projeto.',
+    },
+    {
+      question: 'Existe uma fase de testes?',
+      answer:
+        'Sim, realizamos testes contínuos de qualidade (QA) durante todo o ciclo e homologação junto com a sua equipe.',
+    },
+  ]
 
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-[#1C1C28] text-slate-300 min-h-screen">
-        <div className="container mx-auto px-4 py-20 max-w-5xl relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-product-sys/10 blur-[100px] pointer-events-none" />
-          <div className="flex flex-col items-center text-center mb-20 relative z-10">
-            <div className="w-16 h-16 bg-product-sys/10 rounded-full flex items-center justify-center mb-6 border border-product-sys/30 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-              <Code2 className="w-8 h-8 text-product-sys" />
-            </div>
-            <h1 className="text-[32px] md:text-[48px] font-heading font-extrabold text-white tracking-tight mb-6 max-w-3xl">
-              Nada pronto resolve? Criamos do zero para você.
-            </h1>
-            <p className="text-xl text-white/80 max-w-2xl leading-relaxed mb-10">
-              Quando softwares de prateleira engessam a sua operação, é hora de ter a sua própria
-              tecnologia. Desenvolvemos sistemas web modernos, rápidos e focados unicamente na sua
-              necessidade.
-            </p>
+        <div className="container mx-auto px-4 py-20 max-w-4xl relative text-center">
+          <div
+            className="w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto border"
+            style={{ borderColor: `${THEME_COLOR}50`, backgroundColor: `${THEME_COLOR}20` }}
+          >
+            <Code2 className="w-8 h-8" style={{ color: THEME_COLOR }} />
+          </div>
+          <h1 className="text-[32px] md:text-[48px] font-heading font-extrabold text-white tracking-tight mb-6">
+            Sistemas Sob Medida — Softwares Exclusivos para Regras de Negócio Únicas
+          </h1>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-10">
+            Quando softwares de prateleira engessam a sua operação, é hora de ter a sua própria
+            tecnologia. Desenvolvemos sistemas web modernos, rápidos e focados unicamente na sua
+            necessidade.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg font-semibold shadow-xl cursor-pointer"
+              style={{ backgroundColor: THEME_COLOR, color: '#000' }}
+              className="h-[44px] rounded-lg px-8 text-lg font-bold hover:opacity-90"
               onClick={openModal}
             >
-              Conversar com consultor
+              Solicitar orçamento de projeto
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-            <div className="bg-white/5 border border-product-sys/20 p-8 rounded-2xl backdrop-blur-sm hover:border-product-sys/50 transition-colors">
-              <Puzzle className="w-10 h-10 text-product-sys mb-6" />
-              <h3 className="text-[24px] font-heading font-bold text-white mb-3">
-                Aderência Total
-              </h3>
-              <p className="text-white/70 leading-relaxed">
-                Fluxos de trabalho e interfaces desenhados exatamente para a sua regra de negócio,
-                sem funções inúteis ou falta de recursos.
-              </p>
-            </div>
-
-            <div className="bg-white/5 border border-product-sys/20 p-8 rounded-2xl backdrop-blur-sm hover:border-product-sys/50 transition-colors">
-              <Rocket className="w-10 h-10 text-product-sys mb-6" />
-              <h3 className="text-[24px] font-heading font-bold text-white mb-3">
-                Vantagem Competitiva
-              </h3>
-              <p className="text-white/70 leading-relaxed">
-                Terceirize a tecnologia, mas seja o dono do processo. Construa um ativo digital que
-                os seus concorrentes não podem simplesmente assinar.
-              </p>
-            </div>
-
-            <div className="bg-white/5 border border-product-sys/20 p-8 rounded-2xl backdrop-blur-sm hover:border-product-sys/50 transition-colors">
-              <Layers className="w-10 h-10 text-product-sys mb-6" />
-              <h3 className="text-[24px] font-heading font-bold text-white mb-3">
-                Integração Perfeita
-              </h3>
-              <p className="text-white/70 leading-relaxed">
-                Conectamos seu novo sistema sob medida ao seu ERP antigo, métodos de pagamento ou
-                qualquer API necessária sem gambiarras.
-              </p>
-            </div>
+            <Button
+              variant="outline"
+              size="lg"
+              className="h-[44px] rounded-lg px-8 text-lg text-white border-white/20 hover:bg-white/10"
+              onClick={openModal}
+            >
+              Ver tecnologias utilizadas
+            </Button>
           </div>
         </div>
+
+        <SpinSellingSection
+          color={THEME_COLOR}
+          situation="Sua empresa tenta usar um software de mercado, mas ele atende apenas 60% do que você precisa. O resto é feito por fora."
+          problem="Os sistemas de prateleira engessam seus diferenciais competitivos e forçam sua equipe a fazer gambiarras (workarounds) diariamente."
+          implication="Seu custo operacional é elevado porque sua operação é refém de fluxos genéricos, além de depender de várias assinaturas caras mensais."
+          needPayoff="Com um sistema próprio moldado 100% para o seu negócio, você assume o controle da sua eficiência, corta custos com licenças terceiras e ganha um ativo real."
+        />
+
+        <PageFaqSection color={THEME_COLOR} faqs={faqs} />
       </div>
     </PageState>
   )

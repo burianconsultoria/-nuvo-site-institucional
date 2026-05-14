@@ -1,55 +1,72 @@
 import { ArrowRight, Search, Target, TrendingUp, CheckCircle2 } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
 import { useSEO } from '@/hooks/use-seo'
 import { PageState } from '@/components/ui/page-state'
 import { useSimulatedFetch } from '@/hooks/use-simulated-fetch'
 import { Button } from '@/components/ui/button'
 import { useContactModal } from '@/contexts/ContactModalContext'
+import { SpinSellingSection } from '@/components/SpinSellingSection'
+import { PageFaqSection } from '@/components/PageFaqSection'
 
 const MOCK_DATA = { loaded: true }
+const THEME_COLOR = '#FFB65E'
 
 export default function EfficiencyDiagnosis() {
   useSEO({
-    title: 'Diagnóstico de Eficiência | Nuvo Soluções',
+    title: 'Diagnóstico de Eficiência para PME | Nuvo Company',
     description:
-      'Identifique gargalos e descubra onde sua empresa está perdendo tempo e dinheiro com o nosso Diagnóstico de Eficiência.',
+      'Sua empresa cresceu, mas os processos continuam manuais? O diagnóstico de eficiência da Nuvo mapeia gargalos e aponta o caminho para a automação. Agende agora.',
   })
 
   const { loading, error, empty, retry } = useSimulatedFetch(MOCK_DATA)
-  const navigate = useNavigate()
   const { openModal } = useContactModal()
 
-  const steps = [
+  const faqs = [
     {
-      icon: Search,
-      title: 'Mapeamento de processos e entrevistas',
-      desc: 'Entendemos a fundo a rotina da sua equipe.',
+      question: 'Quanto tempo dura o diagnóstico?',
+      answer:
+        'Geralmente concluímos todo o mapeamento em até 2 semanas, dependendo da complexidade da operação.',
     },
     {
-      icon: Target,
-      title: 'Identificação de gargalos',
-      desc: 'Encontramos as tarefas manuais que drenam recursos.',
+      question: 'Qual o custo inicial?',
+      answer:
+        'O diagnóstico inicial é gratuito e serve para identificarmos o potencial de melhoria.',
     },
     {
-      icon: TrendingUp,
-      title: 'Plano de ação com ROI estimado',
-      desc: 'Apresentamos soluções com o retorno financeiro projetado.',
+      question: 'Minha equipe precisará parar de trabalhar?',
+      answer: 'Não. Agendamos entrevistas curtas de 30 a 60 minutos com pessoas-chave.',
     },
     {
-      icon: CheckCircle2,
-      title: 'Execução e acompanhamento',
-      desc: 'Implementamos a solução e garantimos sua adoção.',
+      question: 'Que áreas são analisadas?',
+      answer: 'Comercial, Operações, Financeiro e Atendimento ao Cliente.',
+    },
+    {
+      question: 'Como recebo os resultados?',
+      answer: 'Apresentamos um relatório detalhado com plano de ação e estimativa de ROI.',
+    },
+    {
+      question: 'Vocês implementam a solução também?',
+      answer: 'Sim, caso faça sentido, podemos construir as automações propostas.',
+    },
+    {
+      question: 'Isso funciona para qualquer tipo de empresa?',
+      answer:
+        'É ideal para empresas que dependem muito de trabalho manual em planilhas ou sistemas antigos.',
+    },
+    {
+      question: 'E o sigilo das informações?',
+      answer:
+        'Assinamos um NDA (Acordo de Confidencialidade) antes de iniciar qualquer levantamento.',
     },
   ]
 
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
-      <div className="bg-slate-50 min-h-screen pb-20">
+      <div className="bg-slate-50 min-h-screen">
         {/* Hero Section */}
         <div className="bg-white border-b border-slate-200 py-20 px-4">
           <div className="container mx-auto max-w-4xl text-center">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
-              Onde sua empresa perde tempo e dinheiro?
+              Diagnóstico de Eficiência para PME — Descubra Onde Sua Empresa Perde Tempo e Dinheiro
             </h1>
             <p className="text-lg text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
               Muitas empresas operam abaixo do seu potencial devido a processos ineficientes. Nosso
@@ -57,48 +74,37 @@ export default function EfficiencyDiagnosis() {
               ocultos e mapear oportunidades claras de automação e melhoria, desenhando um caminho
               prático para aumentar sua rentabilidade.
             </p>
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg cursor-pointer"
-              onClick={openModal}
-            >
-              Quero um diagnóstico gratuito
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                style={{ backgroundColor: THEME_COLOR, color: '#fff' }}
+                className="h-[44px] rounded-lg px-8 text-lg font-bold hover:opacity-90"
+                onClick={openModal}
+              >
+                Quero meu diagnóstico gratuito
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-[44px] rounded-lg px-8 text-lg"
+                onClick={openModal}
+              >
+                Ver cases de sucesso
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Como Funciona Section */}
-        <div className="container mx-auto max-w-5xl px-4 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Como funciona</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Nossa metodologia foi desenhada para ser ágil e focar no que realmente importa:
-              resultados rápidos e mensuráveis.
-            </p>
-          </div>
+        <SpinSellingSection
+          color={THEME_COLOR}
+          situation="Sua empresa cresceu, o time aumentou, mas as tarefas ainda dependem de controles manuais e planilhas desconectadas."
+          problem="Processos confusos geram retrabalho, perda de informações e horas gastas apenas copiando e colando dados entre sistemas."
+          implication="Sua margem de lucro cai enquanto os custos operacionais sobem. A equipe fica desmotivada e o crescimento do negócio fica estagnado."
+          needPayoff="Com um diagnóstico claro, você entende exatamente quais etapas automatizar para recuperar a eficiência, economizar tempo e focar na estratégia."
+        />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              return (
-                <div
-                  key={index}
-                  className="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100"
-                >
-                  <div className="absolute -top-4 w-8 h-8 rounded-full bg-product-diag text-white font-bold flex items-center justify-center border-4 border-white">
-                    {index + 1}
-                  </div>
-                  <div className="w-16 h-16 rounded-full bg-product-diag-light text-product-diag flex items-center justify-center mb-6 mt-4">
-                    <Icon className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+        <PageFaqSection color={THEME_COLOR} faqs={faqs} />
       </div>
     </PageState>
   )

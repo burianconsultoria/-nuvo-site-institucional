@@ -25,6 +25,13 @@ import ProcessAutomation from './pages/solutions/ProcessAutomation'
 import CRM from './pages/solutions/CRM'
 import CustomSystems from './pages/solutions/CustomSystems'
 
+import B2BServices from './pages/segments/B2BServices'
+import Industry from './pages/segments/Industry'
+import Accounting from './pages/segments/Accounting'
+import Legal from './pages/segments/Legal'
+import Agencies from './pages/segments/Agencies'
+import Logistics from './pages/segments/Logistics'
+
 import LeadsDashboard from './pages/admin/LeadsDashboard'
 import FormSettingsDashboard from './pages/admin/FormSettingsDashboard'
 import { ContactModalProvider } from './contexts/ContactModalContext'
@@ -42,10 +49,17 @@ const App = () => (
 
               <Route path="/solucoes" element={<SolutionsHub />} />
               <Route path="/solucoes/diagnostico-de-eficiencia" element={<EfficiencyDiagnosis />} />
-              <Route path="/solucoes/agente-de-ia" element={<AIAgent />} />
-              <Route path="/solucoes/automacao-de-processos" element={<ProcessAutomation />} />
+              <Route path="/solucoes/agentes-de-ia" element={<AIAgent />} />
+              <Route path="/solucoes/automacoes-de-processos" element={<ProcessAutomation />} />
               <Route path="/solucoes/crm-e-organizacao-comercial" element={<CRM />} />
               <Route path="/solucoes/sistemas-sob-medida" element={<CustomSystems />} />
+
+              <Route path="/para-seu-negocio/servicos-b2b" element={<B2BServices />} />
+              <Route path="/para-seu-negocio/industrias" element={<Industry />} />
+              <Route path="/para-seu-negocio/contabilidades" element={<Accounting />} />
+              <Route path="/para-seu-negocio/advogados" element={<Legal />} />
+              <Route path="/para-seu-negocio/agencias" element={<Agencies />} />
+              <Route path="/para-seu-negocio/logistica" element={<Logistics />} />
 
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/contato" element={<ContactPage />} />
