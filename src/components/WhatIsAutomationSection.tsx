@@ -18,9 +18,7 @@ export function WhatIsAutomationSection({ color }: Props) {
     <div className="py-20 bg-white">
       <div className="container mx-auto max-w-4xl px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            O que é Automação de Processos para PME?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">O que é Automação de Processos?</h2>
           <h3 className="text-xl text-slate-600 font-medium">
             Tecnologia que executa tarefas repetitivas para sua equipe focar no que importa
           </h3>

@@ -86,7 +86,8 @@ export default function ProcessAutomation() {
             <Settings className="w-8 h-8" />
           </div>
           <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight text-foreground mb-6">
-            Automação de Processos para PME — Elimine o Trabalho Manual e Recupere Horas Produtivas
+            Automação de Processos:&nbsp;
+            <div>Elimine o Trabalho Manual e Recupere Horas Produtivas</div>
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed mb-10">
             Sua equipe perde horas com tarefas manuais repetitivas? Automatize fluxos com IA,
