@@ -17,15 +17,18 @@ export default function RootLayout() {
             <span className="font-bold text-xl tracking-tight text-slate-900">Nuvo</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-medium text-slate-600">
+            <Link to="/como-funciona" className="hover:text-indigo-600 transition-colors">
+              Como Funciona
+            </Link>
             <Link to="/solucoes" className="hover:text-indigo-600 transition-colors">
               Soluções
             </Link>
-            <Link to="/roi" className="hover:text-indigo-600 transition-colors">
-              Calculadora ROI
+            <Link to="/sobre" className="hover:text-indigo-600 transition-colors">
+              Sobre
             </Link>
-            <Link to="/quiz" className="hover:text-indigo-600 transition-colors">
-              Quiz
+            <Link to="/roi" className="hover:text-indigo-600 transition-colors">
+              ROI
             </Link>
             <Link to="/faq" className="hover:text-indigo-600 transition-colors">
               FAQ

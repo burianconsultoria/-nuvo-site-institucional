@@ -16,6 +16,9 @@ import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './pages/NotFound'
 
+import ComoFuncionaPage from './pages/ComoFuncionaPage'
+import SobrePage from './pages/SobrePage'
+
 import QuickDiagnosis from './pages/QuickDiagnosis'
 import DiagnosisResult from './pages/DiagnosisResult'
 
@@ -55,6 +58,8 @@ const App = () => (
             <Route path="/calculadora-roi/:id" element={<RoiResultPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/contato" element={<ContactPage />} />
+            <Route path="/como-funciona" element={<ComoFuncionaPage />} />
+            <Route path="/sobre" element={<SobrePage />} />
             <Route path="/login" element={<LoginPage />} />
           </Route>
 
