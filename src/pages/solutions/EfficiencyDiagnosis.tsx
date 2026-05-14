@@ -294,7 +294,7 @@ export default function EfficiencyDiagnosis() {
                       style={{ color: THEME_COLOR }}
                     />
                     <div>
-                      <strong className="block text-lg">PocketBase / Skip Cloud</strong>
+                      <strong className="block text-lg">Tecnologia com IA</strong>
                       <span className="text-slate-400">Backend escalável e seguro.</span>
                     </div>
                   </li>
