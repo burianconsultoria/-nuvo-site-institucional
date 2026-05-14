@@ -188,19 +188,25 @@ export default function RoiCalculatorPage() {
   }
 
   return (
-    <div className="container max-w-6xl mx-auto py-12 px-4 print:p-0 print:m-0">
+    <div className="container max-w-6xl mx-auto py-12 px-4 print:p-0 print:m-0 animate-fade-in-up">
       <div className="text-center mb-10 print:hidden">
-        <h1 className="text-4xl font-bold text-slate-900 tracking-tight">Calculadora de ROI</h1>
-        <p className="text-slate-500 mt-3 text-lg max-w-2xl mx-auto">
+        <h1 className="text-[48px] font-heading font-bold text-foreground tracking-tight">
+          Calculadora de ROI
+        </h1>
+        <p className="text-muted-foreground mt-3 text-base md:text-lg max-w-2xl mx-auto">
           Descubra o impacto financeiro de automatizar os processos manuais da sua empresa.
         </p>
       </div>
 
       <div className="grid lg:grid-cols-12 gap-8 items-start">
-        <Card className="lg:col-span-4 shadow-md print:hidden h-fit">
+        <Card className="lg:col-span-4 shadow-sm hover:shadow-md transition-shadow duration-300 print:hidden h-fit">
           <CardHeader>
-            <CardTitle>Dados Operacionais</CardTitle>
-            <CardDescription>Preencha para visualizar sua economia</CardDescription>
+            <CardTitle className="text-[24px] font-heading text-foreground">
+              Dados Operacionais
+            </CardTitle>
+            <CardDescription className="text-base text-muted-foreground">
+              Preencha para visualizar sua economia
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -330,9 +336,12 @@ export default function RoiCalculatorPage() {
                     type="submit"
                     size="lg"
                     disabled={loading || !isValid || !calculations}
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                    className="w-full text-white shadow-sm hover:-translate-y-1 transition-all duration-300"
+                    aria-label="Salvar e gerar link"
                   >
-                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {loading && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                    )}
                     {loading ? 'Salvando...' : 'Salvar e Gerar Link Permanente'}
                   </Button>
 
@@ -342,9 +351,10 @@ export default function RoiCalculatorPage() {
                       variant="outline"
                       size="lg"
                       onClick={handlePrint}
-                      className="w-full"
+                      className="w-full hover:shadow-sm transition-all duration-300"
+                      aria-label="Exportar PDF"
                     >
-                      <Printer className="mr-2 h-4 w-4" />
+                      <Printer className="mr-2 h-4 w-4" aria-hidden="true" />
                       Exportar PDF
                     </Button>
                   )}

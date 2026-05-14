@@ -67,10 +67,12 @@ export default function SobrePage() {
   return (
     <div className="flex flex-col min-h-screen animate-fade-in">
       {/* Manifesto Section */}
-      <section className="bg-slate-900 text-white pt-32 pb-24 px-4 text-center rounded-b-[3rem] shadow-sm">
+      <section className="bg-foreground text-background pt-32 pb-24 px-4 text-center rounded-b-[3rem] shadow-sm">
         <div className="container mx-auto max-w-4xl">
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-10">Sobre a Nuvo</h1>
-          <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
+          <h1 className="text-[48px] md:text-6xl font-heading font-bold tracking-tight mb-10">
+            Sobre a Nuvo
+          </h1>
+          <p className="text-base md:text-lg text-muted max-w-3xl mx-auto leading-relaxed">
             Nossa missão é resgatar o tempo dos empreendedores e suas equipes. Acreditamos que a
             tecnologia deve ser um motor de libertação, não uma fonte de dor de cabeça. Através de
             processos inteligentes e automações, transformamos empresas caóticas em operações
@@ -81,25 +83,28 @@ export default function SobrePage() {
 
       {/* Values Section */}
       <section className="py-24 container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-slate-900">Nossos Valores</h2>
-          <p className="text-lg text-slate-600 mt-4">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-[36px] font-heading font-bold text-foreground">Nossos Valores</h2>
+          <p className="text-base md:text-lg text-muted-foreground mt-4">
             Os pilares que guiam todas as nossas decisões e projetos.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 gap-8">
-          {values.map((val) => (
+          {values.map((val, idx) => (
             <Card
               key={val.title}
-              className="border-none shadow-md bg-white hover:shadow-lg transition-shadow"
+              className="border shadow-sm bg-card hover:shadow-md transition-shadow duration-300 animate-slide-up"
+              style={{ animationDelay: `${idx * 100}ms` }}
             >
               <CardContent className="p-8 flex items-start gap-6">
-                <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center shrink-0">
-                  <val.icon className="w-7 h-7" />
+                <div className="w-14 h-14 bg-primary/10 text-primary rounded-xl flex items-center justify-center shrink-0">
+                  <val.icon className="w-7 h-7" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{val.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{val.desc}</p>
+                  <h3 className="text-[24px] font-heading font-bold text-foreground mb-2">
+                    {val.title}
+                  </h3>
+                  <p className="text-base text-muted-foreground leading-relaxed">{val.desc}</p>
                 </div>
               </CardContent>
             </Card>
@@ -108,27 +113,35 @@ export default function SobrePage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200">
+      <section className="py-24 bg-card/50 border-t border-border">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900">Quem faz acontecer</h2>
-            <p className="text-lg text-slate-600 mt-4">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-[36px] font-heading font-bold text-foreground">
+              Quem faz acontecer
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground mt-4">
               A equipe de especialistas dedicada a transformar seu negócio.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
-            {team.map((member) => (
-              <div key={member.name} className="text-center group">
+            {team.map((member, idx) => (
+              <div
+                key={member.name}
+                className="text-center group animate-slide-up"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
                 <div className="relative w-40 h-40 mx-auto mb-6">
-                  <div className="absolute inset-0 bg-indigo-600 rounded-full scale-105 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-primary rounded-full scale-105 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="relative w-full h-full rounded-full object-cover border-4 border-white shadow-sm z-10"
+                    className="relative w-full h-full rounded-full object-cover border-4 border-background shadow-sm z-10"
                   />
                 </div>
-                <h3 className="font-bold text-xl text-slate-900">{member.name}</h3>
-                <p className="text-indigo-600 font-medium mt-1">{member.role}</p>
+                <h3 className="font-heading font-bold text-[24px] text-foreground">
+                  {member.name}
+                </h3>
+                <p className="text-primary font-medium mt-1">{member.role}</p>
               </div>
             ))}
           </div>
@@ -136,18 +149,18 @@ export default function SobrePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 text-center container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
+      <section className="py-24 text-center container mx-auto px-4 animate-fade-in-up">
+        <h2 className="text-[36px] md:text-4xl font-heading font-bold text-foreground mb-8">
           Vamos construir o futuro da sua operação juntos?
         </h2>
         <Button
           asChild
           size="lg"
-          className="h-16 px-10 text-lg rounded-2xl bg-indigo-600 hover:bg-indigo-700 shadow-lg hover:scale-105 transition-all"
+          className="text-lg rounded-xl shadow-lg hover:-translate-y-1 transition-all duration-300 animate-cta-bounce"
         >
           <Link to="/contato">
             Conversar com consultor
-            <ArrowRight className="ml-2 w-5 h-5" />
+            <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
           </Link>
         </Button>
       </section>

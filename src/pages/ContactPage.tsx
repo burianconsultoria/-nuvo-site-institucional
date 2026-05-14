@@ -77,16 +77,16 @@ export default function ContactPage() {
   return (
     <div className="container max-w-3xl mx-auto py-20 px-4 animate-fade-in-up">
       <div className="text-center mb-10">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-slate-900">
+        <h1 className="text-[48px] md:text-5xl font-heading font-bold tracking-tight mb-4 text-foreground">
           Entre em contato
         </h1>
-        <p className="text-lg text-slate-600">
+        <p className="text-base md:text-lg text-muted-foreground">
           Preencha o formulário abaixo e nossa equipe entrará em contato para entender seus
           desafios.
         </p>
       </div>
 
-      <Card className="shadow-xl border-slate-200">
+      <Card className="shadow-sm hover:shadow-md transition-shadow duration-300 border-border">
         <CardContent className="p-8 md:p-10">
           {error && (
             <Alert variant="destructive" className="mb-8">
@@ -189,7 +189,9 @@ export default function ContactPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-14 text-lg bg-indigo-600 hover:bg-indigo-700 transition-colors"
+              size="lg"
+              className="w-full text-lg shadow-sm transition-all duration-300 hover:-translate-y-1"
+              aria-label="Enviar Mensagem"
             >
               {loading ? 'Enviando Mensagem...' : 'Enviar Mensagem'}
             </Button>

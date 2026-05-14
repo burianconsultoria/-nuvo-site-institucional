@@ -132,8 +132,10 @@ export default function FAQPage() {
   return (
     <div className="container max-w-4xl py-20 px-4 animate-fade-in-up mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold tracking-tight mb-4">Perguntas Frequentes</h1>
-        <p className="text-lg text-muted-foreground">
+        <h1 className="text-[48px] font-heading font-bold tracking-tight mb-4 text-foreground">
+          Perguntas Frequentes
+        </h1>
+        <p className="text-base md:text-lg text-muted-foreground">
           Encontre respostas para suas dúvidas sobre a plataforma Nuvo e como podemos ajudar seu
           negócio.
         </p>
@@ -141,12 +143,16 @@ export default function FAQPage() {
 
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Search
+            className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground"
+            aria-hidden="true"
+          />
           <Input
             placeholder="Busque sua dúvida..."
-            className="pl-10 pr-10 h-12 text-lg rounded-xl shadow-sm"
+            className="pl-10 pr-10 text-base"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            aria-label="Buscar perguntas"
           />
           {isSearching && (
             <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 animate-spin text-muted-foreground" />
@@ -155,7 +161,7 @@ export default function FAQPage() {
 
         <div className="w-full md:w-64">
           <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger className="h-12 rounded-xl shadow-sm">
+            <SelectTrigger className="h-11">
               <SelectValue placeholder="Todas as categorias" />
             </SelectTrigger>
             <SelectContent>
@@ -199,23 +205,25 @@ export default function FAQPage() {
             ))}
           </div>
         ) : faqs.length === 0 ? (
-          <div className="flex flex-col items-center justify-center p-16 bg-card border rounded-xl shadow-sm text-center">
-            <Info className="h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Nenhuma pergunta encontrada</h3>
-            <p className="text-muted-foreground max-w-sm">
+          <div className="flex flex-col items-center justify-center p-16 bg-card border rounded-lg shadow-sm text-center animate-fade-in">
+            <Info className="h-12 w-12 text-muted-foreground mb-4" aria-hidden="true" />
+            <h3 className="text-[24px] font-heading font-semibold mb-2 text-foreground">
+              Nenhuma pergunta encontrada
+            </h3>
+            <p className="text-base text-muted-foreground max-w-sm">
               Não conseguimos encontrar resultados para sua busca ou filtro. Tente usar outros
               termos.
             </p>
           </div>
         ) : (
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="w-full space-y-4 animate-fade-in">
             {faqs.map((item) => (
               <AccordionItem
                 key={item.id}
                 value={item.id}
-                className="border bg-card px-6 rounded-xl shadow-sm data-[state=open]:border-primary/50 transition-colors"
+                className="border bg-card px-6 rounded-lg shadow-sm hover:shadow-md data-[state=open]:border-primary transition-all duration-300"
               >
-                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline hover:text-primary py-5">
+                <AccordionTrigger className="text-left font-heading font-semibold text-[24px] text-foreground py-5">
                   {item.pergunta}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">

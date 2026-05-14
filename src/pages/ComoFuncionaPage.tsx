@@ -56,10 +56,10 @@ export default function ComoFuncionaPage() {
     <div className="container mx-auto px-4 py-20 max-w-6xl animate-fade-in-up">
       {/* Header */}
       <div className="text-center mb-20">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
+        <h1 className="text-[48px] md:text-6xl font-heading font-bold tracking-tight text-foreground mb-6">
           Como a Nuvo transforma sua operação
         </h1>
-        <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           Nosso método foi desenhado para ser transparente, ágil e focado em resultados. Acompanhe o
           caminho que trilharemos juntos para a eficiência.
         </p>
@@ -67,42 +67,46 @@ export default function ComoFuncionaPage() {
 
       {/* Process Steps */}
       <div className="grid md:grid-cols-2 gap-8 mb-24 relative">
-        {steps.map((step) => (
+        {steps.map((step, idx) => (
           <Card
             key={step.number}
-            className="relative overflow-hidden border-none shadow-lg group hover:shadow-xl transition-shadow"
+            className="relative overflow-hidden border shadow-sm group hover:shadow-md transition-all duration-300 animate-slide-up"
+            style={{ animationDelay: `${idx * 150}ms` }}
           >
-            <div className="absolute top-0 right-0 -mt-6 -mr-6 text-9xl font-black text-slate-50 opacity-50 select-none group-hover:scale-110 transition-transform duration-500 z-0">
+            <div className="absolute top-0 right-0 -mt-6 -mr-6 text-9xl font-heading font-black text-muted opacity-30 select-none group-hover:scale-110 transition-transform duration-500 z-0">
               {step.number}
             </div>
             <CardContent className="p-10 relative z-10">
-              <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
-                <step.icon className="w-8 h-8" />
+              <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
+                <step.icon className="w-8 h-8" aria-hidden="true" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">{step.title}</h3>
-              <p className="text-lg text-slate-600 leading-relaxed">{step.description}</p>
+              <h3 className="text-[24px] font-heading font-bold text-foreground mb-4">
+                {step.title}
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed">{step.description}</p>
             </CardContent>
           </Card>
         ))}
       </div>
 
       {/* CTA Section */}
-      <div className="text-center bg-gradient-to-br from-indigo-50 to-white border border-indigo-100 rounded-[2.5rem] p-12 shadow-sm">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+      <div className="text-center bg-gradient-to-br from-primary/5 to-background border border-primary/20 rounded-[2.5rem] p-12 shadow-sm animate-slide-up">
+        <h2 className="text-[36px] md:text-4xl font-heading font-bold text-foreground mb-6">
           Pronto para dar o primeiro passo?
         </h2>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-10">
+        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
           Faça nosso diagnóstico rápido online agora mesmo e descubra o nível de maturidade da sua
           operação e onde você pode melhorar.
         </p>
         <Button
           asChild
           size="lg"
-          className="h-16 px-10 text-lg rounded-2xl bg-indigo-600 hover:bg-indigo-700 shadow-md transition-all hover:scale-105"
+          className="text-lg rounded-xl shadow-md animate-cta-bounce"
+          aria-label="Fazer diagnóstico gratuito"
         >
           <Link to="/diagnostico-rapido">
             Quero um diagnóstico gratuito
-            <ArrowRight className="ml-2 w-5 h-5" />
+            <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
           </Link>
         </Button>
       </div>

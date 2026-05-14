@@ -27,8 +27,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter var', 'SF Pro Display', 'system-ui', 'sans-serif'],
-        display: ['SF Pro Display', 'Inter var', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -43,6 +43,10 @@ export default {
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+        },
+        tertiary: {
+          DEFAULT: 'hsl(var(--tertiary))',
+          foreground: 'hsl(var(--tertiary-foreground))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
