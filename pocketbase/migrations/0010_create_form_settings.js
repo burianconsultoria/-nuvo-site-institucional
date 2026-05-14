@@ -32,7 +32,7 @@ migrate(
       {
         name: 'nome',
         label: 'Nome Completo',
-        type: 'text',
+        fieldType: 'text',
         required: true,
         order: 1,
         options: null,
@@ -40,16 +40,23 @@ migrate(
       {
         name: 'email',
         label: 'E-mail Corporativo',
-        type: 'email',
+        fieldType: 'email',
         required: true,
         order: 2,
         options: null,
       },
-      { name: 'empresa', label: 'Empresa', type: 'text', required: true, order: 3, options: null },
+      {
+        name: 'empresa',
+        label: 'Empresa',
+        fieldType: 'text',
+        required: true,
+        order: 3,
+        options: null,
+      },
       {
         name: 'telefone',
         label: 'Telefone / WhatsApp',
-        type: 'tel',
+        fieldType: 'tel',
         required: true,
         order: 4,
         options: null,
@@ -57,7 +64,7 @@ migrate(
       {
         name: 'segmento',
         label: 'Segmento de Atuação',
-        type: 'select',
+        fieldType: 'select',
         required: true,
         order: 5,
         options: [
@@ -76,7 +83,7 @@ migrate(
       const record = new Record(col)
       record.set('name', d.name)
       record.set('label', d.label)
-      record.set('type', d.type)
+      record.set('type', d.fieldType)
       record.set('required', d.required)
       record.set('order', d.order)
       record.set('options', d.options)
