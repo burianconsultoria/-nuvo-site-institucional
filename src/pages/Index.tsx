@@ -10,6 +10,11 @@ import {
   HelpCircle,
   AlertCircle,
   RefreshCcw,
+  Bot,
+  Zap,
+  BarChart3,
+  CheckCircle2,
+  Workflow,
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -120,23 +125,72 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 overflow-hidden bg-background">
+      <section className="relative pt-32 pb-40 overflow-hidden bg-background">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 -z-10" />
+
+        {/* Floating Elements Background - Hero */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Element 1: Bot Icon */}
+          <div
+            className="absolute top-[15%] left-[10%] hidden md:block animate-fade-in-up"
+            style={{ animationDelay: '100ms' }}
+          >
+            <div className="flex flex-col items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-xl border border-border animate-float">
+              <Bot className="w-8 h-8 text-primary" aria-hidden="true" />
+            </div>
+          </div>
+          {/* Element 2: Zap Icon */}
+          <div
+            className="absolute top-[25%] right-[12%] hidden lg:block animate-fade-in-up"
+            style={{ animationDelay: '300ms' }}
+          >
+            <div className="flex flex-col items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-xl border border-border animate-float-delayed">
+              <Zap className="w-10 h-10 text-secondary" aria-hidden="true" />
+            </div>
+          </div>
+          {/* Element 3: BarChart Icon */}
+          <div
+            className="absolute bottom-[20%] left-[15%] hidden lg:block animate-fade-in-up"
+            style={{ animationDelay: '500ms' }}
+          >
+            <div className="flex flex-col items-center justify-center w-14 h-14 rounded-2xl bg-white shadow-xl border border-border animate-float-fast">
+              <BarChart3 className="w-7 h-7 text-tertiary" aria-hidden="true" />
+            </div>
+          </div>
+          {/* Element 4: ROI Badge */}
+          <div
+            className="absolute bottom-[25%] right-[20%] hidden md:block animate-fade-in-up"
+            style={{ animationDelay: '700ms' }}
+          >
+            <div className="flex items-center gap-2 px-4 py-3 rounded-full bg-white shadow-xl border border-border animate-float">
+              <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm font-semibold text-foreground">Eficiência +140%</span>
+            </div>
+          </div>
+          {/* Mobile subtle element */}
+          <div className="absolute top-[10%] right-[5%] block md:hidden opacity-50 animate-float-delayed">
+            <Zap className="w-8 h-8 text-secondary" aria-hidden="true" />
+          </div>
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
-            <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight leading-tight hero-gradient text-transparent bg-clip-text pb-2">
+          <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
+            <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight leading-tight text-foreground drop-shadow-sm">
               Sua empresa cresce mais rápido do que consegue se organizar?
             </h1>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h3 className="text-[18px] md:text-[24px] font-heading font-semibold text-muted-foreground drop-shadow-sm max-w-3xl mx-auto">
+              Supere o caos operacional com processos inteligentes, automação e agentes de IA.
+            </h3>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mt-4 relative z-10">
               A Nuvo ajuda sua empresa a superar o caos operacional através de automação, processos
               inteligentes e sistemas sob medida. Liberte seu tempo para focar no que realmente
               importa: o crescimento do seu negócio.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
               <Button
                 asChild
                 size="lg"
-                className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-6 py-3 rounded-lg"
+                className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-8 py-3 rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 text-white"
                 aria-label="Fazer diagnóstico gratuito"
               >
                 <Link to="/diagnostico-rapido">
@@ -148,7 +202,7 @@ const Index = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="text-lg w-full sm:w-auto bg-background min-h-[44px] px-6 py-3 rounded-lg"
+                className="text-lg w-full sm:w-auto bg-background/80 backdrop-blur-sm min-h-[44px] px-8 py-3 rounded-lg border-2 hover:bg-accent"
                 aria-label="Entender como funciona"
               >
                 <Link to="/como-funciona">Como funciona</Link>
@@ -159,8 +213,30 @@ const Index = () => {
       </section>
 
       {/* Pain Points Section */}
-      <section className="py-24 bg-card/50">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-card/50 relative overflow-hidden">
+        {/* Floating Elements Background - Body (Pain Points) */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-[10%] left-[5%] hidden xl:block opacity-20 animate-fade-in-up">
+            <MessageSquare className="w-16 h-16 animate-float text-product-ai" aria-hidden="true" />
+          </div>
+          <div
+            className="absolute top-[40%] right-[5%] hidden xl:block opacity-20 animate-fade-in-up"
+            style={{ animationDelay: '200ms' }}
+          >
+            <Settings
+              className="w-20 h-20 animate-float-delayed text-product-auto"
+              aria-hidden="true"
+            />
+          </div>
+          <div
+            className="absolute bottom-[20%] left-[8%] hidden xl:block opacity-20 animate-fade-in-up"
+            style={{ animationDelay: '400ms' }}
+          >
+            <Users className="w-16 h-16 animate-float-fast text-product-crm" aria-hidden="true" />
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
               Reconhece algum destes problemas?
@@ -205,8 +281,23 @@ const Index = () => {
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
+        {/* Floating Elements Background - Social Proof */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-float-delayed" />
+          <div className="absolute top-[20%] right-[20%] hidden md:block opacity-30 animate-fade-in-up">
+            <CheckCircle2 className="w-12 h-12 animate-float-fast text-white" aria-hidden="true" />
+          </div>
+          <div
+            className="absolute bottom-[30%] left-[25%] hidden md:block opacity-30 animate-fade-in-up"
+            style={{ animationDelay: '300ms' }}
+          >
+            <Workflow className="w-16 h-16 animate-float text-white" aria-hidden="true" />
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-3xl mx-auto space-y-8 animate-fade-in">
             <h2 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tighter leading-tight">
               Mais de 12.450
@@ -223,8 +314,25 @@ const Index = () => {
       </section>
 
       {/* Real-time FAQ Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="py-24 bg-background relative overflow-hidden">
+        {/* Floating Elements Background - FAQ */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-[30%] left-[10%] hidden lg:block animate-fade-in-up">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary/10 animate-float text-secondary">
+              <HelpCircle className="w-6 h-6" aria-hidden="true" />
+            </div>
+          </div>
+          <div
+            className="absolute bottom-[20%] right-[10%] hidden lg:block animate-fade-in-up"
+            style={{ animationDelay: '200ms' }}
+          >
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 animate-float-delayed text-primary">
+              <Code className="w-8 h-8" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12 animate-fade-in-up">
               <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
