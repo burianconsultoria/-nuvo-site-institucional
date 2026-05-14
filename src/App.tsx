@@ -7,6 +7,9 @@ import { AuthProvider } from '@/hooks/use-auth'
 import RootLayout from './components/RootLayout'
 import AdminLayout from './components/AdminLayout'
 
+import { SiteSettingsProvider } from './contexts/SiteSettingsContext'
+import SettingsDashboard from './pages/admin/SettingsDashboard'
+
 import Index from './pages/Index'
 import FAQPage from './pages/FAQPage'
 import ContactPage from './pages/ContactPage'
@@ -40,45 +43,51 @@ const App = () => (
   <BrowserRouter future={{ v7_startTransition: false, v7_relativeSplatPath: false }}>
     <AuthProvider>
       <ContactModalProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <Routes>
-            <Route element={<RootLayout />}>
-              <Route path="/" element={<Index />} />
+        <SiteSettingsProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <Routes>
+              <Route element={<RootLayout />}>
+                <Route path="/" element={<Index />} />
 
-              <Route path="/solucoes" element={<SolutionsHub />} />
-              <Route path="/solucoes/diagnostico-de-eficiencia" element={<EfficiencyDiagnosis />} />
-              <Route path="/solucoes/agentes-de-ia" element={<AIAgent />} />
-              <Route path="/solucoes/automacoes-de-processos" element={<ProcessAutomation />} />
-              <Route path="/solucoes/crm-e-organizacao-comercial" element={<CRM />} />
-              <Route path="/solucoes/sistemas-sob-medida" element={<CustomSystems />} />
+                <Route path="/solucoes" element={<SolutionsHub />} />
+                <Route
+                  path="/solucoes/diagnostico-de-eficiencia"
+                  element={<EfficiencyDiagnosis />}
+                />
+                <Route path="/solucoes/agentes-de-ia" element={<AIAgent />} />
+                <Route path="/solucoes/automacoes-de-processos" element={<ProcessAutomation />} />
+                <Route path="/solucoes/crm-e-organizacao-comercial" element={<CRM />} />
+                <Route path="/solucoes/sistemas-sob-medida" element={<CustomSystems />} />
 
-              <Route path="/para-seu-negocio/servicos-b2b" element={<B2BServices />} />
-              <Route path="/para-seu-negocio/industrias" element={<Industry />} />
-              <Route path="/para-seu-negocio/contabilidades" element={<Accounting />} />
-              <Route path="/para-seu-negocio/advogados" element={<Legal />} />
-              <Route path="/para-seu-negocio/agencias" element={<Agencies />} />
-              <Route path="/para-seu-negocio/logistica" element={<Logistics />} />
+                <Route path="/para-seu-negocio/servicos-b2b" element={<B2BServices />} />
+                <Route path="/para-seu-negocio/industrias" element={<Industry />} />
+                <Route path="/para-seu-negocio/contabilidades" element={<Accounting />} />
+                <Route path="/para-seu-negocio/advogados" element={<Legal />} />
+                <Route path="/para-seu-negocio/agencias" element={<Agencies />} />
+                <Route path="/para-seu-negocio/logistica" element={<Logistics />} />
 
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/contato" element={<ContactPage />} />
-              <Route path="/diagnostico-gratuito" element={<ContactPage />} />
-              <Route path="/como-funciona" element={<ComoFuncionaPage />} />
-              <Route path="/sobre" element={<SobrePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
-              <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
-            </Route>
+                <Route path="/faq" element={<FAQPage />} />
+                <Route path="/contato" element={<ContactPage />} />
+                <Route path="/diagnostico-gratuito" element={<ContactPage />} />
+                <Route path="/como-funciona" element={<ComoFuncionaPage />} />
+                <Route path="/sobre" element={<SobrePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
+                <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
+              </Route>
 
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<LeadsDashboard />} />
-              <Route path="form" element={<FormSettingsDashboard />} />
-            </Route>
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<LeadsDashboard />} />
+                <Route path="form" element={<FormSettingsDashboard />} />
+                <Route path="settings" element={<SettingsDashboard />} />
+              </Route>
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </TooltipProvider>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </TooltipProvider>
+        </SiteSettingsProvider>
       </ContactModalProvider>
     </AuthProvider>
   </BrowserRouter>

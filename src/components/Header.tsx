@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, Instagram, Linkedin, MessageCircle } from 'lucide-react'
 import { useContactModal } from '@/contexts/ContactModalContext'
+import { useSiteSettings } from '@/contexts/SiteSettingsContext'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -102,25 +103,23 @@ const ListItem = React.forwardRef<
           to={to ?? '#'}
           ref={ref}
           className={cn(
-            'block select-none space-y-1 rounded-2xl p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-white/60 hover:shadow-sm focus:bg-white/60 focus:shadow-sm',
+            'block select-none space-y-1 rounded-2xl p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-slate-100/80 hover:shadow-sm focus:bg-slate-100/80 focus:shadow-sm',
             disabled && 'pointer-events-none opacity-50',
-            isActive && 'bg-white/80 shadow-sm text-accent-foreground font-medium',
+            isActive && 'bg-slate-100 shadow-sm text-accent-foreground font-medium',
             className,
           )}
           {...props}
         >
           <div
             className={cn(
-              'text-sm font-heading font-semibold leading-none',
+              'text-sm font-heading font-semibold leading-none text-slate-900',
               isActive && 'text-primary',
             )}
           >
             {title}
           </div>
           {children && (
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1.5">
-              {children}
-            </p>
+            <p className="line-clamp-2 text-sm leading-snug text-slate-500 mt-1.5">{children}</p>
           )}
         </Link>
       </NavigationMenuLink>
@@ -132,6 +131,7 @@ ListItem.displayName = 'ListItem'
 export function Header() {
   const { openModal } = useContactModal()
   const location = useLocation()
+  const { logoUrl } = useSiteSettings()
 
   const isSolucoesActive = solucoes.some((s) => s.href === location.pathname)
   const isNegociosActive = negocios.some((n) => n.href === location.pathname)
@@ -146,12 +146,18 @@ export function Header() {
             className="flex items-center gap-2 transition-transform duration-300 hover:scale-105"
             aria-label="Ir para a página inicial"
           >
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-sm">
-              <span className="text-white font-heading font-bold text-base">N</span>
-            </div>
-            <span className="font-heading font-bold text-xl tracking-tight text-foreground hidden sm:inline-block">
-              Nuvo
-            </span>
+            {logoUrl ? (
+              <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
+            ) : (
+              <>
+                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-sm">
+                  <span className="text-white font-heading font-bold text-base">N</span>
+                </div>
+                <span className="font-heading font-bold text-xl tracking-tight text-foreground hidden sm:inline-block">
+                  Nuvo
+                </span>
+              </>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
@@ -300,7 +306,7 @@ export function Header() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="flex flex-col w-[300px] sm:w-[400px] border-l-white/20 bg-white/90 backdrop-blur-xl"
+                className="flex flex-col w-[300px] sm:w-[400px] border-l-white/20 bg-white/95 backdrop-blur-3xl"
               >
                 <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
                 <SheetDescription className="sr-only">
@@ -308,10 +314,16 @@ export function Header() {
                 </SheetDescription>
 
                 <div className="flex items-center gap-2 mb-8 mt-4">
-                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-sm">
-                    <span className="text-white font-heading font-bold text-lg">N</span>
-                  </div>
-                  <span className="font-heading font-bold text-xl tracking-tight">Nuvo</span>
+                  {logoUrl ? (
+                    <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
+                  ) : (
+                    <>
+                      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-sm">
+                        <span className="text-white font-heading font-bold text-lg">N</span>
+                      </div>
+                      <span className="font-heading font-bold text-xl tracking-tight">Nuvo</span>
+                    </>
+                  )}
                 </div>
 
                 <div className="flex-1 overflow-y-auto">

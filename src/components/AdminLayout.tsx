@@ -2,7 +2,7 @@ import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/use-auth'
 import { useRealtime } from '@/hooks/use-realtime'
-import { Settings, LogOut, Users, Bell } from 'lucide-react'
+import { Settings, LogOut, Users, Bell, Palette } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { toast } from '@/hooks/use-toast'
 
@@ -34,6 +34,7 @@ export default function AdminLayout() {
   const navigation = [
     { name: 'Leads', href: '/admin', icon: Users },
     { name: 'Campos do Formulário', href: '/admin/form', icon: Settings },
+    { name: 'Identidade Visual', href: '/admin/settings', icon: Palette },
   ]
 
   return (
