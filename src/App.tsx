@@ -25,10 +25,10 @@ import ProcessAutomation from './pages/solutions/ProcessAutomation'
 import CRM from './pages/solutions/CRM'
 import CustomSystems from './pages/solutions/CustomSystems'
 
-import B2BServices from './pages/segments/B2BServices'
-import Industry from './pages/segments/Industry'
+import B2BServices from './pages/segments/B2B'
+import Industry from './pages/segments/Industries'
 import Accounting from './pages/segments/Accounting'
-import Legal from './pages/segments/Legal'
+import Legal from './pages/segments/Lawyers'
 import Agencies from './pages/segments/Agencies'
 import Logistics from './pages/segments/Logistics'
 
