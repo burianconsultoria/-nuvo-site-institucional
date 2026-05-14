@@ -4,6 +4,7 @@ import { useSEO } from '@/hooks/use-seo'
 import { PageState } from '@/components/ui/page-state'
 import { useSimulatedFetch } from '@/hooks/use-simulated-fetch'
 import { Button } from '@/components/ui/button'
+import { useContactModal } from '@/contexts/ContactModalContext'
 
 const MOCK_DATA = { loaded: true }
 
@@ -16,6 +17,7 @@ export default function EfficiencyDiagnosis() {
 
   const { loading, error, empty, retry } = useSimulatedFetch(MOCK_DATA)
   const navigate = useNavigate()
+  const { openModal } = useContactModal()
 
   const steps = [
     {
@@ -57,8 +59,8 @@ export default function EfficiencyDiagnosis() {
             </p>
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg"
-              onClick={() => navigate('/diagnostico-rapido')}
+              className="bg-primary hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg cursor-pointer"
+              onClick={openModal}
             >
               Quero um diagnóstico gratuito
               <ArrowRight className="ml-2 w-5 h-5" />

@@ -4,6 +4,7 @@ import { useSEO } from '@/hooks/use-seo'
 import { PageState } from '@/components/ui/page-state'
 import { useSimulatedFetch } from '@/hooks/use-simulated-fetch'
 import { Button } from '@/components/ui/button'
+import { useContactModal } from '@/contexts/ContactModalContext'
 
 const MOCK_DATA = { loaded: true }
 
@@ -16,6 +17,7 @@ export default function CustomSystems() {
 
   const { loading, error, empty, retry } = useSimulatedFetch(MOCK_DATA)
   const navigate = useNavigate()
+  const { openModal } = useContactModal()
 
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
@@ -36,8 +38,8 @@ export default function CustomSystems() {
             </p>
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg font-semibold shadow-xl"
-              onClick={() => navigate('/contato')}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 h-[44px] rounded-lg px-8 text-lg font-semibold shadow-xl cursor-pointer"
+              onClick={openModal}
             >
               Conversar com consultor
               <ArrowRight className="ml-2 w-5 h-5" />

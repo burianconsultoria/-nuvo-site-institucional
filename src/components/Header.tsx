@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Menu } from 'lucide-react'
+import { useContactModal } from '@/contexts/ContactModalContext'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -106,6 +107,7 @@ ListItem.displayName = 'ListItem'
 
 export function Header() {
   const navigate = useNavigate()
+  const { openModal } = useContactModal()
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/90 border-b border-border transition-all duration-300">
@@ -186,10 +188,10 @@ export function Header() {
         {/* Desktop Right Actions */}
         <div className="hidden lg:flex items-center gap-4">
           <Button
-            asChild
-            className="h-[44px] rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm transition-all duration-300 hover:shadow-md px-6"
+            onClick={openModal}
+            className="h-[44px] rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm transition-all duration-300 hover:shadow-md px-6 cursor-pointer"
           >
-            <Link to="/diagnostico-rapido">Quero um diagnóstico gratuito</Link>
+            Quero um diagnóstico gratuito
           </Button>
         </div>
 
@@ -277,10 +279,10 @@ export function Header() {
 
               <div className="mt-8 flex flex-col gap-3 pt-6 border-t border-border">
                 <Button
-                  asChild
-                  className="w-full h-[44px] rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm px-6"
+                  onClick={openModal}
+                  className="w-full h-[44px] rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm px-6 cursor-pointer"
                 >
-                  <Link to="/diagnostico-rapido">Quero um diagnóstico gratuito</Link>
+                  Quero um diagnóstico gratuito
                 </Button>
               </div>
             </SheetContent>

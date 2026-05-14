@@ -1,11 +1,31 @@
 import { Outlet, Link, Navigate, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/use-auth'
-import { LayoutDashboard, Settings, LogOut, Users, HelpCircle } from 'lucide-react'
+import { useRealtime } from '@/hooks/use-realtime'
+import { Settings, LogOut, Users, Bell } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { toast } from '@/hooks/use-toast'
 
 export default function AdminLayout() {
   const { user, signOut, loading } = useAuth()
   const location = useLocation()
+  const [unreadLeads, setUnreadLeads] = useState(0)
+
+  useRealtime('leads', (e) => {
+    if (e.action === 'create') {
+      setUnreadLeads((prev) => prev + 1)
+      toast({
+        title: 'Novo Lead Capturado!',
+        description: `${e.record.nome || 'Alguém'} acabou de enviar o formulário.`,
+      })
+    }
+  })
+
+  useEffect(() => {
+    if (location.pathname === '/admin') {
+      setUnreadLeads(0)
+    }
+  }, [location.pathname])
 
   if (loading)
     return <div className="min-h-screen flex items-center justify-center">Carregando...</div>
@@ -13,12 +33,12 @@ export default function AdminLayout() {
 
   const navigation = [
     { name: 'Leads', href: '/admin', icon: Users },
-    { name: 'Scoring Config', href: '/admin/config', icon: Settings },
+    { name: 'Campos do Formulário', href: '/admin/form', icon: Settings },
   ]
 
   return (
     <div className="flex min-h-screen bg-slate-50">
-      <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col">
+      <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col fixed inset-y-0 z-20">
         <div className="h-16 flex items-center px-6 border-b border-slate-800">
           <Link to="/" className="flex items-center gap-2 text-white">
             <div className="w-6 h-6 bg-indigo-500 rounded flex items-center justify-center">
@@ -64,8 +84,19 @@ export default function AdminLayout() {
           </button>
         </div>
       </aside>
-      <main className="flex-1 overflow-auto">
-        <div className="p-8">
+      <main className="flex-1 ml-64 flex flex-col min-h-screen">
+        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-end px-8 sticky top-0 z-10">
+          <Link
+            to="/admin"
+            className="relative p-2 text-slate-500 hover:bg-slate-100 rounded-full transition-colors"
+          >
+            <Bell className="w-6 h-6" />
+            {unreadLeads > 0 && (
+              <span className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
+            )}
+          </Link>
+        </header>
+        <div className="p-8 flex-1 overflow-auto">
           <Outlet />
         </div>
       </main>

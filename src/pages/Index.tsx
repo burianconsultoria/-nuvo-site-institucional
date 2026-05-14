@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useContactModal } from '@/contexts/ContactModalContext'
 import {
   ArrowRight,
   MessageSquare,
@@ -68,6 +69,8 @@ const Index = () => {
   useEffect(() => {
     fetchFaqs()
   }, [])
+
+  const { openModal } = useContactModal()
 
   const painPoints = [
     {
@@ -151,15 +154,13 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-8 items-start">
                 <Button
-                  asChild
+                  onClick={openModal}
                   size="lg"
-                  className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-8 py-3 rounded-lg bg-white hover:bg-white/90 text-[#4A3EFF] border-2 border-transparent"
+                  className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-8 py-3 rounded-lg bg-white hover:bg-white/90 text-[#4A3EFF] border-2 border-transparent cursor-pointer"
                   aria-label="Fazer diagnóstico gratuito"
                 >
-                  <Link to="/diagnostico-rapido">
-                    Diagnóstico gratuito
-                    <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
-                  </Link>
+                  Diagnóstico gratuito
+                  <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
                 </Button>
                 <Button
                   asChild
