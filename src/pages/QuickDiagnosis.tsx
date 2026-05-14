@@ -49,7 +49,14 @@ export default function QuickDiagnosis() {
   }, [])
 
   const isFormValid = () => {
-    if (!formData.nome || !formData.email || !formData.empresa || !formData.telefone || !formData.segmento) return false
+    if (
+      !formData.nome ||
+      !formData.email ||
+      !formData.empresa ||
+      !formData.telefone ||
+      !formData.segmento
+    )
+      return false
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) return false
     return true
@@ -59,7 +66,8 @@ export default function QuickDiagnosis() {
     if (!isFormValid()) {
       toast({
         title: 'Aviso',
-        description: 'Preencha todos os campos corretamente. O email válido e todos os campos são obrigatórios.',
+        description:
+          'Preencha todos os campos corretamente. O email válido e todos os campos são obrigatórios.',
         variant: 'destructive',
       })
       return
@@ -103,7 +111,7 @@ export default function QuickDiagnosis() {
         score,
         score_data: ratings,
       })
-      
+
       await createQuizResponse({
         lead_id: lead.id,
         respostas: ratings,
@@ -170,8 +178,12 @@ export default function QuickDiagnosis() {
             Descubra o nível de eficiência da sua empresa e receba recomendações personalizadas.
           </p>
           <div className="flex gap-2 mt-8 max-w-md mx-auto">
-            <div className={`h-2 flex-1 rounded-full transition-colors ${step >= 1 ? 'bg-indigo-600' : 'bg-slate-200'}`} />
-            <div className={`h-2 flex-1 rounded-full transition-colors ${step >= 2 ? 'bg-indigo-600' : 'bg-slate-200'}`} />
+            <div
+              className={`h-2 flex-1 rounded-full transition-colors ${step >= 1 ? 'bg-indigo-600' : 'bg-slate-200'}`}
+            />
+            <div
+              className={`h-2 flex-1 rounded-full transition-colors ${step >= 2 ? 'bg-indigo-600' : 'bg-slate-200'}`}
+            />
           </div>
         </div>
 
@@ -180,32 +192,63 @@ export default function QuickDiagnosis() {
             <div className="p-8 animate-fade-in">
               <div className="mb-6 border-b border-slate-100 pb-4">
                 <h2 className="text-xl font-bold text-slate-800">Seus Dados</h2>
-                <p className="text-sm text-slate-500 mt-1">Precisamos de algumas informações para gerar seu relatório.</p>
+                <p className="text-sm text-slate-500 mt-1">
+                  Precisamos de algumas informações para gerar seu relatório.
+                </p>
               </div>
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="nome">Nome Completo *</Label>
-                    <Input id="nome" value={formData.nome} onChange={(e) => setFormData({ ...formData, nome: e.target.value })} placeholder="Ex: João Silva" />
+                    <Input
+                      id="nome"
+                      value={formData.nome}
+                      onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                      placeholder="Ex: João Silva"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">E-mail Corporativo *</Label>
-                    <Input id="email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="joao@empresa.com.br" />
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="joao@empresa.com.br"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="empresa">Nome da Empresa *</Label>
-                    <Input id="empresa" value={formData.empresa} onChange={(e) => setFormData({ ...formData, empresa: e.target.value })} placeholder="Ex: Nuvo Solutions" />
+                    <Input
+                      id="empresa"
+                      value={formData.empresa}
+                      onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
+                      placeholder="Ex: Nuvo Solutions"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="telefone">Telefone / WhatsApp *</Label>
-                    <Input id="telefone" value={formData.telefone} onChange={(e) => setFormData({ ...formData, telefone: e.target.value })} placeholder="(11) 99999-9999" />
+                    <Input
+                      id="telefone"
+                      value={formData.telefone}
+                      onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
+                      placeholder="(11) 99999-9999"
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="segmento">Segmento de Atuação *</Label>
-                  <Input id="segmento" value={formData.segmento} onChange={(e) => setFormData({ ...formData, segmento: e.target.value })} placeholder="Ex: Tecnologia, Varejo, Serviços" />
+                  <Input
+                    id="segmento"
+                    value={formData.segmento}
+                    onChange={(e) => setFormData({ ...formData, segmento: e.target.value })}
+                    placeholder="Ex: Tecnologia, Varejo, Serviços"
+                  />
                 </div>
-                <Button onClick={handleNext} className="w-full h-14 mt-4 text-lg font-semibold bg-indigo-600 hover:bg-indigo-700">
+                <Button
+                  onClick={handleNext}
+                  className="w-full h-14 mt-4 text-lg font-semibold bg-indigo-600 hover:bg-indigo-700"
+                >
                   Começar Diagnóstico <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </div>
@@ -217,11 +260,17 @@ export default function QuickDiagnosis() {
               <div className="mb-8 flex items-center justify-between border-b border-slate-100 pb-4">
                 <div>
                   <h2 className="text-xl font-bold text-slate-800">Avalie sua operação</h2>
-                  <p className="text-sm text-slate-500 mt-1">De 1 a 5 estrelas, como você avalia os seguintes pontos?</p>
+                  <p className="text-sm text-slate-500 mt-1">
+                    De 1 a 5 estrelas, como você avalia os seguintes pontos?
+                  </p>
                 </div>
                 <div className="text-right hidden sm:block bg-indigo-50 px-4 py-2 rounded-lg">
-                  <div className="text-xs text-indigo-600 font-bold uppercase tracking-wider">Score Estimado</div>
-                  <div className="text-3xl font-black text-indigo-700">{calculateCurrentScore()}</div>
+                  <div className="text-xs text-indigo-600 font-bold uppercase tracking-wider">
+                    Score Estimado
+                  </div>
+                  <div className="text-3xl font-black text-indigo-700">
+                    {calculateCurrentScore()}
+                  </div>
                 </div>
               </div>
 
@@ -257,7 +306,11 @@ export default function QuickDiagnosis() {
               </div>
 
               <div className="mt-10 flex gap-4 pt-6 border-t border-slate-100">
-                <Button variant="outline" onClick={() => setStep(1)} className="w-1/3 h-14 text-base font-semibold">
+                <Button
+                  variant="outline"
+                  onClick={() => setStep(1)}
+                  className="w-1/3 h-14 text-base font-semibold"
+                >
                   Voltar
                 </Button>
                 <Button
@@ -271,7 +324,7 @@ export default function QuickDiagnosis() {
               </div>
             </div>
           )}
-        </CardContent>
+        </Card>
       </div>
     </div>
   )
