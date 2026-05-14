@@ -15,6 +15,9 @@ import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './pages/NotFound'
 
+import QuickDiagnosis from './pages/QuickDiagnosis'
+import DiagnosisResult from './pages/DiagnosisResult'
+
 import SolutionsHub from './pages/solutions/SolutionsHub'
 import EfficiencyDiagnosis from './pages/solutions/EfficiencyDiagnosis'
 import AIAgent from './pages/solutions/AIAgent'
@@ -41,6 +44,9 @@ const App = () => (
             <Route path="/solucoes/automacao-de-processos" element={<ProcessAutomation />} />
             <Route path="/solucoes/crm-e-organizacao-comercial" element={<CRM />} />
             <Route path="/solucoes/sistemas-sob-medida" element={<CustomSystems />} />
+
+            <Route path="/diagnostico-rapido" element={<QuickDiagnosis />} />
+            <Route path="/diagnostico/:id" element={<DiagnosisResult />} />
 
             <Route path="/quiz" element={<QuizPage />} />
             <Route path="/roi" element={<ROIPage />} />

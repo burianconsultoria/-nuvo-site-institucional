@@ -28,6 +28,10 @@ export const getLeads = async () => {
   return pb.collection('leads').getFullList({ sort: '-created' })
 }
 
+export const getLeadById = async (id: string) => {
+  return pb.collection('leads').getOne(id)
+}
+
 export const createQuizResponse = async (data: any) => {
   return pb.collection('quiz_responses').create(data)
 }
