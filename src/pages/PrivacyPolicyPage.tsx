@@ -23,8 +23,8 @@ export default function PrivacyPolicyPage() {
         <h3>Comunicações Automatizadas e Consentimento</h3>
         <p>
           <strong>
-            É nossa política estrita que nenhum e-mail automatizado de marketing, vendas ou
-            newsletters será enviado sem o seu consentimento prévio, livre e explícito (opt-in).
+            É nossa política estrita operar sem email automático de marketing, vendas ou newsletters
+            sem o seu consentimento prévio, livre e explícito (opt-in).
           </strong>{' '}
           Valorizamos a sua caixa de entrada e você mantém o controle total sobre as comunicações
           que deseja receber. Você pode cancelar a inscrição (opt-out) a qualquer momento através de

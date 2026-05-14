@@ -20,10 +20,11 @@ export default function CustomSystems() {
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-indigo-950 text-slate-300 min-h-screen">
-        <div className="container mx-auto px-4 py-20 max-w-5xl">
-          <div className="flex flex-col items-center text-center mb-20">
-            <div className="w-16 h-16 bg-indigo-900 rounded-full flex items-center justify-center mb-6 border border-indigo-800 shadow-lg">
-              <Code2 className="w-8 h-8 text-indigo-400" />
+        <div className="container mx-auto px-4 py-20 max-w-5xl relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-[#C084FC]/10 blur-[100px] pointer-events-none" />
+          <div className="flex flex-col items-center text-center mb-20 relative z-10">
+            <div className="w-16 h-16 bg-[#C084FC]/10 rounded-full flex items-center justify-center mb-6 border border-[#C084FC]/30 shadow-[0_0_15px_rgba(192,132,252,0.3)]">
+              <Code2 className="w-8 h-8 text-[#C084FC]" />
             </div>
             <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 max-w-3xl">
               Nada pronto resolve? Criamos do zero para você.
@@ -35,7 +36,7 @@ export default function CustomSystems() {
             </p>
             <Button
               size="lg"
-              className="bg-white text-indigo-950 hover:bg-slate-100 h-14 px-8 text-lg font-semibold shadow-xl"
+              className="bg-[#4A3EFF] text-white hover:bg-[#4A3EFF]/90 h-11 rounded-lg px-8 text-lg font-semibold shadow-xl"
               onClick={() => navigate('/contato')}
             >
               Conversar com consultor
@@ -43,9 +44,9 @@ export default function CustomSystems() {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-indigo-900/40 border border-indigo-800/50 p-8 rounded-2xl backdrop-blur-sm">
-              <Puzzle className="w-10 h-10 text-indigo-400 mb-6" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <div className="bg-indigo-900/40 border border-[#C084FC]/20 p-8 rounded-2xl backdrop-blur-sm hover:border-[#C084FC]/50 transition-colors">
+              <Puzzle className="w-10 h-10 text-[#C084FC] mb-6" />
               <h3 className="text-xl font-bold text-white mb-3">Aderência Total</h3>
               <p className="text-indigo-200/70 leading-relaxed">
                 Fluxos de trabalho e interfaces desenhados exatamente para a sua regra de negócio,
@@ -53,8 +54,8 @@ export default function CustomSystems() {
               </p>
             </div>
 
-            <div className="bg-indigo-900/40 border border-indigo-800/50 p-8 rounded-2xl backdrop-blur-sm">
-              <Rocket className="w-10 h-10 text-indigo-400 mb-6" />
+            <div className="bg-indigo-900/40 border border-[#C084FC]/20 p-8 rounded-2xl backdrop-blur-sm hover:border-[#C084FC]/50 transition-colors">
+              <Rocket className="w-10 h-10 text-[#C084FC] mb-6" />
               <h3 className="text-xl font-bold text-white mb-3">Vantagem Competitiva</h3>
               <p className="text-indigo-200/70 leading-relaxed">
                 Terceirize a tecnologia, mas seja o dono do processo. Construa um ativo digital que
@@ -62,8 +63,8 @@ export default function CustomSystems() {
               </p>
             </div>
 
-            <div className="bg-indigo-900/40 border border-indigo-800/50 p-8 rounded-2xl backdrop-blur-sm">
-              <Layers className="w-10 h-10 text-indigo-400 mb-6" />
+            <div className="bg-indigo-900/40 border border-[#C084FC]/20 p-8 rounded-2xl backdrop-blur-sm hover:border-[#C084FC]/50 transition-colors">
+              <Layers className="w-10 h-10 text-[#C084FC] mb-6" />
               <h3 className="text-xl font-bold text-white mb-3">Integração Perfeita</h3>
               <p className="text-indigo-200/70 leading-relaxed">
                 Conectamos seu novo sistema sob medida ao seu ERP antigo, métodos de pagamento ou

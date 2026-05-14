@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 
-import { useAuth } from '@/hooks/use-auth'
 import { Button } from '@/components/ui/button'
 import {
   NavigationMenu,
@@ -106,7 +105,6 @@ const ListItem = React.forwardRef<
 ListItem.displayName = 'ListItem'
 
 export function Header() {
-  const { user } = useAuth()
   const navigate = useNavigate()
 
   return (
@@ -187,18 +185,9 @@ export function Header() {
 
         {/* Desktop Right Actions */}
         <div className="hidden lg:flex items-center gap-4">
-          {user ? (
-            <Button onClick={() => navigate('/admin')} variant="outline">
-              Dashboard
-            </Button>
-          ) : (
-            <Button onClick={() => navigate('/login')} variant="outline">
-              Login
-            </Button>
-          )}
           <Button
             asChild
-            className="rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 text-white font-medium shadow-sm transition-all duration-300 hover:shadow-md"
+            className="h-11 rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 text-white font-medium shadow-sm transition-all duration-300 hover:shadow-md"
           >
             <Link to="/diagnostico-rapido">Quero um diagnóstico gratuito</Link>
           </Button>
@@ -289,27 +278,10 @@ export function Header() {
               <div className="mt-8 flex flex-col gap-3 pt-6 border-t border-border">
                 <Button
                   asChild
-                  className="w-full rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 h-12"
+                  className="w-full h-11 rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 text-white font-medium shadow-sm"
                 >
                   <Link to="/diagnostico-rapido">Quero um diagnóstico gratuito</Link>
                 </Button>
-                {user ? (
-                  <Button
-                    onClick={() => navigate('/admin')}
-                    variant="outline"
-                    className="w-full h-12"
-                  >
-                    Dashboard
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => navigate('/login')}
-                    variant="outline"
-                    className="w-full h-12"
-                  >
-                    Login
-                  </Button>
-                )}
               </div>
             </SheetContent>
           </Sheet>

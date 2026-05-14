@@ -20,8 +20,9 @@ export default function CRM() {
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-white min-h-screen">
-        <div className="bg-slate-900 text-white py-24 px-4 text-center">
-          <div className="container mx-auto max-w-4xl">
+        <div className="bg-slate-900 text-white py-24 px-4 text-center relative border-b-4 border-[#10B981]">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#10B981]/10 to-transparent pointer-events-none" />
+          <div className="container mx-auto max-w-4xl relative z-10">
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
               Organize seus clientes e nunca mais perca um follow-up.
             </h1>
@@ -32,7 +33,7 @@ export default function CRM() {
             </p>
             <Button
               size="lg"
-              className="bg-indigo-500 hover:bg-indigo-600 h-14 px-8 text-lg"
+              className="bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 h-11 rounded-lg px-8 text-lg"
               onClick={() => navigate('/diagnostico-rapido')}
             >
               Organizar meus clientes
@@ -43,8 +44,8 @@ export default function CRM() {
 
         <div className="container mx-auto px-4 py-24 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center p-8 bg-slate-50 rounded-3xl border border-slate-100 transition-transform hover:-translate-y-2">
-              <div className="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-6">
+            <div className="flex flex-col items-center text-center p-8 bg-slate-50 rounded-3xl border border-[#10B981]/20 hover:border-[#10B981]/50 transition-all hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-2xl bg-[#10B981]/10 flex items-center justify-center text-[#10B981] mb-6">
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Visão 360 do Cliente</h3>
@@ -54,8 +55,8 @@ export default function CRM() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center p-8 bg-slate-50 rounded-3xl border border-slate-100 transition-transform hover:-translate-y-2">
-              <div className="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-6">
+            <div className="flex flex-col items-center text-center p-8 bg-slate-50 rounded-3xl border border-[#10B981]/20 hover:border-[#10B981]/50 transition-all hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-2xl bg-[#10B981]/10 flex items-center justify-center text-[#10B981] mb-6">
                 <BellRing className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Automação de Follow-up</h3>
@@ -65,8 +66,8 @@ export default function CRM() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center p-8 bg-slate-50 rounded-3xl border border-slate-100 transition-transform hover:-translate-y-2">
-              <div className="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600 mb-6">
+            <div className="flex flex-col items-center text-center p-8 bg-slate-50 rounded-3xl border border-[#10B981]/20 hover:border-[#10B981]/50 transition-all hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-2xl bg-[#10B981]/10 flex items-center justify-center text-[#10B981] mb-6">
                 <PieChart className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Previsibilidade</h3>

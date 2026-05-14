@@ -57,7 +57,7 @@ export default function EfficiencyDiagnosis() {
             </p>
             <Button
               size="lg"
-              className="bg-indigo-600 hover:bg-indigo-700 h-14 px-8 text-lg"
+              className="bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 h-11 rounded-lg px-8 text-lg"
               onClick={() => navigate('/diagnostico-rapido')}
             >
               Quero um diagnóstico gratuito
@@ -84,10 +84,10 @@ export default function EfficiencyDiagnosis() {
                   key={index}
                   className="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100"
                 >
-                  <div className="absolute -top-4 w-8 h-8 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center border-4 border-white">
+                  <div className="absolute -top-4 w-8 h-8 rounded-full bg-[#4A3EFF] text-white font-bold flex items-center justify-center border-4 border-white">
                     {index + 1}
                   </div>
-                  <div className="w-16 h-16 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 mt-4">
+                  <div className="w-16 h-16 rounded-full bg-[#4A3EFF]/10 text-[#4A3EFF] flex items-center justify-center mb-6 mt-4">
                     <Icon className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>

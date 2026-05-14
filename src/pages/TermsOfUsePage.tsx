@@ -31,8 +31,9 @@ export default function TermsOfUsePage() {
           <li>
             <strong>
               A propriedade intelectual (IP) dos projetos desenvolvidos sob medida é transferida
-              para o cliente de forma definitiva apenas e exclusivamente após o pagamento integral
-              dos valores acordados no respectivo contrato de prestação de serviços.
+              para o cliente de forma definitiva apenas e exclusivamente sob a cláusula de IP
+              ownership após pagamento integral dos valores acordados no respectivo contrato de
+              prestação de serviços.
             </strong>
           </li>
           <li>

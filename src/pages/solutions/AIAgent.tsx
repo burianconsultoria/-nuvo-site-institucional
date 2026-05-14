@@ -21,9 +21,10 @@ export default function AIAgent() {
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-white min-h-screen">
         {/* Hero */}
-        <div className="bg-slate-900 text-white py-24 px-4 text-center">
-          <div className="container mx-auto max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-indigo-300 text-sm font-medium mb-8">
+        <div className="bg-slate-900 text-white py-24 px-4 text-center relative border-b-4 border-[#D946EF]">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#D946EF]/10 to-transparent pointer-events-none" />
+          <div className="container mx-auto max-w-4xl relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D946EF]/20 text-[#D946EF] text-sm font-medium mb-8">
               <MessageSquare className="w-4 h-4" /> Inteligência Artificial
             </div>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
@@ -36,7 +37,7 @@ export default function AIAgent() {
             </p>
             <Button
               size="lg"
-              className="bg-indigo-500 hover:bg-indigo-600 h-14 px-8 text-lg"
+              className="bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 h-11 rounded-lg px-8 text-lg"
               onClick={() => navigate('/diagnostico-rapido')}
             >
               Testar agente
@@ -94,40 +95,40 @@ export default function AIAgent() {
             </div>
 
             {/* Depois */}
-            <div className="bg-emerald-50 p-8 rounded-3xl border border-emerald-100 relative overflow-hidden">
+            <div className="bg-[#D946EF]/5 p-8 rounded-3xl border border-[#D946EF]/20 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Zap className="w-32 h-32 text-emerald-600" />
+                <Zap className="w-32 h-32 text-[#D946EF]" />
               </div>
-              <h3 className="text-2xl font-bold text-emerald-900 mb-6 flex items-center gap-3 relative z-10">
-                <span className="w-8 h-8 rounded-full bg-emerald-200 flex items-center justify-center text-sm text-emerald-700">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3 relative z-10">
+                <span className="w-8 h-8 rounded-full bg-[#D946EF]/20 flex items-center justify-center text-sm text-[#D946EF]">
                   ✓
                 </span>
                 Com o Agente IA
               </h3>
               <ul className="space-y-6 relative z-10">
                 <li className="flex gap-4">
-                  <Clock className="w-6 h-6 text-emerald-500 shrink-0" />
+                  <Clock className="w-6 h-6 text-[#D946EF] shrink-0" />
                   <div>
-                    <strong className="block text-emerald-900">Resposta em segundos 24/7</strong>
-                    <span className="text-emerald-700 text-sm">
+                    <strong className="block text-slate-900">Resposta em segundos 24/7</strong>
+                    <span className="text-slate-600 text-sm">
                       Atendimento instantâneo independente do dia ou horário da semana.
                     </span>
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <Users className="w-6 h-6 text-emerald-500 shrink-0" />
+                  <Users className="w-6 h-6 text-[#D946EF] shrink-0" />
                   <div>
-                    <strong className="block text-emerald-900">Qualificação automática</strong>
-                    <span className="text-emerald-700 text-sm">
+                    <strong className="block text-slate-900">Qualificação automática</strong>
+                    <span className="text-slate-600 text-sm">
                       O bot faz as perguntas certas e só repassa os leads quentes para humanos.
                     </span>
                   </div>
                 </li>
                 <li className="flex gap-4">
-                  <MessageSquare className="w-6 h-6 text-emerald-500 shrink-0" />
+                  <MessageSquare className="w-6 h-6 text-[#D946EF] shrink-0" />
                   <div>
-                    <strong className="block text-emerald-900">Integração direta com CRM</strong>
-                    <span className="text-emerald-700 text-sm">
+                    <strong className="block text-slate-900">Integração direta com CRM</strong>
+                    <span className="text-slate-600 text-sm">
                       Os dados captados vão direto para o seu sistema sem digitação manual.
                     </span>
                   </div>

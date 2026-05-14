@@ -42,21 +42,22 @@ export default function ProcessAutomation() {
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-slate-50 min-h-screen">
         <div className="container mx-auto px-4 py-20 max-w-6xl flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 space-y-8">
-            <div className="inline-flex items-center justify-center p-3 bg-indigo-100 rounded-xl text-indigo-600 mb-2">
+          <div className="flex-1 space-y-8 relative">
+            <div className="absolute -left-20 -top-20 w-64 h-64 bg-[#F59E0B]/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="inline-flex items-center justify-center p-3 bg-[#F59E0B]/10 border border-[#F59E0B]/20 rounded-xl text-[#F59E0B] mb-2 relative z-10">
               <Settings className="w-6 h-6" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 relative z-10">
               Elimine tarefas manuais e ganhe tempo.
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed">
+            <p className="text-xl text-slate-600 leading-relaxed relative z-10">
               Conectamos seus aplicativos, CRMs, ERPs e ferramentas de comunicação para que eles
               conversem entre si. O resultado? Um fluxo de trabalho contínuo onde a tecnologia faz o
               trabalho pesado e sua equipe brilha onde importa.
             </p>
             <Button
               size="lg"
-              className="bg-indigo-600 hover:bg-indigo-700 h-14 px-8 text-lg w-full md:w-auto"
+              className="bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 h-11 rounded-lg px-8 text-lg w-full md:w-auto relative z-10"
               onClick={() => navigate('/diagnostico-rapido')}
             >
               Quero automatizar
@@ -71,9 +72,9 @@ export default function ProcessAutomation() {
                 return (
                   <div
                     key={i}
-                    className="flex gap-6 bg-white p-6 rounded-2xl shadow-sm border border-slate-100"
+                    className="flex gap-6 bg-white p-6 rounded-2xl shadow-sm border border-[#F59E0B]/10 hover:border-[#F59E0B]/30 transition-colors"
                   >
-                    <div className="shrink-0 w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+                    <div className="shrink-0 w-12 h-12 rounded-full bg-[#F59E0B]/10 flex items-center justify-center text-[#F59E0B]">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
