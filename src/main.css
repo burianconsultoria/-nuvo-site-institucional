@@ -58,23 +58,23 @@
 
     --prod-diag: 244 100% 62%;
     --prod-diag-hover: 244 86% 56%;
-    --prod-diag-light: 250 100% 96%;
+    --prod-diag-light: 244 100% 96%;
 
     --prod-ai: 292 84% 61%;
     --prod-ai-hover: 292 76% 54%;
-    --prod-ai-light: 305 76% 96%;
+    --prod-ai-light: 292 84% 96%;
 
     --prod-auto: 270 95% 75%;
     --prod-auto-hover: 270 85% 69%;
-    --prod-auto-light: 270 100% 98%;
+    --prod-auto-light: 270 95% 96%;
 
-    --prod-crm: 189 94% 37%;
-    --prod-crm-hover: 189 91% 36%;
-    --prod-crm-light: 152 68% 96%;
+    --prod-crm: 189 94% 43%;
+    --prod-crm-hover: 189 94% 38%;
+    --prod-crm-light: 189 94% 96%;
 
-    --prod-sys: 42 93% 50%;
-    --prod-sys-hover: 32 95% 44%;
-    --prod-sys-light: 44 100% 96%;
+    --prod-sys: 38 92% 50%;
+    --prod-sys-hover: 38 92% 45%;
+    --prod-sys-light: 38 92% 96%;
   }
 
   .dark {
@@ -262,16 +262,11 @@
   }
 
   .hero-gradient {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--primary)) 0%,
-      hsl(var(--secondary)) 50%,
-      hsl(var(--tertiary)) 100%
-    );
+    background: linear-gradient(135deg, #4a3eff 0%, #7e61ff 100%);
   }
 
   .product-card {
-    @apply rounded-lg bg-card text-card-foreground shadow-sm transition-all duration-300 border border-border;
+    @apply rounded-xl bg-card text-card-foreground shadow-sm transition-all duration-300 border border-border;
   }
   .product-card:hover {
     @apply -translate-y-1 shadow-md;

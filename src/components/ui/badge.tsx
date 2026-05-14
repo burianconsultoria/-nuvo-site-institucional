@@ -15,11 +15,11 @@ const badgeVariants = cva(
         destructive:
           'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
         outline: 'text-foreground',
-        diag: 'border-product-diag/20 bg-product-diag-light text-product-diag hover:bg-product-diag/10',
-        ai: 'border-product-ai/20 bg-product-ai-light text-product-ai hover:bg-product-ai/10',
-        auto: 'border-product-auto/20 bg-product-auto-light text-product-auto hover:bg-product-auto/10',
-        crm: 'border-product-crm/20 bg-product-crm-light text-product-crm hover:bg-product-crm/10',
-        sys: 'border-product-sys/20 bg-product-sys-light text-product-sys hover:bg-product-sys/10',
+        diag: 'border-product-diag/20 bg-product-diag/5 text-product-diag hover:bg-product-diag/10',
+        ai: 'border-product-ai/20 bg-product-ai/5 text-product-ai hover:bg-product-ai/10',
+        auto: 'border-product-auto/20 bg-product-auto/5 text-product-auto hover:bg-product-auto/10',
+        crm: 'border-product-crm/20 bg-product-crm/5 text-product-crm hover:bg-product-crm/10',
+        sys: 'border-product-sys/20 bg-product-sys/5 text-product-sys hover:bg-product-sys/10',
       },
     },
     defaultVariants: {

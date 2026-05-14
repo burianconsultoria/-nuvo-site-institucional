@@ -125,88 +125,74 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-40 overflow-hidden bg-background">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 -z-10" />
+      <section className="relative pt-32 pb-40 overflow-hidden hero-gradient text-white">
+        <div className="absolute inset-0 bg-black/10 -z-10 mix-blend-overlay" />
 
-        {/* Floating Elements Background - Hero */}
+        {/* Floating Elements Background - Hero - Mobile subtle element */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          {/* Element 1: Bot Icon */}
-          <div
-            className="absolute top-[15%] left-[10%] hidden md:block animate-fade-in-up"
-            style={{ animationDelay: '100ms' }}
-          >
-            <div className="flex flex-col items-center justify-center w-16 h-16 rounded-2xl bg-white shadow-xl border border-border animate-float">
-              <Bot className="w-8 h-8 text-primary" aria-hidden="true" />
-            </div>
-          </div>
-          {/* Element 2: Zap Icon */}
-          <div
-            className="absolute top-[25%] right-[12%] hidden lg:block animate-fade-in-up"
-            style={{ animationDelay: '300ms' }}
-          >
-            <div className="flex flex-col items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-xl border border-border animate-float-delayed">
-              <Zap className="w-10 h-10 text-secondary" aria-hidden="true" />
-            </div>
-          </div>
-          {/* Element 3: BarChart Icon */}
-          <div
-            className="absolute bottom-[20%] left-[15%] hidden lg:block animate-fade-in-up"
-            style={{ animationDelay: '500ms' }}
-          >
-            <div className="flex flex-col items-center justify-center w-14 h-14 rounded-2xl bg-white shadow-xl border border-border animate-float-fast">
-              <BarChart3 className="w-7 h-7 text-tertiary" aria-hidden="true" />
-            </div>
-          </div>
-          {/* Element 4: ROI Badge */}
-          <div
-            className="absolute bottom-[25%] right-[20%] hidden md:block animate-fade-in-up"
-            style={{ animationDelay: '700ms' }}
-          >
-            <div className="flex items-center gap-2 px-4 py-3 rounded-full bg-white shadow-xl border border-border animate-float">
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm font-semibold text-foreground">Eficiência +140%</span>
-            </div>
-          </div>
-          {/* Mobile subtle element */}
-          <div className="absolute top-[10%] right-[5%] block md:hidden opacity-50 animate-float-delayed">
-            <Zap className="w-8 h-8 text-secondary" aria-hidden="true" />
+          <div className="absolute top-[10%] right-[5%] block lg:hidden opacity-20 animate-float-delayed">
+            <Zap className="w-12 h-12 text-white" aria-hidden="true" />
           </div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
-            <h1 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tight leading-tight text-foreground drop-shadow-sm">
-              Sua empresa cresce mais rápido do que consegue se organizar?
-            </h1>
-            <h3 className="text-[18px] md:text-[24px] font-heading font-semibold text-muted-foreground drop-shadow-sm max-w-3xl mx-auto">
-              Supere o caos operacional com processos inteligentes, automação e agentes de IA.
-            </h3>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mt-4 relative z-10">
-              A Nuvo ajuda sua empresa a superar o caos operacional através de automação, processos
-              inteligentes e sistemas sob medida. Liberte seu tempo para focar no que realmente
-              importa: o crescimento do seu negócio.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-              <Button
-                asChild
-                size="lg"
-                className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-8 py-3 rounded-lg bg-[#4A3EFF] hover:bg-[#4A3EFF]/90 text-white"
-                aria-label="Fazer diagnóstico gratuito"
-              >
-                <Link to="/diagnostico-rapido">
-                  Quero um diagnóstico gratuito
-                  <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="text-lg w-full sm:w-auto bg-background/80 backdrop-blur-sm min-h-[44px] px-8 py-3 rounded-lg border-2 hover:bg-accent"
-                aria-label="Entender como funciona"
-              >
-                <Link to="/como-funciona">Como funciona</Link>
-              </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 animate-fade-in-up">
+              <h1 className="text-[32px] md:text-[56px] font-heading font-bold tracking-tight leading-tight drop-shadow-sm text-left">
+                Sua empresa cresce mais rápido do que consegue se organizar?
+              </h1>
+              <h3 className="text-[18px] md:text-[24px] font-heading font-semibold text-white/90 drop-shadow-sm text-left">
+                Supere o caos operacional com processos inteligentes, automação e agentes de IA.
+              </h3>
+              <p className="text-[16px] md:text-[18px] text-white/80 max-w-xl mt-4 relative z-10 text-left">
+                A Nuvo ajuda sua empresa a superar o caos operacional através de automação,
+                processos inteligentes e sistemas sob medida. Liberte seu tempo para focar no que
+                realmente importa: o crescimento do seu negócio.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 pt-8 items-start">
+                <Button
+                  asChild
+                  size="lg"
+                  className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-8 py-3 rounded-lg bg-white hover:bg-white/90 text-[#4A3EFF] border-2 border-transparent"
+                  aria-label="Fazer diagnóstico gratuito"
+                >
+                  <Link to="/diagnostico-rapido">
+                    Diagnóstico gratuito
+                    <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="text-lg w-full sm:w-auto bg-white/10 backdrop-blur-sm min-h-[44px] px-8 py-3 rounded-lg border-2 border-white/30 text-white hover:bg-white/20 hover:text-white"
+                  aria-label="Entender como funciona"
+                >
+                  <Link to="/como-funciona">Como funciona</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="hidden lg:block relative h-[500px] w-full">
+              {/* Graphic Element area for the right side of the split layout */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+
+              <div className="absolute top-[10%] right-[15%] flex flex-col items-center justify-center w-24 h-24 rounded-2xl bg-white shadow-2xl border border-border/50 animate-float">
+                <Bot className="w-12 h-12 text-product-ai" aria-hidden="true" />
+              </div>
+
+              <div className="absolute top-[40%] left-[10%] flex flex-col items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-2xl border border-border/50 animate-float-delayed">
+                <Settings className="w-10 h-10 text-product-auto" aria-hidden="true" />
+              </div>
+
+              <div className="absolute bottom-[20%] right-[25%] flex flex-col items-center justify-center w-28 h-28 rounded-2xl bg-white shadow-2xl border border-border/50 animate-float-fast">
+                <BarChart3 className="w-14 h-14 text-product-diag" aria-hidden="true" />
+              </div>
+
+              <div className="absolute top-[60%] right-[5%] flex items-center gap-3 px-6 py-4 rounded-full bg-white shadow-2xl border border-border/50 animate-float">
+                <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-base font-semibold text-foreground">Eficiência +140%</span>
+              </div>
             </div>
           </div>
         </div>
@@ -245,7 +231,7 @@ const Index = () => {
               Descubra como podemos resolver os principais gargalos que impedem o seu crescimento.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
             {painPoints.map((point, idx) => (
               <Link
                 key={idx}
@@ -254,24 +240,114 @@ const Index = () => {
                 style={{ animationDelay: `${idx * 100}ms` }}
                 aria-label={`Ver solução para ${point.title}`}
               >
-                <Card className={`product-card w-full border-l-4 ${point.borderClass}`}>
-                  <CardHeader>
-                    <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:text-white transition-all duration-300 ${point.iconClass}`}
-                    >
-                      <point.icon className="w-6 h-6" aria-hidden="true" />
+                <Card className={`product-card w-full border-l-4 ${point.borderClass} rounded-xl`}>
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:text-white transition-all duration-300 ${point.iconClass}`}
+                      >
+                        <point.icon className="w-6 h-6" aria-hidden="true" />
+                      </div>
                     </div>
-                    <CardTitle className="text-[18px] md:text-[24px] font-heading font-semibold text-foreground">
+                    <CardTitle className="text-[18px] font-heading font-semibold text-foreground leading-tight min-h-[44px]">
                       {point.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-base text-muted-foreground mb-4">{point.description}</p>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                      {point.description}
+                    </p>
                     <span
-                      className={`font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300 ${point.textClass}`}
+                      className={`text-sm font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300 ${point.textClass}`}
                     >
                       Ver solução <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                     </span>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Grid Section */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-[24px] md:text-[40px] font-heading font-semibold text-foreground mb-4">
+              Nossas Soluções
+            </h2>
+            <p className="text-[16px] md:text-[18px] text-muted-foreground max-w-2xl mx-auto">
+              Tecnologia, processos e inteligência artificial para modernizar a sua operação.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                title: 'Diagnóstico de Eficiência',
+                desc: 'Avalie a maturidade digital do seu negócio e encontre os principais gargalos.',
+                image: 'https://img.usecurling.com/p/400/250?q=dashboard&color=blue',
+                color: 'diag',
+                link: '/solucoes/diagnostico-de-eficiencia',
+              },
+              {
+                title: 'Agente de IA',
+                desc: 'Atendimento e vendas automáticas via WhatsApp operando 24 horas por dia.',
+                image: 'https://img.usecurling.com/p/400/250?q=robot&color=pink',
+                color: 'ai',
+                link: '/solucoes/agente-de-ia',
+              },
+              {
+                title: 'Automação de Processos',
+                desc: 'Integrações inteligentes que eliminam tarefas repetitivas e erros humanos.',
+                image: 'https://img.usecurling.com/p/400/250?q=automation&color=purple',
+                color: 'auto',
+                link: '/solucoes/automacao-de-processos',
+              },
+              {
+                title: 'CRM e Comercial',
+                desc: 'Estruturação do processo de vendas para maior conversão e previsibilidade.',
+                image: 'https://img.usecurling.com/p/400/250?q=sales&color=cyan',
+                color: 'crm',
+                link: '/solucoes/crm-e-organizacao-comercial',
+              },
+              {
+                title: 'Sistemas Sob Medida',
+                desc: 'Desenvolvimento de plataformas e aplicativos customizados para a sua regra de negócio.',
+                image: 'https://img.usecurling.com/p/400/250?q=code&color=yellow',
+                color: 'sys',
+                link: '/solucoes/sistemas-sob-medida',
+              },
+            ].map((sol, i) => (
+              <Link
+                to={sol.link}
+                key={i}
+                className="group block animate-slide-up"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                <Card
+                  className={`overflow-hidden border-b-4 border-product-${sol.color} h-full hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1`}
+                >
+                  <div className="h-48 w-full overflow-hidden">
+                    <img
+                      src={sol.image}
+                      alt={sol.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle
+                      className={`text-xl font-heading font-semibold text-foreground group-hover:text-product-${sol.color} transition-colors`}
+                    >
+                      {sol.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{sol.desc}</p>
+                    <div className={`mt-6 font-medium flex items-center text-product-${sol.color}`}>
+                      Conheça a solução{' '}
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </CardContent>
                 </Card>
               </Link>
@@ -304,11 +380,58 @@ const Index = () => {
               <br />
               horas economizadas
             </h2>
-            <p className="text-base md:text-lg text-primary-foreground/90">
+            <p className="text-[16px] md:text-[18px] text-primary-foreground/90 max-w-2xl mx-auto">
               Nossas soluções já devolveram milhares de horas para equipes que antes viviam apagando
               incêndios operacionais. Transforme a maneira como sua empresa trabalha e ganhe
               produtividade real.
             </p>
+          </div>
+
+          <div className="mt-16 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-left animate-slide-up hover:-translate-y-1 transition-transform">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                    <img
+                      src="https://img.usecurling.com/i?q=gym&color=white"
+                      alt="Company Logo"
+                      className="w-6 h-6"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white">Rede de Academias</h4>
+                    <p className="text-sm text-white/70">Redução de 80% no tempo de resposta</p>
+                  </div>
+                </div>
+                <p className="text-white/90 italic">
+                  "Com o Agente de IA da Nuvo, nosso atendimento passou a rodar 24h. As conversões
+                  aumentaram 35% e a equipe de vendas agora foca só nos casos complexos."
+                </p>
+              </div>
+
+              <div
+                className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 text-left animate-slide-up hover:-translate-y-1 transition-transform"
+                style={{ animationDelay: '200ms' }}
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                    <img
+                      src="https://img.usecurling.com/i?q=clinic&color=white"
+                      alt="Company Logo"
+                      className="w-6 h-6"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-white">Clínica Médica</h4>
+                    <p className="text-sm text-white/70">Automação de agendamentos</p>
+                  </div>
+                </div>
+                <p className="text-white/90 italic">
+                  "Integrar nosso sistema de agendamento com o WhatsApp mudou o jogo. Faltas
+                  reduziram em 40% com os lembretes automáticos."
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

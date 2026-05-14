@@ -125,7 +125,7 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav
-          className="hidden lg:flex items-center flex-1 justify-center"
+          className="hidden lg:flex items-center flex-1 justify-center text-[#1C1C28]"
           aria-label="Navegação Principal"
         >
           <NavigationMenu delayDuration={300}>
