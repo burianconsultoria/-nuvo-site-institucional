@@ -18,11 +18,14 @@ export default function RootLayout() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+            <Link to="/solucoes" className="hover:text-indigo-600 transition-colors">
+              Soluções
+            </Link>
             <Link to="/roi" className="hover:text-indigo-600 transition-colors">
               Calculadora ROI
             </Link>
             <Link to="/quiz" className="hover:text-indigo-600 transition-colors">
-              Quiz de Qualificação
+              Quiz
             </Link>
             <Link to="/faq" className="hover:text-indigo-600 transition-colors">
               FAQ

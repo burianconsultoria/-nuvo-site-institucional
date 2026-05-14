@@ -15,6 +15,13 @@ import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './pages/NotFound'
 
+import SolutionsHub from './pages/solutions/SolutionsHub'
+import EfficiencyDiagnosis from './pages/solutions/EfficiencyDiagnosis'
+import AIAgent from './pages/solutions/AIAgent'
+import ProcessAutomation from './pages/solutions/ProcessAutomation'
+import CRM from './pages/solutions/CRM'
+import CustomSystems from './pages/solutions/CustomSystems'
+
 import LeadsDashboard from './pages/admin/LeadsDashboard'
 import ConfigDashboard from './pages/admin/ConfigDashboard'
 
@@ -27,6 +34,14 @@ const App = () => (
         <Routes>
           <Route element={<RootLayout />}>
             <Route path="/" element={<Index />} />
+
+            <Route path="/solucoes" element={<SolutionsHub />} />
+            <Route path="/solucoes/diagnostico-de-eficiencia" element={<EfficiencyDiagnosis />} />
+            <Route path="/solucoes/agente-de-ia" element={<AIAgent />} />
+            <Route path="/solucoes/automacao-de-processos" element={<ProcessAutomation />} />
+            <Route path="/solucoes/crm-e-organizacao-comercial" element={<CRM />} />
+            <Route path="/solucoes/sistemas-sob-medida" element={<CustomSystems />} />
+
             <Route path="/quiz" element={<QuizPage />} />
             <Route path="/roi" element={<ROIPage />} />
             <Route path="/faq" element={<FAQPage />} />
