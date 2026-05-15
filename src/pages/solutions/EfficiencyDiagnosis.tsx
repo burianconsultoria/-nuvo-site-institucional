@@ -145,7 +145,7 @@ export default function EfficiencyDiagnosis() {
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
       <div className="bg-slate-50 min-h-screen">
-        <div className="bg-white border-b border-slate-200 py-20 px-4">
+        <div className="bg-white border-b border-slate-200 py-20 px-4 pt-[180px]">
           <div className="container mx-auto max-w-4xl text-center">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
               Diagnóstico de Eficiência para PME — Descubra Onde Sua Empresa Perde Tempo e Dinheiro
