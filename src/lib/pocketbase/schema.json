@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-15T00:43:15.484Z",
+  "generatedAt": "2026-05-15T02:28:27.766Z",
   "collections": [
     {
       "name": "users",
@@ -476,6 +476,12 @@
           "required": false,
           "system": false,
           "selectValues": ["image", "video"]
+        },
+        {
+          "name": "footer_logo",
+          "type": "file",
+          "required": false,
+          "system": false
         }
       ],
       "indexes": []
@@ -522,9 +528,28 @@
           "required": false,
           "system": false,
           "autodateTriggers": ["onCreate", "onUpdate"]
+        },
+        {
+          "name": "page",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "media",
+          "type": "file",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "media_type",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": ["image", "video"]
         }
       ],
-      "indexes": []
+      "indexes": ["CREATE INDEX `idx_site_content_page` ON `site_content` (page)"]
     }
   ]
 }

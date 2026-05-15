@@ -46,7 +46,3 @@ export async function getSiteContent(): Promise<SiteContent[]> {
     return []
   }
 }
-
-export async function updateSiteContent(id: string, value: string): Promise<SiteContent> {
-  return await pb.collection('site_content').update<SiteContent>(id, { value })
-}
