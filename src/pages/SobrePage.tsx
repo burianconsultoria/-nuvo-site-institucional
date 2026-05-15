@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Heart, Target, Lightbulb, Users, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { useSiteSettings } from '@/contexts/SiteSettingsContext'
+import { getFileUrl } from '@/services/site_settings'
 
 const values = [
   {
@@ -51,6 +53,8 @@ const team = [
 ]
 
 export default function SobrePage() {
+  const { content, contentRaw } = useSiteSettings()
+
   useEffect(() => {
     document.title = 'Sobre a Nuvo | Consultoria de Tecnologia'
     const metaDescription = document.querySelector('meta[name="description"]')
@@ -67,17 +71,29 @@ export default function SobrePage() {
   return (
     <div className="flex flex-col min-h-screen animate-fade-in">
       {/* Manifesto Section */}
-      <section className="bg-foreground text-background pt-32 pb-24 px-4 text-center rounded-b-[3rem] shadow-sm">
-        <div className="container mx-auto max-w-4xl">
-          <h1 className="text-[48px] md:text-6xl font-heading font-bold tracking-tight mb-10">
-            Sobre a Nuvo
-          </h1>
-          <p className="text-base md:text-lg text-muted max-w-3xl mx-auto leading-relaxed">
-            Nossa missão é resgatar o tempo dos empreendedores e suas equipes. Acreditamos que a
-            tecnologia deve ser um motor de libertação, não uma fonte de dor de cabeça. Através de
-            processos inteligentes e automações, transformamos empresas caóticas em operações
-            eficientes e escaláveis.
-          </p>
+      <section className="bg-foreground text-background pt-40 md:pt-48 pb-24 px-4 text-center rounded-b-[3rem] shadow-sm relative overflow-hidden">
+        {contentRaw['sobre_hero_bg']?.media && (
+          <div className="absolute inset-0 z-0 opacity-20 mix-blend-overlay">
+            <img
+              src={getFileUrl(contentRaw['sobre_hero_bg'], contentRaw['sobre_hero_bg'].media)}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <h1
+            className="text-[48px] md:text-6xl font-heading font-bold tracking-tight mb-10 [&>p]:mb-0"
+            dangerouslySetInnerHTML={{ __html: content.sobre_hero_title || 'Sobre a Nuvo' }}
+          />
+          <div
+            className="text-base md:text-lg text-muted max-w-3xl mx-auto leading-relaxed prose prose-invert"
+            dangerouslySetInnerHTML={{
+              __html:
+                content.sobre_hero_desc ||
+                'Nossa missão é resgatar o tempo dos empreendedores e suas equipes. Acreditamos que a tecnologia deve ser um motor de libertação, não uma fonte de dor de cabeça. Através de processos inteligentes e automações, transformamos empresas caóticas em operações eficientes e escaláveis.',
+            }}
+          />
         </div>
       </section>
 

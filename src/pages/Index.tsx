@@ -148,7 +148,7 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-40 overflow-hidden bg-black text-white">
+      <section className="relative pt-40 md:pt-48 pb-40 overflow-hidden bg-black text-white">
         {heroBackgroundUrl ? (
           settings?.hero_background_type === 'video' ? (
             <video
@@ -157,23 +157,23 @@ const Index = () => {
               loop
               muted
               playsInline
-              className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay z-0"
+              className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay z-0"
             />
           ) : (
             <img
               src={heroBackgroundUrl}
               alt="Background"
-              className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay z-0"
+              className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay z-0"
             />
           )
         ) : (
           <img
             src="https://img.usecurling.com/p/1920/1080?q=office,technology&color=black"
             alt="Background Placeholder"
-            className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay z-0"
+            className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay z-0"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-0" />
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-[10%] right-[5%] block lg:hidden opacity-20 animate-float-delayed">

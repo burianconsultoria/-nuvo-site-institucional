@@ -1,9 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Instagram, Linkedin } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useSiteSettings } from '@/contexts/SiteSettingsContext'
 
 export function Footer() {
   const location = useLocation()
+  const { content, footerLogoUrl } = useSiteSettings()
 
   const solucoesLinks = [
     { title: 'Diagnóstico de Eficiência', href: '/solucoes/diagnostico-de-eficiencia' },
@@ -38,15 +40,27 @@ export function Footer() {
           {/* Column 1: Marca */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-lg">N</span>
-              </div>
-              <span className="font-heading font-bold text-xl tracking-tight text-white">Nuvo</span>
+              {footerLogoUrl ? (
+                <img src={footerLogoUrl} alt="Logo Nuvo" className="h-10 object-contain" />
+              ) : (
+                <>
+                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                    <span className="text-white font-heading font-bold text-lg">N</span>
+                  </div>
+                  <span className="font-heading font-bold text-xl tracking-tight text-white">
+                    Nuvo
+                  </span>
+                </>
+              )}
             </Link>
-            <p className="text-white/70 text-sm leading-relaxed max-w-xs">
-              Transformando a eficiência dos seus negócios com tecnologia avançada, automação de
-              processos e Inteligência Artificial.
-            </p>
+            <div
+              className="text-white/70 text-sm leading-relaxed max-w-xs prose prose-sm prose-invert"
+              dangerouslySetInnerHTML={{
+                __html:
+                  content.footer_desc ||
+                  'Transformando a eficiência dos seus negócios com tecnologia avançada, automação de processos e Inteligência Artificial.',
+              }}
+            />
             <div className="flex gap-4">
               <a
                 href="https://linkedin.com"

@@ -9,9 +9,11 @@ import {
 interface SiteSettingsContextType {
   settings: SiteSettings | null
   content: Record<string, string>
+  contentRaw: Record<string, any>
   logoUrl: string
   faviconUrl: string
   heroBackgroundUrl: string
+  footerLogoUrl: string
   loading: boolean
 }
 
@@ -26,6 +28,7 @@ export function useSiteSettings() {
 export function SiteSettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<SiteSettings | null>(null)
   const [content, setContent] = useState<Record<string, string>>({})
+  const [contentRaw, setContentRaw] = useState<Record<string, any>>({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -36,10 +39,13 @@ export function SiteSettingsProvider({ children }: { children: ReactNode }) {
         setSettings(settingsData)
 
         const contentMap: Record<string, string> = {}
-        contentData.forEach((item) => {
+        const rawMap: Record<string, any> = {}
+        contentData.forEach((item: any) => {
           contentMap[item.key] = item.value
+          rawMap[item.key] = item
         })
         setContent(contentMap)
+        setContentRaw(rawMap)
 
         if (settingsData?.favicon) {
           const faviconUrl = getFileUrl(settingsData, settingsData.favicon)
@@ -65,10 +71,20 @@ export function SiteSettingsProvider({ children }: { children: ReactNode }) {
   const heroBackgroundUrl = settings?.hero_background
     ? getFileUrl(settings, settings.hero_background)
     : ''
+  const footerLogoUrl = settings?.footer_logo ? getFileUrl(settings, settings.footer_logo) : ''
 
   return (
     <SiteSettingsContext.Provider
-      value={{ settings, content, logoUrl, faviconUrl, heroBackgroundUrl, loading }}
+      value={{
+        settings,
+        content,
+        contentRaw,
+        logoUrl,
+        faviconUrl,
+        heroBackgroundUrl,
+        footerLogoUrl,
+        loading,
+      }}
     >
       {children}
     </SiteSettingsContext.Provider>

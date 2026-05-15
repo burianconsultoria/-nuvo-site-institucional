@@ -2,10 +2,11 @@ import pb from '@/lib/pocketbase/client'
 
 export interface SiteSettings {
   id: string
-  logo: string
-  favicon: string
-  hero_background: string
-  hero_background_type: 'image' | 'video' | ''
+  logo?: string
+  favicon?: string
+  hero_background?: string
+  hero_background_type?: string
+  footer_logo?: string
 }
 
 export interface SiteContent {
@@ -13,36 +14,37 @@ export interface SiteContent {
   key: string
   label: string
   value: string
+  page: string
+  media?: string
+  media_type?: string
 }
 
-export async function getSiteSettings(): Promise<SiteSettings | null> {
+export const getSiteSettings = async (): Promise<SiteSettings | null> => {
   try {
-    const records = await pb.collection('site_settings').getFullList<SiteSettings>()
-    if (records.length > 0) {
-      return records[0]
-    }
-    const created = await pb.collection('site_settings').create<SiteSettings>({})
-    return created
-  } catch (error) {
-    console.error('Error fetching site settings', error)
+    const record = await pb.collection('site_settings').getFirstListItem('')
+    return record as unknown as SiteSettings
+  } catch {
     return null
   }
 }
 
-export async function updateSiteSettings(id: string, data: FormData): Promise<SiteSettings> {
-  return await pb.collection('site_settings').update<SiteSettings>(id, data)
+export const updateSiteSettings = async (id: string, data: FormData) => {
+  return pb.collection('site_settings').update(id, data)
 }
 
-export function getFileUrl(record: any, fileName: string): string {
-  if (!fileName) return ''
-  return pb.files.getURL(record, fileName)
-}
-
-export async function getSiteContent(): Promise<SiteContent[]> {
+export const getSiteContent = async (): Promise<SiteContent[]> => {
   try {
-    return await pb.collection('site_content').getFullList<SiteContent>()
-  } catch (error) {
-    console.error('Error fetching site content', error)
+    return (await pb.collection('site_content').getFullList()) as unknown as SiteContent[]
+  } catch {
     return []
   }
+}
+
+export const updateSiteContent = async (id: string, data: FormData) => {
+  return pb.collection('site_content').update(id, data)
+}
+
+export const getFileUrl = (record: any, filename: string) => {
+  if (!record || !filename) return ''
+  return pb.files.getURL(record, filename)
 }
