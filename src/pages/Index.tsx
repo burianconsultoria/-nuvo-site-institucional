@@ -148,7 +148,7 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-40 md:pt-48 pb-40 overflow-hidden bg-black text-white">
+      <section className="relative pt-48 md:pt-56 pb-32 md:pb-40 overflow-hidden bg-slate-950 text-white min-h-[85vh] flex items-center">
         {heroBackgroundUrl ? (
           settings?.hero_background_type === 'video' ? (
             <video
@@ -157,43 +157,51 @@ const Index = () => {
               loop
               muted
               playsInline
-              className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay z-0"
+              className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
             />
           ) : (
             <img
               src={heroBackgroundUrl}
               alt="Background"
-              className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay z-0"
+              className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
             />
           )
         ) : (
           <img
             src="https://img.usecurling.com/p/1920/1080?q=office,technology&color=black"
             alt="Background Placeholder"
-            className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-overlay z-0"
+            className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent z-0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent z-0" />
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-[10%] right-[5%] block lg:hidden opacity-20 animate-float-delayed">
-            <Zap className="w-12 h-12 text-white" aria-hidden="true" />
+          <div className="absolute top-[20%] right-[5%] block lg:hidden opacity-20 animate-float-delayed">
+            <Zap className="w-12 h-12 text-primary" aria-hidden="true" />
           </div>
         </div>
 
         <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in-up">
+              <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-primary-foreground backdrop-blur-sm">
+                <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+                Consultoria de Tecnologia para PMEs
+              </div>
+
               <h1
-                className="text-[32px] md:text-[56px] font-heading font-bold tracking-tight leading-tight drop-shadow-sm text-left [&>p]:mb-0"
+                className="text-[36px] md:text-[60px] font-heading font-bold tracking-tight leading-[1.1] drop-shadow-md text-left text-white [&>p]:mb-0"
                 dangerouslySetInnerHTML={{ __html: heroTitle }}
               />
+
               <div
-                className="text-[18px] md:text-[24px] font-heading font-semibold text-white/90 drop-shadow-sm text-left [&>p]:mb-0"
+                className="text-[20px] md:text-[24px] font-heading font-medium text-white/90 drop-shadow-sm text-left [&>p]:mb-0"
                 dangerouslySetInnerHTML={{ __html: heroSubtitle }}
               />
+
               <div
-                className="text-[16px] md:text-[18px] text-white/80 max-w-xl mt-4 relative z-10 text-left [&>p]:mb-4 [&>p:last-child]:mb-0"
+                className="text-[16px] md:text-[18px] text-white/80 max-w-xl mt-4 relative z-10 text-left leading-relaxed [&>p]:mb-4 [&>p:last-child]:mb-0"
                 dangerouslySetInnerHTML={{ __html: heroDesc }}
               />
 
@@ -201,7 +209,7 @@ const Index = () => {
                 <Button
                   onClick={openModal}
                   size="lg"
-                  className="text-lg w-full sm:w-auto shadow-lg animate-cta-bounce min-h-[44px] px-8 py-3 rounded-lg bg-white hover:bg-white/90 text-[#4A3EFF] border-2 border-transparent cursor-pointer"
+                  className="text-lg w-full sm:w-auto shadow-xl shadow-primary/20 animate-cta-bounce min-h-[52px] px-8 py-3 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-transparent cursor-pointer transition-all"
                   aria-label="Fazer diagnóstico gratuito"
                 >
                   Diagnóstico gratuito
@@ -211,7 +219,7 @@ const Index = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="text-lg w-full sm:w-auto bg-white/10 backdrop-blur-sm min-h-[44px] px-8 py-3 rounded-lg border-2 border-white/30 text-white hover:bg-white/20 hover:text-white"
+                  className="text-lg w-full sm:w-auto bg-secondary/10 backdrop-blur-sm min-h-[52px] px-8 py-3 rounded-xl border-2 border-secondary/50 text-white hover:bg-secondary hover:border-secondary hover:text-secondary-foreground transition-all"
                   aria-label="Entender como funciona"
                 >
                   <Link to="/como-funciona">Como funciona</Link>
@@ -220,23 +228,24 @@ const Index = () => {
             </div>
 
             <div className="hidden lg:block relative h-[500px] w-full">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-secondary/10 rounded-full blur-2xl"></div>
 
-              <div className="absolute top-[10%] right-[15%] flex flex-col items-center justify-center w-24 h-24 rounded-2xl bg-white shadow-2xl border border-border/50 animate-float">
-                <Bot className="w-12 h-12 text-product-ai" aria-hidden="true" />
+              <div className="absolute top-[10%] right-[15%] flex flex-col items-center justify-center w-24 h-24 rounded-2xl bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float">
+                <Bot className="w-12 h-12 text-primary" aria-hidden="true" />
               </div>
 
-              <div className="absolute top-[40%] left-[10%] flex flex-col items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-2xl border border-border/50 animate-float-delayed">
-                <Settings className="w-10 h-10 text-product-auto" aria-hidden="true" />
+              <div className="absolute top-[40%] left-[10%] flex flex-col items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float-delayed">
+                <Settings className="w-10 h-10 text-secondary" aria-hidden="true" />
               </div>
 
-              <div className="absolute bottom-[20%] right-[25%] flex flex-col items-center justify-center w-28 h-28 rounded-2xl bg-white shadow-2xl border border-border/50 animate-float-fast">
-                <BarChart3 className="w-14 h-14 text-product-diag" aria-hidden="true" />
+              <div className="absolute bottom-[20%] right-[25%] flex flex-col items-center justify-center w-28 h-28 rounded-2xl bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float-fast">
+                <BarChart3 className="w-14 h-14 text-tertiary" aria-hidden="true" />
               </div>
 
-              <div className="absolute top-[60%] right-[5%] flex items-center gap-3 px-6 py-4 rounded-full bg-white shadow-2xl border border-border/50 animate-float">
+              <div className="absolute top-[60%] right-[5%] flex items-center gap-3 px-6 py-4 rounded-full bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float">
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-base font-semibold text-foreground">Eficiência +140%</span>
+                <span className="text-base font-semibold text-slate-900">Eficiência +140%</span>
               </div>
             </div>
           </div>
