@@ -37,6 +37,7 @@ import Logistics from './pages/segments/Logistics'
 
 import LeadsDashboard from './pages/admin/LeadsDashboard'
 import FormSettingsDashboard from './pages/admin/FormSettingsDashboard'
+import ContentDashboard from './pages/admin/ContentDashboard'
 import { ContactModalProvider } from './contexts/ContactModalContext'
 
 const App = () => (
@@ -82,6 +83,7 @@ const App = () => (
                 <Route index element={<LeadsDashboard />} />
                 <Route path="form" element={<FormSettingsDashboard />} />
                 <Route path="settings" element={<SettingsDashboard />} />
+                <Route path="content" element={<ContentDashboard />} />
               </Route>
 
               <Route path="*" element={<NotFound />} />

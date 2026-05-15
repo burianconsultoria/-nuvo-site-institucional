@@ -4,27 +4,49 @@ export interface SiteSettings {
   id: string
   logo: string
   favicon: string
-  collectionId: string
-  collectionName: string
+  hero_background: string
+  hero_background_type: 'image' | 'video' | ''
 }
 
-export const getSiteSettings = async (): Promise<SiteSettings | null> => {
+export interface SiteContent {
+  id: string
+  key: string
+  label: string
+  value: string
+}
+
+export async function getSiteSettings(): Promise<SiteSettings | null> {
   try {
     const records = await pb.collection('site_settings').getFullList<SiteSettings>()
-    return records[0] || null
-  } catch (e) {
+    if (records.length > 0) {
+      return records[0]
+    }
+    const created = await pb.collection('site_settings').create<SiteSettings>({})
+    return created
+  } catch (error) {
+    console.error('Error fetching site settings', error)
     return null
   }
 }
 
-export const updateSiteSettings = async (id: string, data: FormData) => {
-  return pb.collection('site_settings').update<SiteSettings>(id, data)
+export async function updateSiteSettings(id: string, data: FormData): Promise<SiteSettings> {
+  return await pb.collection('site_settings').update<SiteSettings>(id, data)
 }
 
-export const getFileUrl = (
-  record: Pick<SiteSettings, 'id' | 'collectionId' | 'collectionName'>,
-  fileName: string,
-) => {
+export function getFileUrl(record: any, fileName: string): string {
   if (!fileName) return ''
   return pb.files.getURL(record, fileName)
+}
+
+export async function getSiteContent(): Promise<SiteContent[]> {
+  try {
+    return await pb.collection('site_content').getFullList<SiteContent>()
+  } catch (error) {
+    console.error('Error fetching site content', error)
+    return []
+  }
+}
+
+export async function updateSiteContent(id: string, value: string): Promise<SiteContent> {
+  return await pb.collection('site_content').update<SiteContent>(id, { value })
 }

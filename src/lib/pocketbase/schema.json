@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-14T23:58:57.198Z",
+  "generatedAt": "2026-05-15T00:39:11.125Z",
   "collections": [
     {
       "name": "users",
@@ -447,6 +447,65 @@
         {
           "name": "favicon",
           "type": "file",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate"]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate", "onUpdate"]
+        },
+        {
+          "name": "hero_background",
+          "type": "file",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "hero_background_type",
+          "type": "select",
+          "required": false,
+          "system": false,
+          "selectValues": ["image", "video"]
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "site_content",
+      "type": "base",
+      "apiRules": {
+        "list": "",
+        "view": "",
+        "create": "@request.auth.id != ''",
+        "update": "@request.auth.id != ''",
+        "delete": "@request.auth.id != ''"
+      },
+      "fields": [
+        {
+          "name": "key",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "label",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "value",
+          "type": "editor",
           "required": false,
           "system": false
         },

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useContactModal } from '@/contexts/ContactModalContext'
+import { useSiteSettings } from '@/contexts/SiteSettingsContext'
 import {
   ArrowRight,
   MessageSquare,
@@ -35,7 +36,18 @@ const Index = () => {
   const [loadingFaqs, setLoadingFaqs] = useState(true)
   const [errorFaqs, setErrorFaqs] = useState<string | null>(null)
 
-  // SEO and Meta Configuration
+  const { content, settings, heroBackgroundUrl } = useSiteSettings()
+  const { openModal } = useContactModal()
+
+  const heroTitle =
+    content.hero_title || 'Sua empresa cresce mais rápido do que consegue se organizar?'
+  const heroSubtitle =
+    content.hero_subtitle ||
+    'Supere o caos operacional com processos inteligentes, automação e agentes de IA.'
+  const heroDesc =
+    content.hero_description ||
+    'A Nuvo ajuda sua empresa a superar o caos operacional através de automação, processos inteligentes e sistemas sob medida. Liberte seu tempo para focar no que realmente importa: o crescimento do seu negócio.'
+
   useEffect(() => {
     document.title = 'Consultoria de Tecnologia para PMEs | Nuvo'
     const metaDescription = document.querySelector('meta[name="description"]')
@@ -70,15 +82,13 @@ const Index = () => {
     fetchFaqs()
   }, [])
 
-  const { openModal } = useContactModal()
-
   const painPoints = [
     {
       title: 'WhatsApp uma bagunça?',
       description:
         'Centralize e automatize o atendimento da sua equipe no WhatsApp com Inteligência Artificial.',
       icon: MessageSquare,
-      link: '/solucoes/agente-de-ia',
+      link: '/solucoes/agentes-de-ia',
       borderClass: 'border-l-product-ai hover:shadow-product-ai/20',
       iconClass: 'bg-product-ai-light text-product-ai group-hover:bg-product-ai',
       textClass: 'text-product-ai',
@@ -88,7 +98,7 @@ const Index = () => {
       description:
         'Integre sistemas e automatize tarefas repetitivas para que sua equipe foque no que importa.',
       icon: Settings,
-      link: '/solucoes/automacao-de-processos',
+      link: '/solucoes/automacoes-de-processos',
       borderClass: 'border-l-product-auto hover:shadow-product-auto/20',
       iconClass: 'bg-product-auto-light text-product-auto group-hover:bg-product-auto',
       textClass: 'text-product-auto',
@@ -128,30 +138,55 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-40 overflow-hidden hero-gradient text-white">
-        <div className="absolute inset-0 bg-black/10 -z-10 mix-blend-overlay" />
+      <section className="relative pt-32 pb-40 overflow-hidden bg-black text-white">
+        {heroBackgroundUrl ? (
+          settings?.hero_background_type === 'video' ? (
+            <video
+              src={heroBackgroundUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay z-0"
+            />
+          ) : (
+            <img
+              src={heroBackgroundUrl}
+              alt="Background"
+              className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay z-0"
+            />
+          )
+        ) : (
+          <img
+            src="https://img.usecurling.com/p/1920/1080?q=office,technology&color=black"
+            alt="Background Placeholder"
+            className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay z-0"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-0" />
 
-        {/* Floating Elements Background - Hero - Mobile subtle element */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-[10%] right-[5%] block lg:hidden opacity-20 animate-float-delayed">
             <Zap className="w-12 h-12 text-white" aria-hidden="true" />
           </div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in-up">
-              <h1 className="text-[32px] md:text-[56px] font-heading font-bold tracking-tight leading-tight drop-shadow-sm text-left">
-                Sua empresa cresce mais rápido do que consegue se organizar?
-              </h1>
-              <h3 className="text-[18px] md:text-[24px] font-heading font-semibold text-white/90 drop-shadow-sm text-left">
-                Supere o caos operacional com processos inteligentes, automação e agentes de IA.
-              </h3>
-              <p className="text-[16px] md:text-[18px] text-white/80 max-w-xl mt-4 relative z-10 text-left">
-                A Nuvo ajuda sua empresa a superar o caos operacional através de automação,
-                processos inteligentes e sistemas sob medida. Liberte seu tempo para focar no que
-                realmente importa: o crescimento do seu negócio.
-              </p>
+              <h1
+                className="text-[32px] md:text-[56px] font-heading font-bold tracking-tight leading-tight drop-shadow-sm text-left [&>p]:mb-0"
+                dangerouslySetInnerHTML={{ __html: heroTitle }}
+              />
+              <div
+                className="text-[18px] md:text-[24px] font-heading font-semibold text-white/90 drop-shadow-sm text-left [&>p]:mb-0"
+                dangerouslySetInnerHTML={{ __html: heroSubtitle }}
+              />
+              <div
+                className="text-[16px] md:text-[18px] text-white/80 max-w-xl mt-4 relative z-10 text-left [&>p]:mb-4 [&>p:last-child]:mb-0"
+                dangerouslySetInnerHTML={{ __html: heroDesc }}
+              />
+
               <div className="flex flex-col sm:flex-row gap-4 pt-8 items-start">
                 <Button
                   onClick={openModal}
@@ -175,7 +210,6 @@ const Index = () => {
             </div>
 
             <div className="hidden lg:block relative h-[500px] w-full">
-              {/* Graphic Element area for the right side of the split layout */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/5 rounded-full blur-3xl animate-pulse"></div>
 
               <div className="absolute top-[10%] right-[15%] flex flex-col items-center justify-center w-24 h-24 rounded-2xl bg-white shadow-2xl border border-border/50 animate-float">
@@ -201,7 +235,6 @@ const Index = () => {
 
       {/* Pain Points Section */}
       <section className="py-24 bg-card/50 relative overflow-hidden">
-        {/* Floating Elements Background - Body (Pain Points) */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[10%] left-[5%] hidden xl:block opacity-20 animate-fade-in-up">
             <MessageSquare className="w-16 h-16 animate-float text-product-ai" aria-hidden="true" />
@@ -223,7 +256,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
               Reconhece algum destes problemas?
@@ -232,7 +265,7 @@ const Index = () => {
               Descubra como podemos resolver os principais gargalos que impedem o seu crescimento.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {painPoints.map((point, idx) => (
               <Link
                 key={idx}
@@ -273,7 +306,7 @@ const Index = () => {
 
       {/* Solutions Grid Section */}
       <section className="py-24 bg-background relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-[24px] md:text-[40px] font-heading font-semibold text-foreground mb-4">
               Nossas Soluções
@@ -282,7 +315,7 @@ const Index = () => {
               Tecnologia, processos e inteligência artificial para modernizar a sua operação.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: 'Diagnóstico de Eficiência',
@@ -296,14 +329,14 @@ const Index = () => {
                 desc: 'Atendimento e vendas automáticas via WhatsApp operando 24 horas por dia.',
                 image: 'https://img.usecurling.com/p/400/250?q=robot&color=pink',
                 color: 'ai',
-                link: '/solucoes/agente-de-ia',
+                link: '/solucoes/agentes-de-ia',
               },
               {
                 title: 'Automação de Processos',
                 desc: 'Integrações inteligentes que eliminam tarefas repetitivas e erros humanos.',
                 image: 'https://img.usecurling.com/p/400/250?q=automation&color=purple',
                 color: 'auto',
-                link: '/solucoes/automacao-de-processos',
+                link: '/solucoes/automacoes-de-processos',
               },
               {
                 title: 'CRM e Comercial',
@@ -359,7 +392,6 @@ const Index = () => {
 
       {/* Social Proof Section */}
       <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
-        {/* Floating Elements Background - Social Proof */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
           <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-float" />
           <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-float-delayed" />
@@ -374,7 +406,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 text-center relative z-10">
           <div className="max-w-3xl mx-auto space-y-8 animate-fade-in">
             <h2 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tighter leading-tight">
               Mais de 12.450
@@ -439,7 +471,6 @@ const Index = () => {
 
       {/* Real-time FAQ Section */}
       <section className="py-24 bg-background relative overflow-hidden">
-        {/* Floating Elements Background - FAQ */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[30%] left-[10%] hidden lg:block animate-fade-in-up">
             <div className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary/10 animate-float text-secondary">
@@ -456,7 +487,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12 animate-fade-in-up">
               <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
@@ -508,7 +539,7 @@ const Index = () => {
                     value={faq.id}
                     className="px-6 border-b border-border last:border-0"
                   >
-                    <AccordionTrigger className="text-left font-semibold text-foreground py-6">
+                    <AccordionTrigger className="text-left font-semibold text-foreground py-6 hover:no-underline">
                       {faq.pergunta}
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
