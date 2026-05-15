@@ -17,7 +17,7 @@ import {
   type SiteSettings,
 } from '@/services/site_settings'
 import { extractFieldErrors } from '@/lib/pocketbase/errors'
-import { Loader2, Upload, ImageIcon, Video } from 'lucide-react'
+import { Loader2, Upload, ImageIcon, Video, Palette } from 'lucide-react'
 
 export default function SettingsDashboard() {
   const [settings, setSettings] = useState<SiteSettings | null>(null)
@@ -122,31 +122,38 @@ export default function SettingsDashboard() {
 
   if (isLoading)
     return (
-      <div className="flex justify-center p-8">
+      <div className="flex justify-center items-center h-64">
         <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
       </div>
     )
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Identidade & Mídia</h1>
-        <p className="text-slate-500">
-          Gerencie o logotipo, favicon e as mídias globais do site, como o fundo da seção principal
-          (Hero).
-        </p>
+    <div className="space-y-8 animate-fade-in">
+      <div className="bg-white/60 backdrop-blur-sm p-8 rounded-3xl border border-white/40 shadow-sm">
+        <div className="flex items-center gap-4 mb-2">
+          <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600">
+            <Palette className="w-6 h-6" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Identidade & Mídia</h1>
+            <p className="text-slate-500 mt-1">
+              Gerencie o logotipo, favicon e as mídias globais do site, como o fundo da seção
+              principal.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="shadow-sm">
-          <CardHeader>
-            <CardTitle>Logotipo e Favicon</CardTitle>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <Card className="bg-white/80 backdrop-blur-md border-slate-200/60 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-2xl overflow-hidden">
+          <CardHeader className="pb-4 bg-slate-50/50 border-b border-slate-100">
+            <CardTitle className="text-lg text-slate-800">Logotipo e Favicon</CardTitle>
             <CardDescription>Personalize a marca do seu site.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="pt-6 space-y-6">
             <div className="space-y-4">
               <Label>Logotipo do Site</Label>
-              <div className="border-2 border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-slate-50 transition-colors bg-white">
+              <div className="border-2 border-dashed border-slate-200/80 rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-indigo-50/30 transition-colors bg-white/50 group">
                 {logoPreview ? (
                   <div className="mb-4 relative group">
                     <img src={logoPreview} alt="Logo" className="h-16 object-contain" />
@@ -156,9 +163,13 @@ export default function SettingsDashboard() {
                     <ImageIcon className="w-8 h-8 text-slate-400" />
                   </div>
                 )}
-                <div className="space-y-1">
-                  <Button variant="outline" size="sm" onClick={() => logoInputRef.current?.click()}>
-                    <Upload className="w-4 h-4 mr-2" />
+                <div className="space-y-2 mt-2">
+                  <Button
+                    variant="outline"
+                    className="rounded-xl bg-white hover:bg-slate-50"
+                    onClick={() => logoInputRef.current?.click()}
+                  >
+                    <Upload className="w-4 h-4 mr-2 text-slate-500 group-hover:text-indigo-600 transition-colors" />
                     {logoPreview ? 'Trocar Logo' : 'Enviar Logo'}
                   </Button>
                   <p className="text-xs text-slate-500 mt-2">PNG, JPG, SVG até 5MB</p>
@@ -176,7 +187,7 @@ export default function SettingsDashboard() {
 
             <div className="space-y-4">
               <Label>Favicon</Label>
-              <div className="border-2 border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-slate-50 transition-colors bg-white">
+              <div className="border-2 border-dashed border-slate-200/80 rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-indigo-50/30 transition-colors bg-white/50 group">
                 {faviconPreview ? (
                   <div className="mb-4 relative group">
                     <img src={faviconPreview} alt="Favicon" className="w-12 h-12 object-contain" />
@@ -186,13 +197,13 @@ export default function SettingsDashboard() {
                     <ImageIcon className="w-6 h-6 text-slate-400" />
                   </div>
                 )}
-                <div className="space-y-1">
+                <div className="space-y-2 mt-2">
                   <Button
                     variant="outline"
-                    size="sm"
+                    className="rounded-xl bg-white hover:bg-slate-50"
                     onClick={() => faviconInputRef.current?.click()}
                   >
-                    <Upload className="w-4 h-4 mr-2" />
+                    <Upload className="w-4 h-4 mr-2 text-slate-500 group-hover:text-indigo-600 transition-colors" />
                     {faviconPreview ? 'Trocar Favicon' : 'Enviar Favicon'}
                   </Button>
                   <p className="text-xs text-slate-500 mt-2">ICO, PNG, SVG até 5MB</p>
@@ -212,21 +223,21 @@ export default function SettingsDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-sm">
-          <CardHeader>
-            <CardTitle>Fundo do Hero (Hero Background)</CardTitle>
+        <Card className="bg-white/80 backdrop-blur-md border-slate-200/60 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-2xl overflow-hidden">
+          <CardHeader className="pb-4 bg-slate-50/50 border-b border-slate-100">
+            <CardTitle className="text-lg text-slate-800">Fundo do Hero</CardTitle>
             <CardDescription>
               Mídia exibida no fundo da primeira seção da página inicial.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="pt-6 space-y-6">
             <div className="space-y-4">
               <Label>Tipo de Mídia</Label>
               <Select
                 value={heroBgType}
                 onValueChange={(val: 'image' | 'video') => setHeroBgType(val)}
               >
-                <SelectTrigger className="w-full bg-white">
+                <SelectTrigger className="w-full bg-white/50 border-slate-200/80 rounded-xl h-11">
                   <SelectValue placeholder="Selecione o tipo de mídia" />
                 </SelectTrigger>
                 <SelectContent>
@@ -238,7 +249,7 @@ export default function SettingsDashboard() {
 
             <div className="space-y-4">
               <Label>Arquivo de Mídia</Label>
-              <div className="border-2 border-dashed border-slate-200 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-slate-50 transition-colors bg-white">
+              <div className="border-2 border-dashed border-slate-200/80 rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-indigo-50/30 transition-colors bg-white/50 group">
                 {heroBgPreview ? (
                   <div className="mb-4 relative w-full aspect-video rounded-md overflow-hidden bg-black/5 flex items-center justify-center">
                     {heroBgType === 'video' ? (
@@ -265,13 +276,13 @@ export default function SettingsDashboard() {
                     )}
                   </div>
                 )}
-                <div className="space-y-1">
+                <div className="space-y-2 mt-4">
                   <Button
                     variant="outline"
-                    size="sm"
+                    className="rounded-xl bg-white hover:bg-slate-50"
                     onClick={() => heroBgInputRef.current?.click()}
                   >
-                    <Upload className="w-4 h-4 mr-2" />
+                    <Upload className="w-4 h-4 mr-2 text-slate-500 group-hover:text-indigo-600 transition-colors" />
                     {heroBgPreview ? 'Trocar Mídia' : 'Enviar Mídia'}
                   </Button>
                   <p className="text-xs text-slate-500 mt-2">
@@ -300,11 +311,12 @@ export default function SettingsDashboard() {
         </Card>
       </div>
 
-      <div className="flex justify-end pt-4">
+      <div className="flex justify-end pt-2">
         <Button
           onClick={handleSave}
           disabled={isSaving}
-          className="bg-indigo-600 hover:bg-indigo-700 shadow-sm"
+          size="lg"
+          className="bg-indigo-600 hover:bg-indigo-700 shadow-sm rounded-xl px-8"
         >
           {isSaving && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
           Salvar Configurações

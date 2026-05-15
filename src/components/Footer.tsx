@@ -33,7 +33,7 @@ export function Footer() {
 
   return (
     <footer className="bg-[#1C1C28] text-white/90 pt-16 pb-8">
-      <div className="w-full max-w-6xl mx-auto px-5 md:px-6">
+      <div className="w-full max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Marca */}
           <div className="space-y-6">

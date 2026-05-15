@@ -138,9 +138,9 @@ export function Header() {
   const isConteudosActive = conteudos.some((c) => c.href === location.pathname)
 
   return (
-    <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 md:px-8 pointer-events-none">
+    <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-6 md:px-12 pointer-events-none">
       <header className="w-full max-w-6xl pointer-events-auto backdrop-blur-xl bg-white/70 border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-full transition-all duration-300">
-        <div className="px-5 md:px-6 h-16 flex items-center justify-between">
+        <div className="px-6 md:px-8 h-16 flex items-center justify-between">
           <Link
             to="/"
             className="flex items-center gap-2 transition-transform duration-300 hover:scale-105"

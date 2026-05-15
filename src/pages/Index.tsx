@@ -40,13 +40,23 @@ const Index = () => {
   const { openModal } = useContactModal()
 
   const heroTitle =
-    content.hero_title || 'Sua empresa cresce mais rápido do que consegue se organizar?'
+    content.home_hero_title || 'Sua empresa cresce mais rápido do que consegue se organizar?'
   const heroSubtitle =
-    content.hero_subtitle ||
+    content.home_hero_subtitle ||
     'Supere o caos operacional com processos inteligentes, automação e agentes de IA.'
   const heroDesc =
-    content.hero_description ||
+    content.home_hero_description ||
     'A Nuvo ajuda sua empresa a superar o caos operacional através de automação, processos inteligentes e sistemas sob medida. Liberte seu tempo para focar no que realmente importa: o crescimento do seu negócio.'
+
+  const painTitle = content.home_pain_title || 'Reconhece algum destes problemas?'
+  const painSubtitle =
+    content.home_pain_subtitle ||
+    'Descubra como podemos resolver os principais gargalos que impedem o seu crescimento.'
+
+  const solutionsTitle = content.home_solutions_title || 'Nossas Soluções'
+  const solutionsSubtitle =
+    content.home_solutions_subtitle ||
+    'Tecnologia, processos e inteligência artificial para modernizar a sua operação.'
 
   useEffect(() => {
     document.title = 'Consultoria de Tecnologia para PMEs | Nuvo'
@@ -171,7 +181,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in-up">
               <h1
@@ -256,14 +266,16 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
-              Reconhece algum destes problemas?
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Descubra como podemos resolver os principais gargalos que impedem o seu crescimento.
-            </p>
+            <h2
+              className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4"
+              dangerouslySetInnerHTML={{ __html: painTitle }}
+            ></h2>
+            <p
+              className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
+              dangerouslySetInnerHTML={{ __html: painSubtitle }}
+            ></p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {painPoints.map((point, idx) => (
@@ -306,14 +318,16 @@ const Index = () => {
 
       {/* Solutions Grid Section */}
       <section className="py-24 bg-background relative overflow-hidden">
-        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-[24px] md:text-[40px] font-heading font-semibold text-foreground mb-4">
-              Nossas Soluções
-            </h2>
-            <p className="text-[16px] md:text-[18px] text-muted-foreground max-w-2xl mx-auto">
-              Tecnologia, processos e inteligência artificial para modernizar a sua operação.
-            </p>
+            <h2
+              className="text-[24px] md:text-[40px] font-heading font-semibold text-foreground mb-4"
+              dangerouslySetInnerHTML={{ __html: solutionsTitle }}
+            ></h2>
+            <p
+              className="text-[16px] md:text-[18px] text-muted-foreground max-w-2xl mx-auto"
+              dangerouslySetInnerHTML={{ __html: solutionsSubtitle }}
+            ></p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -406,7 +420,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 text-center relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-6 md:px-12 text-center relative z-10">
           <div className="max-w-3xl mx-auto space-y-8 animate-fade-in">
             <h2 className="text-[32px] md:text-[48px] font-heading font-bold tracking-tighter leading-tight">
               Mais de 12.450
@@ -487,7 +501,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-6xl mx-auto px-5 md:px-6 relative z-10">
+        <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12 animate-fade-in-up">
               <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
