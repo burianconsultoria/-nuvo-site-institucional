@@ -9,9 +9,9 @@ import { SpinSellingSection } from '@/components/SpinSellingSection'
 import { PageFaqSection } from '@/components/PageFaqSection'
 import { AIFeaturesSection } from '@/components/AIFeaturesSection'
 import { AIMarketInsightsSection } from '@/components/AIMarketInsightsSection'
+import { ChaosToOrderPattern } from '@/components/ui/patterns'
 
 const MOCK_DATA = { loaded: true }
-const THEME_COLOR = '#7E61FF'
 
 const FAQS = [
   {
@@ -38,31 +38,6 @@ const FAQS = [
     answer:
       'Não. O agente é treinado com o tom de voz da sua marca, podendo ser formal, descontraído ou técnico, parecendo um humano real.',
   },
-  {
-    question: 'A transferência para humano é fácil?',
-    answer:
-      'Sim, o cliente ou o próprio agente pode solicitar/iniciar a transferência a qualquer momento, e a equipe recebe a notificação no painel.',
-  },
-  {
-    question: 'Qual a precisão das respostas?',
-    answer:
-      'Quando bem treinado com seus materiais (PDFs, site, FAQs), a precisão costuma variar entre 85% e 95%.',
-  },
-  {
-    question: 'Funciona em outros canais além do WhatsApp?',
-    answer:
-      'Sim, a mesma inteligência pode ser integrada ao chat do seu site, Instagram ou Facebook Messenger.',
-  },
-  {
-    question: 'Preciso saber programar para usar?',
-    answer:
-      'Não. Nós cuidamos de toda a implementação técnica. Você só precisa focar no seu negócio.',
-  },
-  {
-    question: 'Quais os custos envolvidos?',
-    answer:
-      'Existe o setup inicial da solução e custos recorrentes pelo uso da IA e da API do WhatsApp. O ROI geralmente paga a ferramenta no primeiro mês.',
-  },
 ]
 
 export default function AIAgent() {
@@ -77,34 +52,23 @@ export default function AIAgent() {
 
   return (
     <PageState loading={loading} error={error} empty={empty} onRetry={retry}>
-      <div className="bg-white min-h-screen">
+      <div className="bg-background text-foreground min-h-screen">
         {/* Hero */}
-        <div
-          className="bg-[#1C1C28] text-white py-24 px-4 text-center relative border-b-4"
-          style={{ borderColor: THEME_COLOR }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+        <div className="py-24 px-4 text-center relative border-b border-border/20 pt-40">
+          <ChaosToOrderPattern />
           <div className="container mx-auto max-w-5xl relative z-10">
-            <div
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-8"
-              style={{ backgroundColor: `${THEME_COLOR}33`, color: THEME_COLOR }}
-            >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-8 bg-support/10 text-support">
               <MessageSquare className="w-4 h-4" /> Inteligência Artificial
             </div>
-            <h1 className="text-[32px] md:text-[48px] lg:text-[56px] font-heading font-extrabold tracking-tight mb-6 leading-tight">
+            <h1 className="text-[32px] md:text-[48px] lg:text-[56px] font-heading font-extrabold tracking-tight mb-6 leading-tight text-foreground">
               Agente de IA para Atendimento — Automatize Seu WhatsApp e Nunca Mais Perca um Lead
             </h1>
-            <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed">
               Tenha um assistente virtual inteligente capaz de conversar de forma natural,
               qualificar potenciais clientes, agendar reuniões e responder dúvidas 24 horas por dia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                style={{ backgroundColor: THEME_COLOR, color: '#fff' }}
-                className="h-[48px] rounded-lg px-8 text-lg font-bold hover:opacity-90 transition-opacity"
-              >
+              <Button asChild size="lg" className="h-[48px] rounded-lg px-8 text-lg font-bold">
                 <Link to="/diagnostico-gratuito">
                   Quero um diagnóstico gratuito <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
@@ -112,7 +76,7 @@ export default function AIAgent() {
               <Button
                 variant="outline"
                 size="lg"
-                className="h-[48px] rounded-lg px-8 text-lg text-white border-white/20 hover:bg-white/10 hover:text-white transition-colors"
+                className="h-[48px] rounded-lg px-8 text-lg"
                 onClick={openModal}
               >
                 Simular atendimento agora
@@ -122,21 +86,21 @@ export default function AIAgent() {
         </div>
 
         {/* GEO Block */}
-        <div className="py-20 bg-slate-50">
+        <div className="py-24 bg-cardLight text-cardLight-foreground">
           <div className="container mx-auto max-w-4xl px-4 text-center">
             <div className="flex justify-center mb-6">
-              <div className="p-4 rounded-2xl bg-white shadow-sm border">
-                <BrainCircuit className="w-12 h-12" style={{ color: THEME_COLOR }} />
+              <div className="p-4 rounded-2xl bg-white shadow-sm border border-foreground/10 text-support">
+                <BrainCircuit className="w-12 h-12" />
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
               O que é um Agente de IA para Atendimento?
             </h2>
-            <h3 className="text-xl text-slate-600 mb-8 font-medium">
+            <h3 className="text-xl opacity-80 mb-8 font-medium">
               Inteligência artificial que entende seu negócio e atende seus clientes como sua equipe
               atenderia
             </h3>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg opacity-70 leading-relaxed max-w-3xl mx-auto">
               Um Agente de IA não é um chatbot tradicional de menus e opções limitadas. É uma
               inteligência artificial avançada (como o GPT-4) treinada com os dados específicos da
               sua empresa — seus PDFs, site, FAQs e histórico de vendas. Ele entende a intenção do
@@ -149,34 +113,30 @@ export default function AIAgent() {
 
         {/* SPIN Selling Section */}
         <SpinSellingSection
-          color={THEME_COLOR}
           situation="Sua equipe passa o dia inteiro respondendo as mesmas dúvidas básicas no WhatsApp (60% do tempo). Leads que chegam fora do horário comercial esfriam por falta de resposta imediata."
           problem="O cliente atual espera uma resposta em até 5 minutos. Modelos manuais de atendimento causam a 'morte do lead', fazendo com que ele canse de esperar e vá buscar a concorrência."
           implication="O custo financeiro é alto: perder 200 leads/mês com ticket de R$ 500 pode significar até R$ 48.000/ano de prejuízo. Sem contar o desgaste contínuo da equipe e danos à reputação da marca."
           needPayoff="Com um Agente de IA, a resposta é instantânea e a qualificação é automática, 24/7. O follow-up ocorre sem intervenção manual, permitindo que sua equipe foque apenas em fechar as vendas."
         />
 
-        <AIFeaturesSection color={THEME_COLOR} />
-        <AIMarketInsightsSection color={THEME_COLOR} />
-        <PageFaqSection color={THEME_COLOR} faqs={FAQS} />
+        <AIFeaturesSection />
+        {/* We assume AIMarketInsightsSection accepts standard theme or we just render it. Assuming it uses global CSS vars */}
+        <AIMarketInsightsSection color="hsl(var(--primary))" />
+
+        <PageFaqSection faqs={FAQS} />
 
         {/* Bottom CTA */}
-        <div className="py-24 bg-slate-50 border-t border-slate-200">
+        <div className="py-24 bg-card border-t border-border/20">
           <div className="container mx-auto max-w-4xl px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-foreground">
               Pronto para transformar seu atendimento?
             </h2>
-            <p className="text-xl text-slate-600 mb-10">
+            <p className="text-xl text-foreground/80 mb-10">
               Faça um diagnóstico gratuito e descubra como a IA pode escalar suas vendas no
               WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                style={{ backgroundColor: THEME_COLOR, color: '#fff' }}
-                className="h-[48px] rounded-lg px-8 text-lg font-bold hover:opacity-90 transition-opacity"
-              >
+              <Button asChild size="lg" className="h-[48px] rounded-lg px-8 text-lg font-bold">
                 <Link to="/diagnostico-gratuito">
                   Quero um diagnóstico gratuito <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
@@ -184,7 +144,7 @@ export default function AIAgent() {
               <Button
                 variant="outline"
                 size="lg"
-                className="h-[48px] rounded-lg px-8 text-lg hover:bg-slate-100 transition-colors"
+                className="h-[48px] rounded-lg px-8 text-lg"
                 onClick={openModal}
               >
                 Simular atendimento agora

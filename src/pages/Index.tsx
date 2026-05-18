@@ -28,7 +28,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Skeleton } from '@/components/ui/skeleton'
-
+import { ChaosToOrderPattern } from '@/components/ui/patterns'
 import { getFaqs } from '@/services/api'
 
 const Index = () => {
@@ -99,9 +99,6 @@ const Index = () => {
         'Centralize e automatize o atendimento da sua equipe no WhatsApp com Inteligência Artificial.',
       icon: MessageSquare,
       link: '/solucoes/agentes-de-ia',
-      borderClass: 'border-l-product-ai hover:shadow-product-ai/20',
-      iconClass: 'bg-product-ai-light text-product-ai group-hover:bg-product-ai',
-      textClass: 'text-product-ai',
     },
     {
       title: 'Tarefa manual demais?',
@@ -109,9 +106,6 @@ const Index = () => {
         'Integre sistemas e automatize tarefas repetitivas para que sua equipe foque no que importa.',
       icon: Settings,
       link: '/solucoes/automacoes-de-processos',
-      borderClass: 'border-l-product-auto hover:shadow-product-auto/20',
-      iconClass: 'bg-product-auto-light text-product-auto group-hover:bg-product-auto',
-      textClass: 'text-product-auto',
     },
     {
       title: 'Dependem de você para tudo?',
@@ -119,9 +113,6 @@ const Index = () => {
         'Mapeie e otimize seus processos para criar uma operação independente e escalável.',
       icon: Activity,
       link: '/solucoes/diagnostico-de-eficiencia',
-      borderClass: 'border-l-product-diag hover:shadow-product-diag/20',
-      iconClass: 'bg-product-diag-light text-product-diag group-hover:bg-product-diag',
-      textClass: 'text-product-diag',
     },
     {
       title: 'Cliente some sem follow-up?',
@@ -129,9 +120,6 @@ const Index = () => {
         'Estruture seu CRM e organize seu processo comercial para não perder mais vendas.',
       icon: Users,
       link: '/solucoes/crm-e-organizacao-comercial',
-      borderClass: 'border-l-product-crm hover:shadow-product-crm/20',
-      iconClass: 'bg-product-crm-light text-product-crm group-hover:bg-product-crm',
-      textClass: 'text-product-crm',
     },
     {
       title: 'Nada pronto resolve?',
@@ -139,16 +127,14 @@ const Index = () => {
         'Desenvolvimento de sistemas exclusivos e sob medida para o seu modelo de negócio.',
       icon: Code,
       link: '/solucoes/sistemas-sob-medida',
-      borderClass: 'border-l-product-sys hover:shadow-product-sys/20',
-      iconClass: 'bg-product-sys-light text-product-sys group-hover:bg-product-sys',
-      textClass: 'text-product-sys',
     },
   ]
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-48 md:pt-56 pb-32 md:pb-40 overflow-hidden bg-slate-950 text-white min-h-[85vh] flex items-center">
+      <section className="relative pt-48 md:pt-56 pb-32 md:pb-40 overflow-hidden bg-background text-foreground min-h-[85vh] flex items-center border-b border-border/10">
+        <ChaosToOrderPattern />
         {heroBackgroundUrl ? (
           settings?.hero_background_type === 'video' ? (
             <video
@@ -157,51 +143,38 @@ const Index = () => {
               loop
               muted
               playsInline
-              className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
+              className="absolute inset-0 w-full h-full object-cover opacity-10 z-0 mix-blend-screen"
             />
           ) : (
             <img
               src={heroBackgroundUrl}
               alt="Background"
-              className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
+              className="absolute inset-0 w-full h-full object-cover opacity-10 z-0 mix-blend-screen"
             />
           )
-        ) : (
-          <img
-            src="https://img.usecurling.com/p/1920/1080?q=office,technology&color=black"
-            alt="Background Placeholder"
-            className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent z-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent z-0" />
-
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-[20%] right-[5%] block lg:hidden opacity-20 animate-float-delayed">
-            <Zap className="w-12 h-12 text-primary" aria-hidden="true" />
-          </div>
-        </div>
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent z-0" />
 
         <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in-up">
-              <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-primary-foreground backdrop-blur-sm">
-                <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+              <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm">
+                <span className="flex h-2 w-2 rounded-full bg-expression mr-2 animate-pulse"></span>
                 Consultoria de Tecnologia para PMEs
               </div>
 
               <h1
-                className="text-[36px] md:text-[60px] font-heading font-bold tracking-tight leading-[1.1] drop-shadow-md text-left text-white [&>p]:mb-0"
+                className="text-[36px] md:text-[60px] font-heading font-bold tracking-tight leading-[1.1] drop-shadow-md text-left text-foreground [&>p]:mb-0"
                 dangerouslySetInnerHTML={{ __html: heroTitle }}
               />
 
               <div
-                className="text-[20px] md:text-[24px] font-heading font-medium text-white/90 drop-shadow-sm text-left [&>p]:mb-0"
+                className="text-[20px] md:text-[24px] font-heading font-medium text-foreground/90 drop-shadow-sm text-left [&>p]:mb-0"
                 dangerouslySetInnerHTML={{ __html: heroSubtitle }}
               />
 
               <div
-                className="text-[16px] md:text-[18px] text-white/80 max-w-xl mt-4 relative z-10 text-left leading-relaxed [&>p]:mb-4 [&>p:last-child]:mb-0"
+                className="text-[16px] md:text-[18px] text-foreground/70 max-w-xl mt-4 relative z-10 text-left leading-relaxed [&>p]:mb-4 [&>p:last-child]:mb-0"
                 dangerouslySetInnerHTML={{ __html: heroDesc }}
               />
 
@@ -209,7 +182,7 @@ const Index = () => {
                 <Button
                   onClick={openModal}
                   size="lg"
-                  className="text-lg w-full sm:w-auto shadow-xl shadow-primary/20 animate-cta-bounce min-h-[52px] px-8 py-3 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-transparent cursor-pointer transition-all"
+                  className="text-lg w-full sm:w-auto shadow-xl shadow-primary/20 animate-cta-bounce min-h-[52px] px-8 py-3 rounded-xl cursor-pointer"
                   aria-label="Fazer diagnóstico gratuito"
                 >
                   Diagnóstico gratuito
@@ -219,7 +192,7 @@ const Index = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="text-lg w-full sm:w-auto bg-secondary/10 backdrop-blur-sm min-h-[52px] px-8 py-3 rounded-xl border-2 border-secondary/50 text-white hover:bg-secondary hover:border-secondary hover:text-secondary-foreground transition-all"
+                  className="text-lg w-full sm:w-auto min-h-[52px] px-8 py-3 rounded-xl transition-all"
                   aria-label="Entender como funciona"
                 >
                   <Link to="/como-funciona">Como funciona</Link>
@@ -228,24 +201,23 @@ const Index = () => {
             </div>
 
             <div className="hidden lg:block relative h-[500px] w-full">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-secondary/10 rounded-full blur-2xl"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/20 rounded-full blur-[100px] animate-pulse"></div>
 
-              <div className="absolute top-[10%] right-[15%] flex flex-col items-center justify-center w-24 h-24 rounded-2xl bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float">
+              <div className="absolute top-[10%] right-[15%] flex flex-col items-center justify-center w-24 h-24 rounded-2xl bg-card shadow-2xl border border-border/20 animate-float">
                 <Bot className="w-12 h-12 text-primary" aria-hidden="true" />
               </div>
 
-              <div className="absolute top-[40%] left-[10%] flex flex-col items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float-delayed">
-                <Settings className="w-10 h-10 text-secondary" aria-hidden="true" />
+              <div className="absolute top-[40%] left-[10%] flex flex-col items-center justify-center w-20 h-20 rounded-2xl bg-card shadow-2xl border border-border/20 animate-float-delayed">
+                <Settings className="w-10 h-10 text-support" aria-hidden="true" />
               </div>
 
-              <div className="absolute bottom-[20%] right-[25%] flex flex-col items-center justify-center w-28 h-28 rounded-2xl bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float-fast">
-                <BarChart3 className="w-14 h-14 text-tertiary" aria-hidden="true" />
+              <div className="absolute bottom-[20%] right-[25%] flex flex-col items-center justify-center w-28 h-28 rounded-2xl bg-card shadow-2xl border border-border/20 animate-float-fast">
+                <BarChart3 className="w-14 h-14 text-expression" aria-hidden="true" />
               </div>
 
-              <div className="absolute top-[60%] right-[5%] flex items-center gap-3 px-6 py-4 rounded-full bg-white shadow-2xl shadow-black/20 border border-white/10 animate-float">
-                <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-base font-semibold text-slate-900">Eficiência +140%</span>
+              <div className="absolute top-[60%] right-[5%] flex items-center gap-3 px-6 py-4 rounded-full bg-card shadow-2xl border border-border/20 animate-float">
+                <div className="w-3 h-3 rounded-full bg-success animate-pulse" />
+                <span className="text-base font-semibold text-foreground">Eficiência +140%</span>
               </div>
             </div>
           </div>
@@ -253,25 +225,16 @@ const Index = () => {
       </section>
 
       {/* Pain Points Section */}
-      <section className="py-24 bg-card/50 relative overflow-hidden">
+      <section className="py-24 bg-card relative overflow-hidden border-b border-border/10">
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="absolute top-[10%] left-[5%] hidden xl:block opacity-20 animate-fade-in-up">
-            <MessageSquare className="w-16 h-16 animate-float text-product-ai" aria-hidden="true" />
+          <div className="absolute top-[10%] left-[5%] hidden xl:block opacity-10 animate-fade-in-up">
+            <MessageSquare className="w-16 h-16 animate-float text-primary" aria-hidden="true" />
           </div>
           <div
-            className="absolute top-[40%] right-[5%] hidden xl:block opacity-20 animate-fade-in-up"
+            className="absolute top-[40%] right-[5%] hidden xl:block opacity-10 animate-fade-in-up"
             style={{ animationDelay: '200ms' }}
           >
-            <Settings
-              className="w-20 h-20 animate-float-delayed text-product-auto"
-              aria-hidden="true"
-            />
-          </div>
-          <div
-            className="absolute bottom-[20%] left-[8%] hidden xl:block opacity-20 animate-fade-in-up"
-            style={{ animationDelay: '400ms' }}
-          >
-            <Users className="w-16 h-16 animate-float-fast text-product-crm" aria-hidden="true" />
+            <Settings className="w-20 h-20 animate-float-delayed text-support" aria-hidden="true" />
           </div>
         </div>
 
@@ -282,7 +245,7 @@ const Index = () => {
               dangerouslySetInnerHTML={{ __html: painTitle }}
             ></h2>
             <p
-              className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
+              className="text-base md:text-lg text-foreground/70 max-w-2xl mx-auto"
               dangerouslySetInnerHTML={{ __html: painSubtitle }}
             ></p>
           </div>
@@ -295,12 +258,10 @@ const Index = () => {
                 style={{ animationDelay: `${idx * 100}ms` }}
                 aria-label={`Ver solução para ${point.title}`}
               >
-                <Card className={`product-card w-full border-l-4 ${point.borderClass} rounded-xl`}>
+                <Card className="product-card w-full border-l-4 border-l-primary rounded-xl bg-background border-border/10">
                   <CardHeader className="pb-2">
                     <div className="flex items-center gap-3 mb-4">
-                      <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:text-white transition-all duration-300 ${point.iconClass}`}
-                      >
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary/10 text-primary group-hover:scale-110 transition-all duration-300">
                         <point.icon className="w-6 h-6" aria-hidden="true" />
                       </div>
                     </div>
@@ -309,12 +270,10 @@ const Index = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                    <p className="text-sm text-foreground/60 mb-4 line-clamp-3">
                       {point.description}
                     </p>
-                    <span
-                      className={`text-sm font-medium flex items-center group-hover:translate-x-2 transition-transform duration-300 ${point.textClass}`}
-                    >
+                    <span className="text-sm font-medium flex items-center text-primary group-hover:translate-x-2 transition-transform duration-300">
                       Ver solução <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
                     </span>
                   </CardContent>
@@ -326,15 +285,15 @@ const Index = () => {
       </section>
 
       {/* Solutions Grid Section */}
-      <section className="py-24 bg-background relative overflow-hidden">
+      <section className="py-24 bg-cardLight text-cardLight-foreground relative overflow-hidden">
         <div className="w-full max-w-6xl mx-auto px-6 md:px-12 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2
-              className="text-[24px] md:text-[40px] font-heading font-semibold text-foreground mb-4"
+              className="text-[24px] md:text-[40px] font-heading font-semibold mb-4"
               dangerouslySetInnerHTML={{ __html: solutionsTitle }}
             ></h2>
             <p
-              className="text-[16px] md:text-[18px] text-muted-foreground max-w-2xl mx-auto"
+              className="text-[16px] md:text-[18px] opacity-80 max-w-2xl mx-auto"
               dangerouslySetInnerHTML={{ __html: solutionsSubtitle }}
             ></p>
           </div>
@@ -343,36 +302,31 @@ const Index = () => {
               {
                 title: 'Diagnóstico de Eficiência',
                 desc: 'Avalie a maturidade digital do seu negócio e encontre os principais gargalos.',
-                image: 'https://img.usecurling.com/p/400/250?q=dashboard&color=blue',
-                color: 'diag',
+                image: 'https://img.usecurling.com/p/400/250?q=dashboard,office&color=purple',
                 link: '/solucoes/diagnostico-de-eficiencia',
               },
               {
                 title: 'Agente de IA',
                 desc: 'Atendimento e vendas automáticas via WhatsApp operando 24 horas por dia.',
-                image: 'https://img.usecurling.com/p/400/250?q=robot&color=pink',
-                color: 'ai',
+                image: 'https://img.usecurling.com/p/400/250?q=technology,office&color=purple',
                 link: '/solucoes/agentes-de-ia',
               },
               {
                 title: 'Automação de Processos',
                 desc: 'Integrações inteligentes que eliminam tarefas repetitivas e erros humanos.',
-                image: 'https://img.usecurling.com/p/400/250?q=automation&color=purple',
-                color: 'auto',
+                image: 'https://img.usecurling.com/p/400/250?q=automation,people&color=purple',
                 link: '/solucoes/automacoes-de-processos',
               },
               {
                 title: 'CRM e Comercial',
                 desc: 'Estruturação do processo de vendas para maior conversão e previsibilidade.',
-                image: 'https://img.usecurling.com/p/400/250?q=sales&color=cyan',
-                color: 'crm',
+                image: 'https://img.usecurling.com/p/400/250?q=sales,meeting&color=purple',
                 link: '/solucoes/crm-e-organizacao-comercial',
               },
               {
                 title: 'Sistemas Sob Medida',
                 desc: 'Desenvolvimento de plataformas e aplicativos customizados para a sua regra de negócio.',
-                image: 'https://img.usecurling.com/p/400/250?q=code&color=yellow',
-                color: 'sys',
+                image: 'https://img.usecurling.com/p/400/250?q=code,team&color=purple',
                 link: '/solucoes/sistemas-sob-medida',
               },
             ].map((sol, i) => (
@@ -382,9 +336,7 @@ const Index = () => {
                 className="group block animate-slide-up"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <Card
-                  className={`overflow-hidden border-b-4 border-product-${sol.color} h-full hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1`}
-                >
+                <Card className="overflow-hidden bg-white text-cardLight-foreground border-border/10 h-full hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
                   <div className="h-48 w-full overflow-hidden">
                     <img
                       src={sol.image}
@@ -393,15 +345,13 @@ const Index = () => {
                     />
                   </div>
                   <CardHeader>
-                    <CardTitle
-                      className={`text-xl font-heading font-semibold text-foreground group-hover:text-product-${sol.color} transition-colors`}
-                    >
+                    <CardTitle className="text-xl font-heading font-semibold group-hover:text-primary transition-colors">
                       {sol.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{sol.desc}</p>
-                    <div className={`mt-6 font-medium flex items-center text-product-${sol.color}`}>
+                    <p className="opacity-70">{sol.desc}</p>
+                    <div className="mt-6 font-medium flex items-center text-primary">
                       Conheça a solução{' '}
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -496,7 +446,7 @@ const Index = () => {
       <section className="py-24 bg-background relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[30%] left-[10%] hidden lg:block animate-fade-in-up">
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary/10 animate-float text-secondary">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-support/10 animate-float text-support">
               <HelpCircle className="w-6 h-6" aria-hidden="true" />
             </div>
           </div>
@@ -516,17 +466,16 @@ const Index = () => {
               <h2 className="text-[24px] md:text-[36px] font-heading font-semibold text-foreground mb-4">
                 Perguntas Frequentes
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground">
+              <p className="text-base md:text-lg text-foreground/70">
                 Tire suas dúvidas sobre como a Nuvo pode ajudar sua empresa.
               </p>
             </div>
 
             {loadingFaqs ? (
               <div className="space-y-4">
-                <Skeleton className="h-16 w-full rounded-lg" />
-                <Skeleton className="h-16 w-full rounded-lg" />
-                <Skeleton className="h-16 w-full rounded-lg" />
-                <Skeleton className="h-16 w-full rounded-lg" />
+                <Skeleton className="h-16 w-full rounded-lg bg-card" />
+                <Skeleton className="h-16 w-full rounded-lg bg-card" />
+                <Skeleton className="h-16 w-full rounded-lg bg-card" />
               </div>
             ) : errorFaqs ? (
               <div className="text-center py-12 bg-card rounded-xl border border-destructive/20 p-8 shadow-sm animate-fade-in">
@@ -535,18 +484,18 @@ const Index = () => {
                   aria-hidden="true"
                 />
                 <p className="text-foreground font-medium mb-6">{errorFaqs}</p>
-                <Button onClick={fetchFaqs} variant="outline" className="text-foreground">
+                <Button onClick={fetchFaqs} variant="outline">
                   <RefreshCcw className="w-4 h-4 mr-2" aria-hidden="true" />
                   Tentar novamente
                 </Button>
               </div>
             ) : faqs.length === 0 ? (
-              <div className="text-center py-12 bg-card rounded-xl border border-border p-8 shadow-sm animate-fade-in">
+              <div className="text-center py-12 bg-card rounded-xl border border-border/20 p-8 shadow-sm animate-fade-in">
                 <HelpCircle
-                  className="w-12 h-12 text-muted-foreground mx-auto mb-4"
+                  className="w-12 h-12 text-foreground/50 mx-auto mb-4"
                   aria-hidden="true"
                 />
-                <p className="text-muted-foreground font-medium">
+                <p className="text-foreground/70 font-medium">
                   Nenhuma pergunta disponível no momento.
                 </p>
               </div>
@@ -554,18 +503,18 @@ const Index = () => {
               <Accordion
                 type="single"
                 collapsible
-                className="w-full bg-card rounded-xl shadow-sm border border-border animate-fade-in"
+                className="w-full bg-card rounded-xl shadow-sm border border-border/20 animate-fade-in"
               >
                 {faqs.map((faq) => (
                   <AccordionItem
                     key={faq.id}
                     value={faq.id}
-                    className="px-6 border-b border-border last:border-0"
+                    className="px-6 border-b border-border/20 last:border-0 data-[state=open]:bg-primary/5 transition-colors"
                   >
                     <AccordionTrigger className="text-left font-semibold text-foreground py-6 hover:no-underline">
                       {faq.pergunta}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
+                    <AccordionContent className="text-foreground/70 text-base leading-relaxed pb-6">
                       {faq.resposta}
                     </AccordionContent>
                   </AccordionItem>

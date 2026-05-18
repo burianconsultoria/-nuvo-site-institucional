@@ -103,23 +103,25 @@ const ListItem = React.forwardRef<
           to={to ?? '#'}
           ref={ref}
           className={cn(
-            'block select-none space-y-1 rounded-2xl p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-slate-100/80 hover:shadow-sm focus:bg-slate-100/80 focus:shadow-sm',
+            'block select-none space-y-1 rounded-2xl p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-background hover:shadow-sm focus:bg-background focus:shadow-sm',
             disabled && 'pointer-events-none opacity-50',
-            isActive && 'bg-slate-100 shadow-sm text-accent-foreground font-medium',
+            isActive && 'bg-background shadow-sm text-foreground font-medium',
             className,
           )}
           {...props}
         >
           <div
             className={cn(
-              'text-sm font-heading font-semibold leading-none text-slate-900',
+              'text-sm font-heading font-semibold leading-none text-foreground',
               isActive && 'text-primary',
             )}
           >
             {title}
           </div>
           {children && (
-            <p className="line-clamp-2 text-sm leading-snug text-slate-500 mt-1.5">{children}</p>
+            <p className="line-clamp-2 text-sm leading-snug text-foreground/60 mt-1.5">
+              {children}
+            </p>
           )}
         </Link>
       </NavigationMenuLink>
@@ -139,7 +141,7 @@ export function Header() {
 
   return (
     <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-6 md:px-12 pointer-events-none">
-      <header className="w-full max-w-6xl pointer-events-auto backdrop-blur-xl bg-white/70 border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-full transition-all duration-300">
+      <header className="w-full max-w-6xl pointer-events-auto backdrop-blur-xl bg-card/80 border border-border/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-full transition-all duration-300">
         <div className="px-6 md:px-8 h-16 flex items-center justify-between">
           <Link
             to="/"
@@ -149,20 +151,17 @@ export function Header() {
             {logoUrl ? (
               <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
             ) : (
-              <>
-                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-white font-heading font-bold text-base">N</span>
-                </div>
-                <span className="font-heading font-bold text-xl tracking-tight text-foreground hidden sm:inline-block">
-                  Nuvo
-                </span>
-              </>
+              <div className="flex items-center font-heading font-bold text-2xl tracking-tighter text-foreground">
+                <span className="text-primary">n</span>
+                <span className="ml-[-1px] mr-[1px]">u</span>v<span className="ml-[-1px]">o</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-expression ml-1 mb-1" />
+              </div>
             )}
           </Link>
 
           {/* Desktop Navigation */}
           <nav
-            className="hidden lg:flex items-center flex-1 justify-center text-[#1C1C28]"
+            className="hidden lg:flex items-center flex-1 justify-center"
             aria-label="Navegação Principal"
           >
             <NavigationMenu delayDuration={300}>
@@ -240,30 +239,24 @@ export function Header() {
             <div className="flex items-center gap-1 mr-2 text-foreground/70">
               <a
                 href="#"
-                className="p-2 hover:text-primary transition-colors hover:bg-white/50 rounded-full"
-                aria-label="Instagram"
+                className="p-2 hover:text-primary transition-colors hover:bg-card rounded-full"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="p-2 hover:text-primary transition-colors hover:bg-white/50 rounded-full"
-                aria-label="LinkedIn"
+                className="p-2 hover:text-primary transition-colors hover:bg-card rounded-full"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="p-2 hover:text-primary transition-colors hover:bg-white/50 rounded-full"
-                aria-label="WhatsApp"
+                className="p-2 hover:text-primary transition-colors hover:bg-card rounded-full"
               >
                 <MessageCircle className="w-4 h-4" />
               </a>
             </div>
-            <Button
-              onClick={openModal}
-              className="h-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm transition-all duration-300 hover:shadow-md px-5 cursor-pointer"
-            >
+            <Button onClick={openModal} className="h-10 rounded-full px-5 cursor-pointer">
               Diagnóstico gratuito
             </Button>
           </div>
@@ -273,22 +266,19 @@ export function Header() {
             <div className="flex items-center gap-0.5 mr-1 text-foreground/70">
               <a
                 href="#"
-                className="p-1.5 hover:text-primary transition-colors hover:bg-white/50 rounded-full"
-                aria-label="Instagram"
+                className="p-1.5 hover:text-primary transition-colors hover:bg-card rounded-full"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="p-1.5 hidden sm:flex hover:text-primary transition-colors hover:bg-white/50 rounded-full"
-                aria-label="LinkedIn"
+                className="p-1.5 hidden sm:flex hover:text-primary transition-colors hover:bg-card rounded-full"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="p-1.5 hover:text-primary transition-colors hover:bg-white/50 rounded-full"
-                aria-label="WhatsApp"
+                className="p-1.5 hover:text-primary transition-colors hover:bg-card rounded-full"
               >
                 <MessageCircle className="w-4 h-4" />
               </a>
@@ -298,7 +288,7 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-full hover:bg-white/50"
+                  className="rounded-full hover:bg-card"
                   aria-label="Abrir menu"
                 >
                   <Menu className="h-5 w-5 text-foreground" />
@@ -306,7 +296,7 @@ export function Header() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="flex flex-col w-[300px] sm:w-[400px] border-l-white/20 bg-white/95 backdrop-blur-3xl"
+                className="flex flex-col w-[300px] sm:w-[400px] border-l-border/20 bg-card/95 backdrop-blur-3xl"
               >
                 <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
                 <SheetDescription className="sr-only">
@@ -317,12 +307,12 @@ export function Header() {
                   {logoUrl ? (
                     <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
                   ) : (
-                    <>
-                      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-sm">
-                        <span className="text-white font-heading font-bold text-lg">N</span>
-                      </div>
-                      <span className="font-heading font-bold text-xl tracking-tight">Nuvo</span>
-                    </>
+                    <div className="flex items-center font-heading font-bold text-2xl tracking-tighter text-foreground">
+                      <span className="text-primary">n</span>
+                      <span className="ml-[-1px] mr-[1px]">u</span>v
+                      <span className="ml-[-1px]">o</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-expression ml-1 mb-1" />
+                    </div>
                   )}
                 </div>
 
@@ -341,7 +331,7 @@ export function Header() {
                             : undefined
                     }
                   >
-                    <AccordionItem value="solucoes" className="border-b-white/20">
+                    <AccordionItem value="solucoes" className="border-b-border/20">
                       <AccordionTrigger
                         className={cn(
                           'font-heading font-semibold hover:no-underline',
@@ -358,8 +348,8 @@ export function Header() {
                               key={item.title}
                               to={item.href}
                               className={cn(
-                                'p-3 text-sm hover:bg-white/60 rounded-xl transition-colors',
-                                isActive && 'bg-white/80 shadow-sm',
+                                'p-3 text-sm hover:bg-background rounded-xl transition-colors',
+                                isActive && 'bg-background shadow-sm',
                               )}
                             >
                               <span
@@ -367,16 +357,14 @@ export function Header() {
                               >
                                 {item.title}
                               </span>
-                              <span className="block text-xs text-muted-foreground">
-                                {item.desc}
-                              </span>
+                              <span className="block text-xs text-foreground/60">{item.desc}</span>
                             </Link>
                           )
                         })}
                       </AccordionContent>
                     </AccordionItem>
 
-                    <AccordionItem value="negocios" className="border-b-white/20">
+                    <AccordionItem value="negocios" className="border-b-border/20">
                       <AccordionTrigger
                         className={cn(
                           'font-heading font-semibold hover:no-underline',
@@ -393,8 +381,8 @@ export function Header() {
                               key={item.title}
                               to={item.href}
                               className={cn(
-                                'p-3 text-sm hover:bg-white/60 rounded-xl transition-colors',
-                                isActive && 'bg-white/80 shadow-sm',
+                                'p-3 text-sm hover:bg-background rounded-xl transition-colors',
+                                isActive && 'bg-background shadow-sm',
                               )}
                             >
                               <span
@@ -402,9 +390,7 @@ export function Header() {
                               >
                                 {item.title}
                               </span>
-                              <span className="block text-xs text-muted-foreground">
-                                {item.desc}
-                              </span>
+                              <span className="block text-xs text-foreground/60">{item.desc}</span>
                             </Link>
                           )
                         })}
@@ -431,8 +417,8 @@ export function Header() {
                                 'p-3 text-sm rounded-xl transition-colors',
                                 item.disabled
                                   ? 'opacity-50 pointer-events-none'
-                                  : 'hover:bg-white/60',
-                                isActive && 'bg-white/80 shadow-sm',
+                                  : 'hover:bg-background',
+                                isActive && 'bg-background shadow-sm',
                               )}
                             >
                               <span
@@ -440,9 +426,7 @@ export function Header() {
                               >
                                 {item.title}
                               </span>
-                              <span className="block text-xs text-muted-foreground">
-                                {item.desc}
-                              </span>
+                              <span className="block text-xs text-foreground/60">{item.desc}</span>
                             </Link>
                           )
                         })}
@@ -451,11 +435,8 @@ export function Header() {
                   </Accordion>
                 </div>
 
-                <div className="mt-8 flex flex-col gap-3 pt-6 border-t border-border/40">
-                  <Button
-                    onClick={openModal}
-                    className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-sm px-6 cursor-pointer"
-                  >
+                <div className="mt-8 flex flex-col gap-3 pt-6 border-t border-border/20">
+                  <Button onClick={openModal} className="w-full h-12 rounded-xl">
                     Quero um diagnóstico gratuito
                   </Button>
                 </div>

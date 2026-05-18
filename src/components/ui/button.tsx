@@ -1,4 +1,3 @@
-/* Button Component primitives - A component that displays a button - from shadcn/ui (exposes Button, buttonVariants) */
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
@@ -10,14 +9,19 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-md',
+        default:
+          'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20',
+        support:
+          'bg-support text-support-foreground hover:bg-support/90 hover:shadow-md hover:shadow-support/20',
+        expression:
+          'bg-expression text-expression-foreground hover:bg-expression/90 hover:shadow-md hover:shadow-expression/20',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:shadow-md',
         outline:
-          'border-2 border-input bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground hover:shadow-sm',
+          'border border-border/20 bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground hover:shadow-sm',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-md',
         ghost: 'text-foreground hover:bg-accent hover:text-accent-foreground',
-        link: 'text-foreground underline-offset-4 hover:underline',
+        link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
         default: 'h-[44px] px-6 py-3',

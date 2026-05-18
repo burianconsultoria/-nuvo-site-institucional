@@ -1,6 +1,6 @@
 import { Calendar, Clock, Mic, MessageSquareText, LayoutDashboard, RefreshCcw } from 'lucide-react'
 
-export function AIFeaturesSection({ color }: { color: string }) {
+export function AIFeaturesSection({ color }: { color?: string }) {
   const features = [
     {
       icon: Calendar,
@@ -36,11 +36,13 @@ export function AIFeaturesSection({ color }: { color: string }) {
   ]
 
   return (
-    <div className="py-20 bg-slate-50 border-t border-slate-200">
+    <div className="py-24 bg-card text-card-foreground border-y border-border/20">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Recursos e Funcionalidades</h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            Recursos e Funcionalidades
+          </h2>
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
             Tudo o que você precisa para transformar seu WhatsApp em uma máquina de conversão
             automática.
           </p>
@@ -49,16 +51,13 @@ export function AIFeaturesSection({ color }: { color: string }) {
           {features.map((feature, i) => (
             <div
               key={i}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+              className="bg-background p-8 rounded-2xl border border-border/20 hover:border-primary/50 transition-colors shadow-sm"
             >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                style={{ backgroundColor: `${color}15`, color }}
-              >
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-support/10 text-support">
                 <feature.icon className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{feature.description}</p>
+              <p className="text-foreground/70 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>

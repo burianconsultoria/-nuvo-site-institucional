@@ -34,27 +34,23 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-[#1C1C28] text-white/90 pt-16 pb-8">
+    <footer className="bg-background text-foreground/90 pt-20 pb-8 border-t border-border/10">
       <div className="w-full max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Column 1: Marca */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
               {footerLogoUrl ? (
                 <img src={footerLogoUrl} alt="Logo Nuvo" className="h-10 object-contain" />
               ) : (
-                <>
-                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                    <span className="text-white font-heading font-bold text-lg">N</span>
-                  </div>
-                  <span className="font-heading font-bold text-xl tracking-tight text-white">
-                    Nuvo
-                  </span>
-                </>
+                <div className="flex items-center font-heading font-bold text-2xl tracking-tighter text-foreground">
+                  <span className="text-primary">n</span>
+                  <span className="ml-[-1px] mr-[1px]">u</span>v<span className="ml-[-1px]">o</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-expression ml-1 mb-1" />
+                </div>
               )}
             </Link>
             <div
-              className="text-white/70 text-sm leading-relaxed max-w-xs prose prose-sm prose-invert"
+              className="text-foreground/70 text-sm leading-relaxed max-w-xs prose prose-sm prose-invert"
               dangerouslySetInnerHTML={{
                 __html:
                   content.footer_desc ||
@@ -67,7 +63,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn da Nuvo"
-                className="text-white/60 hover:text-[#4A3EFF] transition-colors duration-300"
+                className="text-foreground/60 hover:text-primary transition-colors duration-300"
               >
                 <Linkedin size={22} />
               </a>
@@ -76,24 +72,23 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram da Nuvo"
-                className="text-white/60 hover:text-[#4A3EFF] transition-colors duration-300"
+                className="text-foreground/60 hover:text-primary transition-colors duration-300"
               >
                 <Instagram size={22} />
               </a>
             </div>
           </div>
 
-          {/* Column 2: Soluções */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-6 text-white">Soluções</h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <h4 className="font-heading font-semibold text-lg mb-6 text-foreground">Soluções</h4>
+            <ul className="space-y-4 text-sm text-foreground/70">
               {solucoesLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
                     className={cn(
-                      'hover:text-white hover:underline transition-colors duration-300',
-                      location.pathname === link.href && 'text-white underline font-medium',
+                      'hover:text-foreground hover:underline transition-colors duration-300',
+                      location.pathname === link.href && 'text-foreground underline font-medium',
                     )}
                   >
                     {link.title}
@@ -103,17 +98,18 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Segmentos */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-6 text-white">Para seu Negócio</h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <h4 className="font-heading font-semibold text-lg mb-6 text-foreground">
+              Para seu Negócio
+            </h4>
+            <ul className="space-y-4 text-sm text-foreground/70">
               {negociosLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
                     className={cn(
-                      'hover:text-white hover:underline transition-colors duration-300',
-                      location.pathname === link.href && 'text-white underline font-medium',
+                      'hover:text-foreground hover:underline transition-colors duration-300',
+                      location.pathname === link.href && 'text-foreground underline font-medium',
                     )}
                   >
                     {link.title}
@@ -123,17 +119,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Recursos */}
           <div>
-            <h4 className="font-heading font-semibold text-lg mb-6 text-white">Recursos</h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <h4 className="font-heading font-semibold text-lg mb-6 text-foreground">Recursos</h4>
+            <ul className="space-y-4 text-sm text-foreground/70">
               {recursosLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
                     className={cn(
-                      'hover:text-white hover:underline transition-colors duration-300',
-                      location.pathname === link.href && 'text-white underline font-medium',
+                      'hover:text-foreground hover:underline transition-colors duration-300',
+                      location.pathname === link.href && 'text-foreground underline font-medium',
                     )}
                   >
                     {link.title}
@@ -144,7 +139,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-16 pt-8 text-center text-sm text-white/50">
+        <div className="border-t border-border/10 mt-16 pt-8 text-center text-sm text-foreground/50">
           <p>© 2026 Nuvo Company. Todos os direitos reservados.</p>
         </div>
       </div>

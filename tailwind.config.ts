@@ -1,4 +1,3 @@
-/* Tailwind config for the frontend react app. This is where the app theme should be defined: https://v2.tailwindcss.com/docs/configuration. */
 import type { Config } from 'tailwindcss'
 import animatePlugin from 'tailwindcss-animate'
 import typographyPlugin from '@tailwindcss/typography'
@@ -31,55 +30,66 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        heading: ['Montserrat', 'sans-serif'],
+        heading: ['Space Grotesk', 'sans-serif'],
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        border: 'hsl(var(--border) / <alpha-value>)',
+        input: 'hsl(var(--input) / <alpha-value>)',
+        ring: 'hsl(var(--ring) / <alpha-value>)',
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
+          foreground: 'hsl(var(--primary-foreground) / <alpha-value>)',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
+          foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
         },
-        tertiary: {
-          DEFAULT: 'hsl(var(--tertiary))',
-          foreground: 'hsl(var(--tertiary-foreground))',
+        support: {
+          DEFAULT: 'hsl(var(--support) / <alpha-value>)',
+          foreground: 'hsl(var(--support-foreground) / <alpha-value>)',
+        },
+        expression: {
+          DEFAULT: 'hsl(var(--expression) / <alpha-value>)',
+          foreground: 'hsl(var(--expression-foreground) / <alpha-value>)',
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
+          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+          foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
         },
+        success: 'hsl(var(--success) / <alpha-value>)',
+        warning: 'hsl(var(--warning) / <alpha-value>)',
+        info: 'hsl(var(--info) / <alpha-value>)',
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
+          foreground: 'hsl(var(--muted-foreground) / <alpha-value>)',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
+          foreground: 'hsl(var(--accent-foreground) / <alpha-value>)',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
+          foreground: 'hsl(var(--popover-foreground) / <alpha-value>)',
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+          DEFAULT: 'hsl(var(--card) / <alpha-value>)',
+          foreground: 'hsl(var(--card-foreground) / <alpha-value>)',
+        },
+        cardLight: {
+          DEFAULT: 'hsl(var(--card-light) / <alpha-value>)',
+          foreground: 'hsl(var(--card-light-foreground) / <alpha-value>)',
         },
         sidebar: {
-          DEFAULT: 'hsl(var(--sidebar-background))',
-          foreground: 'hsl(var(--sidebar-foreground))',
-          primary: 'hsl(var(--sidebar-primary))',
-          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-          accent: 'hsl(var(--sidebar-accent))',
-          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-          border: 'hsl(var(--sidebar-border))',
-          ring: 'hsl(var(--sidebar-ring))',
+          DEFAULT: 'hsl(var(--sidebar-background) / <alpha-value>)',
+          foreground: 'hsl(var(--sidebar-foreground) / <alpha-value>)',
+          primary: 'hsl(var(--sidebar-primary) / <alpha-value>)',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground) / <alpha-value>)',
+          accent: 'hsl(var(--sidebar-accent) / <alpha-value>)',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground) / <alpha-value>)',
+          border: 'hsl(var(--sidebar-border) / <alpha-value>)',
+          ring: 'hsl(var(--sidebar-ring) / <alpha-value>)',
         },
         chart: {
           1: 'hsl(var(--chart-1))',
@@ -87,33 +97,6 @@ export default {
           3: 'hsl(var(--chart-3))',
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))',
-        },
-        product: {
-          diag: {
-            DEFAULT: 'hsl(var(--prod-diag))',
-            hover: 'hsl(var(--prod-diag-hover))',
-            light: 'hsl(var(--prod-diag-light))',
-          },
-          ai: {
-            DEFAULT: 'hsl(var(--prod-ai))',
-            hover: 'hsl(var(--prod-ai-hover))',
-            light: 'hsl(var(--prod-ai-light))',
-          },
-          auto: {
-            DEFAULT: 'hsl(var(--prod-auto))',
-            hover: 'hsl(var(--prod-auto-hover))',
-            light: 'hsl(var(--prod-auto-light))',
-          },
-          crm: {
-            DEFAULT: 'hsl(var(--prod-crm))',
-            hover: 'hsl(var(--prod-crm-hover))',
-            light: 'hsl(var(--prod-crm-light))',
-          },
-          sys: {
-            DEFAULT: 'hsl(var(--prod-sys))',
-            hover: 'hsl(var(--prod-sys-hover))',
-            light: 'hsl(var(--prod-sys-light))',
-          },
         },
       },
       borderRadius: {
@@ -127,7 +110,7 @@ export default {
       },
       boxShadow: {
         subtle: '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
-        elevation: '0 4px 20px rgba(0, 0, 0, 0.05)',
+        elevation: '0 4px 20px rgba(0, 0, 0, 0.2)',
       },
       transitionTimingFunction: {
         apple: 'cubic-bezier(0.42, 0, 0.58, 1)',
@@ -135,21 +118,4 @@ export default {
     },
   },
   plugins: [animatePlugin, typographyPlugin, aspectRatioPlugin],
-  safelist: [
-    'border-product-diag',
-    'border-product-ai',
-    'border-product-auto',
-    'border-product-crm',
-    'border-product-sys',
-    'text-product-diag',
-    'text-product-ai',
-    'text-product-auto',
-    'text-product-crm',
-    'text-product-sys',
-    'bg-product-diag',
-    'bg-product-ai',
-    'bg-product-auto',
-    'bg-product-crm',
-    'bg-product-sys',
-  ],
 } satisfies Config
